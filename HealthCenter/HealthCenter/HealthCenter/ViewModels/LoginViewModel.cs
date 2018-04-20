@@ -66,6 +66,8 @@ namespace HealthCenter.ViewModels
             this.dataService = new DataService();
             this.IsRememberme = true;
             this.IsEnabled = true;
+            this.Email = "casq89@hotmail.com";
+            this.Password = "Camilo123*";
         }
         #endregion
 

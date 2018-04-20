@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthCenter.Views.LoginPage"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
-    BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Health Center">
     <ContentPage.Content>
             <ScrollView
             BindingContext="{Binding Login}">

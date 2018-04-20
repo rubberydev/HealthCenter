@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:HealthCenter.Helpers"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="{i18n:Translate Menu}"
+    x:Class="HealthCenter.Views.MenuPage"
+    BackgroundColor="#73A3DF">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10">
+            <StackLayout
+                BindingContext="{Binding Menu}">
+            </StackLayout>
+            <Label
+                FontSize="Default"
+                HorizontalOptions="Center"
+                Text="{Binding User.FullName}"
+                TextColor="White">
+            </Label>
+            <ListView 
+                ItemsSource="{Binding Menus}"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image 
+                                Source="{Binding Icon}"
+                                WidthRequest="25"
+                                HeightRequest="25">
+                                </Image>
+                                <Label
+                                Margin="5,15"
+                                FontSize="Default"                                
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                TextColor="White"
+                                Text="{Binding Title}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Image
+                HeightRequest="100"
+                Source="Bible">
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
