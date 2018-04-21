@@ -45,32 +45,31 @@
         // POST: Users/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(UserView view)
+        
+        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,Email,Telephone,ImagePath,UserTypeId")] User user)
         {
             if (ModelState.IsValid)
             {
-                var user = this.ToUser(view);
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-                UsersHelper.CreateUserASP(view.Email, "User", view.Password);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", view.UserTypeId);
-            return View(view);
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
+            return View(user);
         }
 
-        private User ToUser(UserView view)
-        {
-            return new User
-            {
-                Email = view.Email,
-                FirstName = view.FirstName,
-                LastName = view.LastName,
-                Telephone = view.Telephone,
-                UserId = view.UserId
-            };
-        }
+        //private User ToUser(UserView view)
+        //{
+        //    return new User
+        //    {
+        //        Email = view.Email,
+        //        FirstName = view.FirstName,
+        //        LastName = view.LastName,
+        //        Telephone = view.Telephone,
+        //        UserId = view.UserId
+        //    };
+        //}
 
         // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)

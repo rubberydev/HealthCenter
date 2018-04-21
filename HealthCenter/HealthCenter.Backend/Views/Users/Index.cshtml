@@ -56,7 +56,7 @@
             @Html.DisplayFor(modelItem => item.ImagePath)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserType)
+            @Html.DisplayFor(modelItem => item.UserType.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
