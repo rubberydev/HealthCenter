@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HealthCenter.Views.MyProfilePage"
+    xmlns:i18n="clr-namespace:HealthCenter.Helpers"
+    Title="{i18n:Translate MyProfile}"
+     BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView  
+            BindingContext="{Binding MyProfile}">
+            <StackLayout
+                Padding="5">
+                <Label 
+                    HorizontalOptions="Center" 
+                    FontSize="Medium" 
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate ChangeImage}" 
+                    TextColor="#4D8DDD">
+            </Label>
+            <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}">
+            </ActivityIndicator>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Column="0" 
+                    Grid.Row="0" 
+                    Text="{i18n:Translate FirstNameLabel}" 
+                    TextColor="#4D8DDD" 
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry 
+                    Grid.Column="1" 
+                    Grid.Row="0" 
+                    Placeholder="{i18n:Translate FirstNamePlaceHolder}" 
+                    TextColor="#73A3DF" 
+                    VerticalOptions="Center"
+                    PlaceholderColor="#73A3DF"
+                    Text="{Binding User.FirstName, Mode=TwoWay}">
+                </Entry>
+                <Label 
+                    Grid.Column="0" 
+                    Grid.Row="1" 
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate LastNameLabel}" 
+                    TextColor="#4D8DDD" 
+                    VerticalOptions="Center">
+                </Label>
+                <Entry 
+                    Grid.Column="1" 
+                    Grid.Row="1" 
+                    Placeholder="{i18n:Translate LastNamePlaceHolder}" 
+                    TextColor="#73A3DF" 
+                    VerticalOptions="Center"
+                    PlaceholderColor="#73A3DF"
+                    Text="{Binding User.LastName, Mode=TwoWay}">
+                </Entry>
+                <Label 
+                    Grid.Column="0" 
+                    Grid.Row="2" 
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Email}" 
+                    TextColor="#4D8DDD" 
+                    VerticalOptions="Center">
+                </Label>
+                <Entry 
+                    Keyboard="Email" 
+                    Grid.Column="1" 
+                    Grid.Row="2" 
+                    VerticalOptions="Center"
+                    Placeholder="{i18n:Translate EmailPlaceHolder}" 
+                    TextColor="#73A3DF" 
+                    PlaceholderColor="#73A3DF"
+                    Text="{Binding User.Email, Mode=TwoWay}">
+                </Entry>
+                <Label 
+                    Grid.Column="0" 
+                    Grid.Row="3" 
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate PhoneLabel}" 
+                    TextColor="#4D8DDD" 
+                    VerticalOptions="Center">
+                </Label>
+                <Entry 
+                    Grid.Column="1" 
+                    Grid.Row="3" 
+                    Keyboard="Telephone" 
+                    VerticalOptions="Center"
+                    Placeholder="{i18n:Translate PhonePlaceHolder}" 
+                    TextColor="#73A3DF" 
+                    PlaceholderColor="#73A3DF"
+                    Text="{Binding User.Telephone, Mode=TwoWay}">
+                </Entry>
+            </Grid>
+            <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,20">
+                <Button 
+                    BackgroundColor="#73A3DF" 
+                    BorderRadius="23" 
+                    Command="{Binding SaveCommand}" 
+                    HeightRequest="60"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                    Text="{i18n:Translate Update}" 
+                    TextColor="White"
+                    WidthRequest="130">
+                </Button>
+                <Button
+                    BackgroundColor="#73A3DF" 
+                    BorderRadius="23"
+                    Command="{Binding ChangePasswordCommand}"
+                    HeightRequest="60"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Text="{i18n:Translate ChangePassword}"
+                    TextColor="White"
+                    WidthRequest="130">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

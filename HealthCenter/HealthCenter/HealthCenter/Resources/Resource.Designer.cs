@@ -691,7 +691,7 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search Details Bibles.
+        ///   Looks up a localized string similar to Search Dates.
         /// </summary>
         public static string SearchPage {
             get {
