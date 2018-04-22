@@ -202,6 +202,61 @@
             }
         }
 
+        [HttpPost]
+        [Route("LoginInstagram")]
+        public async Task<IHttpActionResult> LoginInstagram(InstagramResponse profile)
+        {
+            try
+            {
+                var user = await db.Users.Where(u => u.Email == profile.UserData.Id).FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        Email = profile.UserData.Id,
+                        FirstName = profile.UserData.FullName,
+                        LastName = profile.UserData.FullName,
+                        ImagePath = profile.UserData.ProfilePicture,
+                        UserTypeId = 4,
+                        Telephone = "...",
+                    };
+
+                    db.Users.Add(user);
+                    UsersHelper.CreateUserASP(profile.UserData.Id, "User", profile.UserData.Id);
+                }
+                else
+                {
+                    user.FirstName = profile.UserData.FullName.Replace("@", " ");
+                    user.LastName = profile.UserData.FullName;
+                    user.ImagePath = profile.UserData.ProfilePicture;
+                    db.Entry(user).State = EntityState.Modified;
+                }
+
+                await db.SaveChangesAsync();
+                return Ok(true);
+            }
+            catch (DbEntityValidationException e)
+            {
+                var message = string.Empty;
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    message = string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        message += string.Format("\n- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+
+                return BadRequest(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // POST: api/Users
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
