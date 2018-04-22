@@ -1,6 +1,4 @@
-﻿
-
-namespace HealthCenter.ViewModels
+﻿namespace HealthCenter.ViewModels
 {
     using Views;
     using GalaSoft.MvvmLight.Command;
@@ -66,8 +64,8 @@ namespace HealthCenter.ViewModels
             this.dataService = new DataService();
             this.IsRememberme = true;
             this.IsEnabled = true;
-            this.Email = "casq89@hotmail.com";
-            this.Password = "Camilo123*";
+            this.Email = "juanb19@hotmail.es";
+            this.Password = "Developer123.";
         }
         #endregion
 
@@ -131,36 +129,34 @@ namespace HealthCenter.ViewModels
                 return;
             }
 
-            var token = await this.apiService.GetToken(
-                "http://healthcenterapi.azurewebsites.net",
-                this.Email,
-                this.Password
-                );
+            //var token = await this.apiService.GetToken(
+            //    "http://healthcenterapi.azurewebsites.net",
+            //    this.Email,
+            //    this.Password
+            //    );
 
-            if (token == null)
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                  Languages.Error,
-                  Languages.ErrorToken,
-                  Languages.Accept);
-                return;
-            }
+            //if (token == null)
+            //{
+            //    this.IsRunning = false;
+            //    this.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert(
+            //      Languages.Error,
+            //      Languages.ErrorToken,
+            //      Languages.Accept);
+            //    return;
+            //}
 
-            if (string.IsNullOrEmpty(token.AccessToken))
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.ErrorPassword,
-                    Languages.Accept);
-                this.Password = string.Empty;
-                return;
-
-
-            }
+            //if (string.IsNullOrEmpty(token.AccessToken))
+            //{
+            //    this.IsRunning = false;
+            //    this.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        Languages.ErrorPassword,
+            //        Languages.Accept);
+            //    this.Password = string.Empty;
+            //    return;
+            //}
 
             //var user = await this.apiService.GetUserByEmail(
             //    "http://healthcenterapi.azurewebsites.net",
@@ -175,7 +171,7 @@ namespace HealthCenter.ViewModels
 
             //var mainViewModel = MainViewModel.GetInstance();
 
-            //mainViewModel.Bibles = new BiblesViewModel();
+            //mainViewModel.Dates = new DatesViewModel();
             //mainViewModel.Token = token;
             //mainViewModel.User = userLocal;
 

@@ -262,7 +262,7 @@
     <value>Your are in the last Chapter</value>
   </data>
   <data name="SearchPage" xml:space="preserve">
-    <value>Search Details Bibles</value>
+    <value>Search Dates</value>
   </data>
   <data name="ChagePasswordConfirm" xml:space="preserve">
     <value>password successfully changed</value>

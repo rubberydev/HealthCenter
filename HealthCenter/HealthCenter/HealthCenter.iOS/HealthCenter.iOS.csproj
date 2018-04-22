@@ -161,4 +161,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_lock_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_settings.png" />
+  </ItemGroup>
 </Project>
