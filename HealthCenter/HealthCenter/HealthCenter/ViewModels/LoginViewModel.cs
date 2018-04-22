@@ -129,51 +129,53 @@
                 return;
             }
 
-            //var token = await this.apiService.GetToken(
-            //    "http://healthcenterapi.azurewebsites.net",
-            //    this.Email,
-            //    this.Password
-            //    );
+            var token = await this.apiService.GetToken(
+                "http://healthcenterapi.azurewebsites.net",
+                this.Email,
+                this.Password
+                );
 
-            //if (token == null)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //      Languages.Error,
-            //      Languages.ErrorToken,
-            //      Languages.Accept);
-            //    return;
-            //}
+            if (token == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                  Languages.Error,
+                  Languages.ErrorToken,
+                  Languages.Accept);
+                return;
+            }
 
-            //if (string.IsNullOrEmpty(token.AccessToken))
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.ErrorPassword,
-            //        Languages.Accept);
-            //    this.Password = string.Empty;
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ErrorPassword,
+                    Languages.Accept);
+                this.Password = string.Empty;
+                return;
 
-            //var user = await this.apiService.GetUserByEmail(
-            //    "http://healthcenterapi.azurewebsites.net",
-            //    "/api",
-            //    "/Users/GetUserByEmail",
-            //    token.TokenType,
-            //    token.AccessToken,
-            //    this.Email);
 
-            //var userLocal = Converter.ToUserLocal(user);
-            //userLocal.Password = this.Password;
+            }
 
-            //var mainViewModel = MainViewModel.GetInstance();
+            var user = await this.apiService.GetUserByEmail(
+                "http://healthcenterapi.azurewebsites.net",
+                "/api",
+                "/Users/GetUserByEmail",
+                token.TokenType,
+                token.AccessToken,
+                this.Email);
 
-            //mainViewModel.Dates = new DatesViewModel();
-            //mainViewModel.Token = token;
-            //mainViewModel.User = userLocal;
+            var userLocal = Converter.ToUserLocal(user);
+            userLocal.Password = this.Password;
+
+            var mainViewModel = MainViewModel.GetInstance();
+
+            mainViewModel.Dates = new DatesViewModel();
+            mainViewModel.Token = token;
+            mainViewModel.User = userLocal;
 
             if (this.IsRememberme)
             {
@@ -185,8 +187,8 @@
                 Settings.IsRememberme = "false";
             }
 
-            //this.dataService.DeleteAllAndInsert(userLocal);
-            //this.dataService.DeleteAllAndInsert(token);
+            this.dataService.DeleteAllAndInsert(userLocal);
+            this.dataService.DeleteAllAndInsert(token);
 
 
             //await Application.Current.MainPage.Navigation.PushAsync(new MasterPage());

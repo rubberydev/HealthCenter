@@ -31,8 +31,34 @@ namespace HealthCenter
         public App ()
 		{
 			InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
-		}
+            InitializeComponent();
+            var mainViewModel = MainViewModel.GetInstance();
+
+            if (Settings.IsRememberme == "true")
+            {
+                var dataService = new DataService();
+                var user = dataService.First<UserLocal>(false);
+                var token = dataService.First<TokenResponse>(false);
+
+                if (token != null && token.Expires > DateTime.Now)
+                {
+                    mainViewModel.Token = token;
+                    mainViewModel.User = user;
+                    mainViewModel.Dates = new DatesViewModel();
+                    mainViewModel.Menu = new MenuItemViewModel();
+                    MainPage = new MasterPage();
+                }
+                else
+                {
+                    MainPage = new NavigationPage(new LoginPage());
+                }
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+
+        }
 
         #region Methods
         public static Action HideLoginView
