@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using HealthCenter.Domain;
-
-namespace HealthCenter.API.Controllers
+﻿namespace HealthCenter.API.Controllers
 {
+    using Helpers;
+    using Domain;
+    using Newtonsoft.Json.Linq;
+    using System;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+
+    [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
         private DataContext db = new DataContext();
@@ -36,18 +37,51 @@ namespace HealthCenter.API.Controllers
             return Ok(user);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("GetUserByEmail")]
+        public async Task<IHttpActionResult> GetUserByEmail(JObject form)
+        {
+            var email = string.Empty;
+            dynamic jsonObject = form;
+            try
+            {
+                email = jsonObject.Email.Value;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+
+            var user = await db.Users.
+                Where(u => u.Email.ToLower() == email.ToLower()).
+                FirstOrDefaultAsync();
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         // PUT: api/Users/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(int id, User user)
         {
-            if (!ModelState.IsValid)
+            if (user.ImageArray != null && user.ImageArray.Length > 0)
             {
-                return BadRequest(ModelState);
-            }
+                var stream = new MemoryStream(user.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = string.Format("{0}.jpg", guid);
+                var folder = "~/Content/Images";
+                var fullPath = string.Format("{0}/{1}", folder, file);
+                var response = FilesHelper.UploadPhoto(stream, folder, file);
 
-            if (id != user.UserId)
-            {
-                return BadRequest();
+                if (response)
+                {
+                    user.ImagePath = fullPath;
+                }
             }
 
             db.Entry(user).State = EntityState.Modified;
@@ -68,20 +102,32 @@ namespace HealthCenter.API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(user);
         }
 
         // POST: api/Users
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
         {
-            if (!ModelState.IsValid)
+            if (user.ImageArray != null && user.ImageArray.Length > 0)
             {
-                return BadRequest(ModelState);
+                var stream = new MemoryStream(user.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = string.Format("{0}.jpg", guid);
+                var folder = "~/Content/Images";
+                var fullPath = string.Format("{0}/{1}", folder, file);
+                var response = FilesHelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    user.ImagePath = fullPath;
+                }
             }
 
             db.Users.Add(user);
             await db.SaveChangesAsync();
+            UsersHelper.CreateUserASP(user.Email, "User", user.Password);
+
 
             return CreatedAtRoute("DefaultApi", new { id = user.UserId }, user);
         }
