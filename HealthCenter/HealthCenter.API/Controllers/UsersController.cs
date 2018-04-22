@@ -1,7 +1,10 @@
 ﻿namespace HealthCenter.API.Controllers
 {
-    using Helpers;
     using Domain;
+    using Helpers;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Data;
@@ -25,16 +28,54 @@
         }
 
         // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> GetUser(int id)
+        //[ResponseType(typeof(User))]
+        //public async Task<IHttpActionResult> GetUser(int id)
+        //{
+        //    User user = await db.Users.FindAsync(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(user);
+        //}
+
+        [HttpPost]
+        [Route("ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(JObject form)
         {
-            User user = await db.Users.FindAsync(id);
-            if (user == null)
+            var email = string.Empty;
+            var currentPassword = string.Empty;
+            var newPassword = string.Empty;
+            dynamic jsonObject = form;
+
+            try
             {
-                return NotFound();
+                email = jsonObject.Email.Value;
+                currentPassword = jsonObject.CurrentPassword.Value;
+                newPassword = jsonObject.NewPassword.Value;
+            }
+            catch
+            {
+                return BadRequest("Incorrect call");
             }
 
-            return Ok(user);
+            var userContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
+            var userASP = userManager.FindByEmail(email);
+
+            if (userASP == null)
+            {
+                return BadRequest("Incorrect call");
+            }
+
+            var response = await userManager.ChangePasswordAsync(userASP.Id, currentPassword, newPassword);
+            if (!response.Succeeded)
+            {
+                return BadRequest(response.Errors.FirstOrDefault());
+            }
+
+            return Ok("ok");
         }
 
         [HttpPost]
