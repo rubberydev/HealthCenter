@@ -94,28 +94,28 @@ namespace HealthCenter
                 return;
             }
 
-            //var user = await apiService.GetUserByEmail(
-            //    apiSecurity,
-            //    "/api",
-            //    "/Users/GetUserByEmail",
-            //    token.TokenType,
-            //    token.AccessToken,
-            //    token.UserName);
+            var user = await apiService.GetUserByEmail(
+                apiSecurity,
+                "/api",
+                "/Users/GetUserByEmail",
+                token.TokenType,
+                token.AccessToken,
+                token.UserName);
 
-        //    UserLocal userLocal = null;
-        //    if (user != null)
-        //    {
-        //        userLocal = Converter.ToUserLocal(user);
-        //        dataService.DeleteAllAndInsert(userLocal);
-        //        dataService.DeleteAllAndInsert(token);
-        //    }
+            UserLocal userLocal = null;
+            if (user != null)
+            {
+                userLocal = Converter.ToUserLocal(user);
+                dataService.DeleteAllAndInsert(userLocal);
+                dataService.DeleteAllAndInsert(token);
+            }
 
-        //    var mainViewModel = MainViewModel.GetInstance();
-        //    mainViewModel.Token = token;
-        //    mainViewModel.User = userLocal;
-        //    Settings.IsRememberme = "true";
-        //    mainViewModel.Bibles = new BiblesViewModel();
-        //    Application.Current.MainPage = new MasterPage();
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Token = token;
+            mainViewModel.User = userLocal;
+            Settings.IsRememberme = "true";
+            mainViewModel.Dates = new DatesViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
 
         protected override void OnStart()

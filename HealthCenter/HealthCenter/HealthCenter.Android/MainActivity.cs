@@ -13,7 +13,7 @@ namespace HealthCenter.Droid
 
     [Activity(
         Label = "HealthCenter", 
-        Icon = "@drawable/icon",
+        Icon = "@drawable/ic_healthcenter",
         Theme = "@style/MainTheme", 
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

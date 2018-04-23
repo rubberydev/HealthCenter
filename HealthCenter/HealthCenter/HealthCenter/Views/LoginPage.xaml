@@ -95,23 +95,20 @@
                     VerticalOptions="CenterAndExpand">
                         <Image
                         HorizontalOptions="FillAndExpand"
-                        WidthRequest="100"
+                        WidthRequest="70"
+                        Margin="0,0,25,0"
                         Source="logo_facebook">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image
-                        HorizontalOptions="FillAndExpand"
-                        WidthRequest="100"
-                        Source="logo_instagram">
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="70"
+                            Margin="25,0,0,0"
+                            Source="logo_instagram">
                         </Image>
-                        <Image
-                        WidthRequest="100"
-                        HorizontalOptions="FillAndExpand"
-                        Source="logo_twitter">
-                        </Image>
-                    </StackLayout>
+                </StackLayout>
                 </StackLayout>
             </ScrollView>
         </ContentPage.Content>
