@@ -7,6 +7,7 @@
     using Xamarin.Forms;
     using Helpers;
     using Domain;
+    using System;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -70,13 +71,58 @@
         #endregion
 
         #region Commands
-        public ICommand LoginFacebookComand
+        public ICommand LoginFacebookCommand
         {
             get
             {
                 return new RelayCommand(LoginFacebook);
             }
         }
+
+        public ICommand LoginInstagramCommand
+        {
+            get
+            {
+                return new RelayCommand(LoginInstagram);
+            }
+        }        
+
+        public ICommand LoginTwitterCommand
+        {
+            get
+            {
+                return new RelayCommand(LoginTwitter);
+            }
+        }
+
+        
+
+        public ICommand LoginLinkedInComand
+        {
+            get
+            {
+                return new RelayCommand(LoginLinkedIn);
+            }
+        }
+        #endregion
+
+        #region Methods
+        private void LoginLinkedIn()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void LoginTwitter()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void LoginInstagram()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(
+                    new LoginInstagramPage());
+        }
+
 
         private async void LoginFacebook()
         {

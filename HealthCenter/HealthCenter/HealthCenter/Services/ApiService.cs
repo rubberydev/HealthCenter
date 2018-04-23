@@ -30,6 +30,49 @@ namespace HealthCenter.Services
             return facebookResponse;
         }
 
+        public async Task<Models.InstagramResponse> GetInstagram(string accessToken)
+        {
+            var client = new HttpClient();
+            var userJson = await client.GetStringAsync(accessToken);
+            var InstagramJson = JsonConvert.DeserializeObject<Models.InstagramResponse>(userJson);
+            return InstagramJson;
+        }
+
+        public async Task<TokenResponse> LoginInstagram(
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           Models.InstagramResponse profile)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(profile);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var tokenResponse = await GetToken(
+                    urlBase,
+                    profile.UserData.Id,
+                    profile.UserData.Id);
+                return tokenResponse;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<TokenResponse> LoginFacebook(
             string urlBase,
             string servicePrefix,

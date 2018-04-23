@@ -1,5 +1,4 @@
-﻿
-namespace HealthCenter.Models
+﻿namespace HealthCenter.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;

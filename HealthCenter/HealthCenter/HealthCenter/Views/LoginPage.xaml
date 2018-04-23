@@ -89,25 +89,42 @@
                         </Button>
                     </StackLayout>
                     <StackLayout
-                    HorizontalOptions="Center"
-                    Margin="0, 10"
-                    Orientation="Horizontal"
-                    VerticalOptions="CenterAndExpand">
+                        HorizontalOptions="Center"
+                        Margin="0, 10"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
                         <Image
-                        HorizontalOptions="FillAndExpand"
-                        WidthRequest="70"
-                        Margin="0,0,25,0"
-                        Source="logo_facebook">
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="70"                        
+                            Source="facebook_logo">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
+                               <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Image
                             HorizontalOptions="FillAndExpand"
-                            WidthRequest="70"
-                            Margin="25,0,0,0"
-                            Source="logo_instagram">
+                            WidthRequest="70"                            
+                            Source="instagram_logo">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginInstagramCommand}"/>
+                            </Image.GestureRecognizers>
+                       </Image>
+                        <Image
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="70"                            
+                            Source="twitter_logo">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginTwitterCommand}"/>
+                            </Image.GestureRecognizers>
                         </Image>
+                        <Image
+                            HorizontalOptions="FillAndExpand"
+                            WidthRequest="70"                                
+                            Source="linkedin_logo">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginLinkedInComand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 </StackLayout>
             </ScrollView>
