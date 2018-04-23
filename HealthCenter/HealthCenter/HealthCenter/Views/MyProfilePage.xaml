@@ -79,6 +79,7 @@
                     Placeholder="{i18n:Translate EmailPlaceHolder}" 
                     TextColor="#73A3DF" 
                     PlaceholderColor="#73A3DF"
+                    IsEnabled="False"
                     Text="{Binding User.Email, Mode=TwoWay}">
                 </Entry>
                 <Label 
