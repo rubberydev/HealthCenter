@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthCenter.Views.MyProfilePage"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
+    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
     Title="{i18n:Translate MyProfile}"
      BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
@@ -11,6 +12,14 @@
             BindingContext="{Binding MyProfile}">
             <StackLayout
                 Padding="5">
+                <controls:CircleImage 
+                    Aspect="AspectFill"
+                    HeightRequest="250"
+                    Source="{Binding ImageSource}">
+                    <controls:CircleImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
+                    </controls:CircleImage.GestureRecognizers>
+                </controls:CircleImage>
                 <Label 
                     HorizontalOptions="Center" 
                     FontSize="Medium" 

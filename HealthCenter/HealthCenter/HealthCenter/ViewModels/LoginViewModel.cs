@@ -64,8 +64,8 @@
             this.dataService = new DataService();
             this.IsRememberme = true;
             this.IsEnabled = true;
-            this.Email = "juanb19@hotmail.es";
-            this.Password = "Developer123.";
+            this.Email = "andres@g.com";
+            this.Password = "andres123*";
         }
         #endregion
 
