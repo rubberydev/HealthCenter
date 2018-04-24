@@ -53,6 +53,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="FacebookResponse.cs" />
     <Compile Include="InstagramResponse.cs" />
+    <Compile Include="LinkedInResponse.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

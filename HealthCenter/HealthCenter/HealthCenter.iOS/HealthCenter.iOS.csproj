@@ -89,6 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Implementations\LoginInstagramPageRenderer.cs" />
+    <Compile Include="Implementations\LoginLinkedInPageRenderer.cs" />
     <Compile Include="Implementations\LoginPageRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -194,6 +195,10 @@
     <BundleResource Include="Resources\twitter_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HealthCenter.Domain\HealthCenter.Domain.csproj">
+      <Project>{b49d42ec-e82b-433e-a33f-af9cd2ee4d76}</Project>
+      <Name>HealthCenter.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HealthCenter\HealthCenter.csproj">
       <Project>{0f9d7378-ea8a-44e1-8617-7079c3a44646}</Project>
       <Name>HealthCenter</Name>

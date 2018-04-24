@@ -257,6 +257,61 @@
             }
         }
 
+        [HttpPost]
+        [Route("LoginLinkedIn")]
+        public async Task<IHttpActionResult> LoginLinkedIn(LinkedInResponse profile)
+        {
+            try
+            {
+                var user = await db.Users.Where(u => u.Email == profile.Id).FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        Email = profile.Id,
+                        FirstName = profile.FirstName,
+                        LastName = profile.LastName,
+                        ImagePath = profile.PictureUrl,
+                        UserTypeId = 6,
+                        Telephone = "...",
+                    };
+
+                    db.Users.Add(user);
+                    UsersHelper.CreateUserASP(profile.Id, "User", profile.Id);
+                }
+                else
+                {
+                    user.FirstName = profile.FirstName;
+                    user.LastName = profile.LastName;
+                    user.ImagePath = profile.PictureUrl;
+                    db.Entry(user).State = EntityState.Modified;
+                }
+
+                await db.SaveChangesAsync();
+                return Ok(true);
+            }
+            catch (DbEntityValidationException e)
+            {
+                var message = string.Empty;
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    message = string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        message += string.Format("\n- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+
+                return BadRequest(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // POST: api/Users
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)

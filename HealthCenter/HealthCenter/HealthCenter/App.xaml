@@ -8,7 +8,7 @@
             <infra:InstanceLocator x:Key="Locator"/>
             <x:String x:Key="APISecurity">http://healthcenterapi.azurewebsites.net</x:String>
 
-            <!--Key autentication Instagram-->
+            <!--Key authentication Instagram-->
             <x:String x:Key="InstagramAppID">5c7d845b21224579a1f63301fa0feb22</x:String>
             <x:String x:Key="InstagramAuthURL">https://api.instagram.com/oauth/authorize/</x:String>
             <x:String x:Key="InstagramRedirectURL">https://www.instagram.com/</x:String>
@@ -16,6 +16,17 @@
             <x:String x:Key="InstagramProfileInfoURL">
                 https://api.instagram.com/v1/users/self/?access_token
             </x:String>
+
+            <!--key authentication LinkkedIn-->
+            <x:String x:Key="LinkedInKey">77bcfbnkm0torm</x:String>
+            <x:String x:Key="LinkedInSecret">ZLT2L148ttMf6Vp4</x:String>
+            <x:String x:Key="LinkedInAuthURL">https://www.linkedin.com/oauth/v2/authorization</x:String>
+            <x:String x:Key="LinkedInURLAccess">https://www.linkedin.com/oauth/v2/accessToken</x:String>
+            <x:String x:Key="LinkedInCallbackURL">https://www.linkedin.com/</x:String>
+            <x:String x:Key="LinkedInProfileInfoURL">
+                https://api.linkedin.com/v1/people/~:(id,firstName,lastName,headline,picture-url,summary,educations,three-current-positions,honors-awards,site-standard-profile-request,location,api-standard-profile-request,phone-numbers)?format=json</x:String>
+            <x:String x:Key="LinkedInScope">r_basicprofile</x:String>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

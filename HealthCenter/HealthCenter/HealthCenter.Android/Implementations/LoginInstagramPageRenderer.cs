@@ -6,7 +6,7 @@ namespace HealthCenter.Droid.Implementations
 {
     using Android.App;
     using Services;
-    using Models;
+    using Domain;    
     using System;
     using System.Threading.Tasks;
     using Xamarin.Auth;
@@ -37,11 +37,11 @@ namespace HealthCenter.Droid.Implementations
                 {
                     var accessToken = eventArgs.Account.Properties["access_token"].ToString();
                     var profile = await GetInstagramProfileAsync(accessToken);
-                    App.NavigateToProfile(profile, "Instagram");
+                    App.NavigateToProfile_(profile, "Instagram");
                 }
                 else
                 {
-                    App.HideLoginView_();
+                    App.HideLoginView();
                 }
             };
 

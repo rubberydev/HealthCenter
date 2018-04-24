@@ -59,18 +59,69 @@
         }
 
         #region Methods
-        public static Action HideLoginView_
+        public static Action HideLoginView
         {
             get
             {
-                return new Action(() => App.Current.MainPage =
+                return new Action(() => Application.Current.MainPage =
                                   new NavigationPage(new LoginPage()));
             }
+        }       
+
+        public static async void __NavigateToProfile<T>(T profile, string networkSocial)
+        {            
+             LinkedInResponse linkedInResponse = profile as LinkedInResponse;
+
+            if (linkedInResponse == null)
+            {
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                return;
+            }
+
+            var apiService = new ApiService();
+            var dataService = new DataService();
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var token = await apiService.LoginLinkedIn(
+                apiSecurity,
+                "/api",
+                "/Users/LoginLinkedIn",
+                linkedInResponse);
+
+            if (token == null)
+            {
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                return;
+            }
+
+            var user = await apiService.GetUserByEmail(
+                apiSecurity,
+                "/api",
+                "/Users/GetUserByEmail",
+                token.TokenType,
+                token.AccessToken,
+                token.UserName);
+
+            UserLocal userLocal = null;
+            if (user != null)
+            {
+                userLocal = Converter.ToUserLocal(user);
+                dataService.DeleteAllAndInsert(userLocal);
+                dataService.DeleteAllAndInsert(token);
+            }
+
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Token = token;
+            mainViewModel.User = userLocal;
+            Settings.IsRememberme = "true";
+            mainViewModel.Dates = new DatesViewModel();
+            Application.Current.MainPage = new MasterPage();
+
         }
 
-        public static async Task NavigateToProfile<T>(T profile, string socialNetwork)
+        public static async Task NavigateToProfile_<T>(T profile, string socialNetwork)
         {            
-            Models.InstagramResponse ResponseSocialNetwork = profile as Models.InstagramResponse;
+            InstagramResponse ResponseSocialNetwork = profile as InstagramResponse;
 
             if (ResponseSocialNetwork == null)
             {
@@ -117,19 +168,10 @@
             mainViewModel.Dates = new DatesViewModel();
             Application.Current.MainPage = new MasterPage();
 
-        }
-
+        }       
         
-        public static Action HideLoginView
-        {
-            get
-            {
-                return new Action(() => Application.Current.MainPage =
-                                  new NavigationPage(new LoginPage()));
-            }
-        }
 
-        public static async Task NavigateToProfile(Models.FacebookResponse profile)
+        public static async Task NavigateToProfile(FacebookResponse profile)
         {
             if (profile == null)
             {

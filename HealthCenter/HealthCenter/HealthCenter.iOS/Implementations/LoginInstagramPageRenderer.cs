@@ -4,7 +4,7 @@
 
 namespace HealthCenter.iOS.Implementations
 {
-    using Models;
+    using Domain;
     using Services;
     using System;
     using System.Threading.Tasks;
@@ -44,7 +44,7 @@ namespace HealthCenter.iOS.Implementations
                 {
                     var accessToken = eventArgs.Account.Properties["access_token"].ToString();
                     var profile = await GetInstagramProfileAsync(accessToken);
-                    App.NavigateToProfile(profile, "Instagram");
+                    await App.NavigateToProfile_(profile, "Instagram");
                 }
                 else
                 {

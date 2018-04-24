@@ -7,7 +7,7 @@ namespace HealthCenter.Droid.Implementations
     using System;
     using System.Threading.Tasks;
     using Android.App;
-    using Models;
+    using Domain;
     using Services;
     using Xamarin.Auth;
     using Xamarin.Forms.Platform.Android;

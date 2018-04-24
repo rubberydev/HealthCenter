@@ -6,7 +6,7 @@ namespace HealthCenter.iOS.Implementations
 {
     using System;
     using System.Threading.Tasks;
-    using Models;
+    using Domain;
     using Services;
     using Xamarin.Auth;
     using Xamarin.Forms.Platform.iOS;

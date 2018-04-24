@@ -107,9 +107,11 @@
         #endregion
 
         #region Methods
-        private void LoginLinkedIn()
+        private async void LoginLinkedIn()
         {
-            throw new NotImplementedException();
+            await Application.Current.MainPage.Navigation.PushAsync(
+                    new LoginLinkedInPage());
+
         }
 
         private void LoginTwitter()
