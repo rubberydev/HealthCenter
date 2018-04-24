@@ -17,6 +17,11 @@ namespace HealthCenter.Helpers
         {
             get { return Resource.Accept; }
         }
+        
+        public static string AccessInvalid
+        {
+            get { return Resource.AccessInvalid; }
+        }
 
         public static string Accept
         {

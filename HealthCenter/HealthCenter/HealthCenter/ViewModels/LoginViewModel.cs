@@ -216,6 +216,18 @@
                 token.AccessToken,
                 this.Email);
 
+            if (user == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.AccessInvalid,
+                    Languages.Accept);
+                this.Password = string.Empty;
+                return;
+            }
+
             var userLocal = Converter.ToUserLocal(user);
             userLocal.Password = this.Password;
 

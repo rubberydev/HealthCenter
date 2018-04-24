@@ -70,6 +70,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to you don&apos;t have access....
+        /// </summary>
+        public static string AccessInvalid {
+            get {
+                return ResourceManager.GetString("AccessInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bible.
         /// </summary>
         public static string BibleTitle {
