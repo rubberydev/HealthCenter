@@ -24,6 +24,7 @@
         {
             UsersHelper.CheckRole("Admin");
             UsersHelper.CheckRole("User");
+            UsersHelper.CheckRole("Medic");
             UsersHelper.CheckSuperUser();
         }
     }
