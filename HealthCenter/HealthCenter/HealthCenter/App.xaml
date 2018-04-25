@@ -27,6 +27,21 @@
                 https://api.linkedin.com/v1/people/~:(id,firstName,lastName,headline,picture-url,summary,educations,three-current-positions,honors-awards,site-standard-profile-request,location,api-standard-profile-request,phone-numbers)?format=json</x:String>
             <x:String x:Key="LinkedInScope">r_basicprofile</x:String>
 
+            <!--key authentication Twitter-->
+            <x:String x:Key="TwitterKey">ZwejCRkUaSezvA8mwb64XibYl</x:String>
+            <x:String x:Key="TwitterSecret">6oCYkqnHYQpma7siecUKRwIgDEC7riyaUr38t04Gvds62Gl0UA</x:String>
+            <!--<x:String x:Key="TwitterRequestURL">https://api.twitter.com/oauth2/token</x:String>-->
+            <x:String x:Key="TwitterRequestURL">https://api.twitter.com/oauth/request_token</x:String>
+
+            <!--<x:String x:Key="TwitterAuthURL">https://api.twitter.com/oauth/authorize</x:String>-->
+            <x:String x:Key="TwitterAuthURL">https://twitter.com/oauth/authenticate</x:String>
+            <x:String x:Key="TwitterURLAccess">https://api.twitter.com/oauth/access_token</x:String>
+            <x:String x:Key="TwitterCallbackURL">https://mobile.twitter.com</x:String>
+            <x:String x:Key="TwitterProfileInfoURL">
+                https://api.twitter.com/1.1/account/verify_credentials.json</x:String>
+
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

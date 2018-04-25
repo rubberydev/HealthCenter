@@ -42,7 +42,7 @@ namespace HealthCenter.Droid.Implementations
                 {
                     var accessToken = eventArgs.Account.Properties["access_token"].ToString();
                     var profile = await GetLinkedInProfileAsync(accessToken);
-                    App.__NavigateToProfile(profile, "LinkedIn");
+                    App.__NavigateToProfile(profile);
                 }
                 else
                 {

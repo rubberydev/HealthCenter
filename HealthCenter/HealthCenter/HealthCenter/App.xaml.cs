@@ -66,13 +66,23 @@
                 return new Action(() => Application.Current.MainPage =
                                   new NavigationPage(new LoginPage()));
             }
-        }       
+        }
+        public static void Navigate_ToProfile<T>(T profile, string socialNetwork)
+        {
+            switch (socialNetwork)
+            {
+                case "Twitter":
+                    TwitterResponse twitterResponse = profile as TwitterResponse;
+                                       
+                    break;
+            }            
+        }
 
-        public static async void __NavigateToProfile<T>(T profile, string networkSocial)
+
+        public static async void __NavigateToProfile(LinkedInResponse profile)
         {            
-             LinkedInResponse linkedInResponse = profile as LinkedInResponse;
-
-            if (linkedInResponse == null)
+             
+            if (profile == null)
             {
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
@@ -86,7 +96,7 @@
                 apiSecurity,
                 "/api",
                 "/Users/LoginLinkedIn",
-                linkedInResponse);
+                profile);
 
             if (token == null)
             {
@@ -119,10 +129,8 @@
 
         }
 
-        public static async Task NavigateToProfile_<T>(T profile, string socialNetwork)
-        {            
-            InstagramResponse ResponseSocialNetwork = profile as InstagramResponse;
-
+        public static async Task NavigateToProfile_(InstagramResponse ResponseSocialNetwork)
+        {    
             if (ResponseSocialNetwork == null)
             {
                 Application.Current.MainPage = new NavigationPage(new LoginPage());

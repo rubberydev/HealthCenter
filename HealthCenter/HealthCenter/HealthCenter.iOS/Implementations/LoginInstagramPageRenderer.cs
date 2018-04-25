@@ -44,7 +44,7 @@ namespace HealthCenter.iOS.Implementations
                 {
                     var accessToken = eventArgs.Account.Properties["access_token"].ToString();
                     var profile = await GetInstagramProfileAsync(accessToken);
-                    await App.NavigateToProfile_(profile, "Instagram");
+                    await App.NavigateToProfile_(profile);
                 }
                 else
                 {

@@ -1,9 +1,9 @@
 ﻿[assembly: Xamarin.Forms.ExportRenderer(
     typeof(HealthCenter.Views.LoginLinkedInPage),
-    typeof(HealthCenter.Droid.Implementations.LoginLinkedInPageRenderer))]
+    typeof(HealthCenter.iOS.Implementations.LoginLinkedInPageRenderer))]
 
 
-namespace HealthCenter.Droid.Implementations
+namespace HealthCenter.iOS.Implementations
 {
     using HealthCenter.Domain;
     using HealthCenter.Services;
@@ -50,7 +50,7 @@ namespace HealthCenter.Droid.Implementations
                 {
                     var accessToken = eventArgs.Account.Properties["access_token"].ToString();
                     var profile = await GetLinkedInProfileAsync(accessToken);
-                    App.__NavigateToProfile(profile, "LinkedIn");
+                    App.__NavigateToProfile(profile);
                 }
                 else
                 {

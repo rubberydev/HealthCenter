@@ -114,9 +114,11 @@
 
         }
 
-        private void LoginTwitter()
+        private async void LoginTwitter()
         {
-            throw new NotImplementedException();
+            await Application.Current.MainPage.Navigation.PushAsync(
+                    new LoginTwitterPage());
+
         }
 
         private async void LoginInstagram()
