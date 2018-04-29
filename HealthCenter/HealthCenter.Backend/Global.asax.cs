@@ -13,6 +13,7 @@
             //Database.SetInitializer(
             //   new MigrateDatabaseToLatestVersion<Models.LocalDataContext,
             //   Migrations.Configuration>());
+
             this.CheckRolesAndSuperUser();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

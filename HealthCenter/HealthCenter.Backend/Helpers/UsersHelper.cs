@@ -99,6 +99,47 @@
             }
         }
 
+        public static void CreateUserASP(RegisterViewModel model)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
+
+            var userASP = new ApplicationUser
+            {
+                DocumentNumber = model.DocumentNumber,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Telephone = model.Telephone,
+                Email = model.Email,
+                UserName = model.Email,
+                Speciality = model.Speciality
+            };
+
+            var result = userManager.Create(userASP, model.Password);
+            if (result.Succeeded)
+            {
+                userManager.AddToRole(userASP.Id, "Medic");
+            }
+        }
+        //public static void CreateUserASP(string email, string roleName,
+        //                              string password, string DocumentNumber,
+        //                             string FirstName, string LastName,
+        //                             string Telephone, string Speciality)
+        //{
+        //    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
+
+        //    var userASP = new ApplicationUser
+        //    {
+        //        Email = email,
+        //        UserName = email,
+        //    };
+
+        //    var result = userManager.Create(userASP, password);
+        //    if (result.Succeeded)
+        //    {
+        //        userManager.AddToRole(userASP.Id, roleName);
+        //    }
+        //}
+
         public static async Task PasswordRecovery(string email)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
@@ -113,11 +154,10 @@
             var response = await userManager.AddPasswordAsync(userASP.Id, newPassword);
             if (response.Succeeded)
             {
-                var subject = "Lands App - Recuperación de contraseña";
+                var subject = "Health center App - Recuperación de contraseña";
                 var body = string.Format(@"
                     <h1>Health center App - Recuperación de contraseña</h1>
-                    <p>Su nueva contraseña es: <strong>{0}</strong></p>
-                    <p>Por favor no olvide cambiarla por una de fácil recordación",
+                    <p>Your new Password to access is: <strong>{0}</strong></p>",                    
                     newPassword);
 
                 await MailHelper.SendMail(email, subject, body);
