@@ -67,17 +67,16 @@
                                   new NavigationPage(new LoginPage()));
             }
         }
+
         public static void Navigate_ToProfile<T>(T profile, string socialNetwork)
         {
             switch (socialNetwork)
             {
                 case "Twitter":
-                    TwitterResponse twitterResponse = profile as TwitterResponse;
-                                       
+                    TwitterResponse twitterResponse = profile as TwitterResponse;                                       
                     break;
             }            
         }
-
 
         public static async void __NavigateToProfile(LinkedInResponse profile)
         {            
@@ -103,31 +102,8 @@
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
-
-            var user = await apiService.GetUserByEmail(
-                apiSecurity,
-                "/api",
-                "/Users/GetUserByEmail",
-                token.TokenType,
-                token.AccessToken,
-                token.UserName);
-
-            UserLocal userLocal = null;
-            if (user != null)
-            {
-                userLocal = Converter.ToUserLocal(user);
-                dataService.DeleteAllAndInsert(userLocal);
-                dataService.DeleteAllAndInsert(token);
-            }
-
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
-            mainViewModel.User = userLocal;
-            Settings.IsRememberme = "true";
-            mainViewModel.Dates = new DatesViewModel();
-            Application.Current.MainPage = new MasterPage();
-
-        }
+            toProcessUser(token);
+        }        
 
         public static async Task NavigateToProfile_(InstagramResponse ResponseSocialNetwork)
         {    
@@ -152,30 +128,7 @@
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
-
-            var user = await apiService.GetUserByEmail(
-                apiSecurity,
-                "/api",
-                "/Users/GetUserByEmail",
-                token.TokenType,
-                token.AccessToken,
-                token.UserName);
-
-            UserLocal userLocal = null;
-            if (user != null)
-            {
-                userLocal = Converter.ToUserLocal(user);
-                dataService.DeleteAllAndInsert(userLocal);
-                dataService.DeleteAllAndInsert(token);
-            }
-
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
-            mainViewModel.User = userLocal;
-            Settings.IsRememberme = "true";
-            mainViewModel.Dates = new DatesViewModel();
-            Application.Current.MainPage = new MasterPage();
-
+            toProcessUser(token);   
         }       
         
 
@@ -202,25 +155,33 @@
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
+            toProcessUser(token);            
+        }
 
+        private static async void toProcessUser(TokenResponse tokenResponse)
+        {
+            var apiService = new ApiService();
+            var dataService = new DataService();
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var user = await apiService.GetUserByEmail(
-                apiSecurity,
-                "/api",
-                "/Users/GetUserByEmail",
-                token.TokenType,
-                token.AccessToken,
-                token.UserName);
+               apiSecurity,
+               "/api",
+               "/Users/GetUserByEmail",
+               tokenResponse.TokenType,
+               tokenResponse.AccessToken,
+               tokenResponse.UserName);
 
             UserLocal userLocal = null;
             if (user != null)
             {
                 userLocal = Converter.ToUserLocal(user);
                 dataService.DeleteAllAndInsert(userLocal);
-                dataService.DeleteAllAndInsert(token);
+                dataService.DeleteAllAndInsert(tokenResponse);
             }
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            mainViewModel.Token = tokenResponse;
             mainViewModel.User = userLocal;
             Settings.IsRememberme = "true";
             mainViewModel.Dates = new DatesViewModel();
@@ -243,4 +204,5 @@
         }
         #endregion
     }
+
 }
