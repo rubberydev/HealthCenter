@@ -119,26 +119,7 @@
             {
                 userManager.AddToRole(userASP.Id, "Medic");
             }
-        }
-        //public static void CreateUserASP(string email, string roleName,
-        //                              string password, string DocumentNumber,
-        //                             string FirstName, string LastName,
-        //                             string Telephone, string Speciality)
-        //{
-        //    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
-
-        //    var userASP = new ApplicationUser
-        //    {
-        //        Email = email,
-        //        UserName = email,
-        //    };
-
-        //    var result = userManager.Create(userASP, password);
-        //    if (result.Succeeded)
-        //    {
-        //        userManager.AddToRole(userASP.Id, roleName);
-        //    }
-        //}
+        }       
 
         public static async Task PasswordRecovery(string email)
         {
