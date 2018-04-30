@@ -4,6 +4,6 @@
 
     public class Agenda : Scheduler
     {
-        public virtual RegisterViewModel Medics { set; get; }
+        public virtual RegisterViewModel Medics { get; set; }
     }
 }

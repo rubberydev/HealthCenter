@@ -54,16 +54,27 @@
     <Compile Include="FacebookResponse.cs" />
     <Compile Include="InstagramResponse.cs" />
     <Compile Include="LinkedInResponse.cs" />
+    <Compile Include="Migrations\201804292343331_updateModelUser.cs" />
+    <Compile Include="Migrations\201804292343331_updateModelUser.Designer.cs">
+      <DependentUpon>201804292343331_updateModelUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="TwitterResponse.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserType.cs" />
+    <Compile Include="WorkDay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804292343331_updateModelUser.resx">
+      <DependentUpon>201804292343331_updateModelUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

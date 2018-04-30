@@ -48,7 +48,22 @@
                          <li>@Html.ActionLink("Register medic", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                          }
                        }
-                      
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Medic"))
+                            {
+                            <li>@Html.ActionLink("Schedule Agenda", "Index", "Agenda", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            }
+                        }
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                            <li>@Html.ActionLink("Schedule WorkDay", "Index", "WorkDaySchedules", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            }
+                        }
                     </ul>
                 @Html.Partial("_LoginPartial")
             </div>

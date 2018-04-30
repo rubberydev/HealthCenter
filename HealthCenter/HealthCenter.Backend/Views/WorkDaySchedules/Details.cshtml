@@ -1,0 +1,50 @@
+﻿@model HealthCenter.Backend.Models.WorkDaySchedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkDaySchedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.startDayHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDayHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDayHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDayHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateToday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateToday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durationCite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durationCite)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idWorkDay }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
