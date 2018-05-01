@@ -247,7 +247,7 @@ namespace HealthCenter.ViewModels
                 Languages.Accept);
 
             var userApi = await this.apiService.GetUserByEmail(
-                "http://healthcenterapi.azurewebsites.net",
+                apiSecurity,
                 "/api",
                 "/Users/GetUserByEmail",
                 MainViewModel.GetInstance().Token.TokenType,

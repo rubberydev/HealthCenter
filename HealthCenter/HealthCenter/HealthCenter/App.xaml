@@ -6,7 +6,7 @@
 	<Application.Resources>
         <ResourceDictionary>
             <infra:InstanceLocator x:Key="Locator"/>
-            <x:String x:Key="APISecurity">http://healthcenterapi.azurewebsites.net</x:String>
+            <x:String x:Key="APISecurity">http://healthcenterapitest.azurewebsites.net</x:String>
 
             <!--Key authentication Instagram-->
             <x:String x:Key="InstagramAppID">5c7d845b21224579a1f63301fa0feb22</x:String>
