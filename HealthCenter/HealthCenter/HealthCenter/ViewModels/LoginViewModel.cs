@@ -179,8 +179,9 @@
                 return;
             }
 
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var token = await this.apiService.GetToken(
-                "http://healthcenterapi.azurewebsites.net",
+                apiSecurity,
                 this.Email,
                 this.Password
                 );
@@ -211,7 +212,7 @@
             }
 
             var user = await this.apiService.GetUserByEmail(
-                "http://healthcenterapi.azurewebsites.net",
+                apiSecurity,
                 "/api",
                 "/Users/GetUserByEmail",
                 token.TokenType,
@@ -277,8 +278,6 @@
             MainViewModel.GetInstance().Register = new RegisterViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
-
-
         #endregion
     }
 }

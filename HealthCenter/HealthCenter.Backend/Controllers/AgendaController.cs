@@ -73,7 +73,7 @@
             {
                 return HttpNotFound();
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", agenda.idWorkDay);
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
             return View(agenda);
         }
 

@@ -246,7 +246,9 @@
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\ValidatePassword.js" />
     <Content Include="Scripts\ValidatePassword.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
