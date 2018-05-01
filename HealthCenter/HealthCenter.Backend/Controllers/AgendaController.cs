@@ -86,6 +86,7 @@
         {
             if (ModelState.IsValid)
             {
+                agenda.ApplicationUser_Id = User.Identity.GetUserId();
                 db.Entry(agenda).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
