@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using HealthCenter.Backend.Models;
-
-namespace HealthCenter.Backend.Controllers
+﻿namespace HealthCenter.Backend.Controllers
 {
+    using Models;
+    using System.Data.Entity;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
+    [Authorize(Roles = "Admin")]
     public class WorkDaySchedulesController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
