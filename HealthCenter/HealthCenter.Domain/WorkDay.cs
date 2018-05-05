@@ -32,6 +32,6 @@
         [Display(Name = "Duration Cite")]
         public int durationCite { set; get; }
 
-
+        public virtual ICollection<Scheduler> Scheduler { set; get; }
     }
 }

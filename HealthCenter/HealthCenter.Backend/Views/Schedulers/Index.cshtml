@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HealthCenter.Backend.Models.Agenda>
+﻿@model IEnumerable<HealthCenter.Domain.Scheduler>
 
 @{
     ViewBag.Title = "Index";
@@ -15,14 +15,14 @@
             @Html.DisplayNameFor(model => model.WorkDay.DateToday)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Medics.Email)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.startHour)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.endHour)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ApplicationUser_Id)
+        </th>*@
         <th></th>
     </tr>
 
@@ -32,14 +32,14 @@
             @Html.DisplayFor(modelItem => item.WorkDay.DateToday)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Medics.Email)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.startHour)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.endHour)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser_Id)
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgendaId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AgendaId }) |

@@ -1,113 +1,118 @@
-﻿namespace HealthCenter.Backend.Controllers
-{
-    using Models;
-    using System.Data.Entity;
-    using System.Net;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using HealthCenter.Backend.Models;
+using HealthCenter.Domain;
 
-    [Authorize(Roles = "Admin")]
-    public class WorkDaySchedulesController : Controller
+namespace HealthCenter.Backend.Controllers
+{
+    public class WorkDaysController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
 
-        // GET: WorkDaySchedules
+        // GET: WorkDays
         public async Task<ActionResult> Index()
         {
             return View(await db.WorkDays.ToListAsync());
         }
 
-        // GET: WorkDaySchedules/Details/5
+        // GET: WorkDays/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkDaySchedule workDaySchedule = await db.WorkDays.FindAsync(id);
-            if (workDaySchedule == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            return View(workDaySchedule);
+            return View(workDay);
         }
 
-        // GET: WorkDaySchedules/Create
+        // GET: WorkDays/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: WorkDaySchedules/Create
+        // POST: WorkDays/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDaySchedule workDaySchedule)
+        public async Task<ActionResult> Create([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
         {
             if (ModelState.IsValid)
             {
-                db.WorkDays.Add(workDaySchedule);
+                db.WorkDays.Add(workDay);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(workDaySchedule);
+            return View(workDay);
         }
 
-        // GET: WorkDaySchedules/Edit/5
+        // GET: WorkDays/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkDaySchedule workDaySchedule = await db.WorkDays.FindAsync(id);
-            if (workDaySchedule == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            return View(workDaySchedule);
+            return View(workDay);
         }
 
-        // POST: WorkDaySchedules/Edit/5
+        // POST: WorkDays/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDaySchedule workDaySchedule)
+        public async Task<ActionResult> Edit([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workDaySchedule).State = EntityState.Modified;
+                db.Entry(workDay).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(workDaySchedule);
+            return View(workDay);
         }
 
-        // GET: WorkDaySchedules/Delete/5
+        // GET: WorkDays/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkDaySchedule workDaySchedule = await db.WorkDays.FindAsync(id);
-            if (workDaySchedule == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            return View(workDaySchedule);
+            return View(workDay);
         }
 
-        // POST: WorkDaySchedules/Delete/5
+        // POST: WorkDays/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            WorkDaySchedule workDaySchedule = await db.WorkDays.FindAsync(id);
-            db.WorkDays.Remove(workDaySchedule);
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            db.WorkDays.Remove(workDay);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

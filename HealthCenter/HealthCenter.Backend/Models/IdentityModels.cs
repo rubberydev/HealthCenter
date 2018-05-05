@@ -33,7 +33,7 @@ namespace HealthCenter.Backend.Models
         [DataType(DataType.PhoneNumber)]
         public string Telephone { get; set; }
 
-        public virtual ICollection<Agenda> Agendas { get; set; }
+        //public virtual ICollection<Agenda> Agendas { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

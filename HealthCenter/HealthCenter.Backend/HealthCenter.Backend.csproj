@@ -190,12 +190,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchedulersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
-    <Compile Include="Controllers\WorkDaySchedulesController.cs" />
+    <Compile Include="Controllers\WorkDaysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,12 +204,10 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\UsersHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LocalDataContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserView.cs" />
-    <Compile Include="Models\WorkDaySchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -289,16 +287,16 @@
     <Content Include="Views\UserTypes\Details.cshtml" />
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
-    <Content Include="Views\Agenda\Create.cshtml" />
-    <Content Include="Views\Agenda\Delete.cshtml" />
-    <Content Include="Views\Agenda\Details.cshtml" />
-    <Content Include="Views\Agenda\Edit.cshtml" />
-    <Content Include="Views\Agenda\Index.cshtml" />
-    <Content Include="Views\WorkDaySchedules\Create.cshtml" />
-    <Content Include="Views\WorkDaySchedules\Delete.cshtml" />
-    <Content Include="Views\WorkDaySchedules\Details.cshtml" />
-    <Content Include="Views\WorkDaySchedules\Edit.cshtml" />
-    <Content Include="Views\WorkDaySchedules\Index.cshtml" />
+    <Content Include="Views\Schedulers\Create.cshtml" />
+    <Content Include="Views\Schedulers\Delete.cshtml" />
+    <Content Include="Views\Schedulers\Details.cshtml" />
+    <Content Include="Views\Schedulers\Edit.cshtml" />
+    <Content Include="Views\Schedulers\Index.cshtml" />
+    <Content Include="Views\WorkDays\Create.cshtml" />
+    <Content Include="Views\WorkDays\Delete.cshtml" />
+    <Content Include="Views\WorkDays\Details.cshtml" />
+    <Content Include="Views\WorkDays\Edit.cshtml" />
+    <Content Include="Views\WorkDays\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
