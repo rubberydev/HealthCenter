@@ -35,7 +35,8 @@
         public virtual WorkDay WorkDay { set; get; }
 
         [Display(Name = "Doctor")]
-        public string ApplicationUser_Id { get; set; }
+        public string ApplicationUser_Id { get; set; }       
 
+        
     }
 }

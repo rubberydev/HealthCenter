@@ -4,13 +4,21 @@
 
     public class DataContext : DbContext
     {
+
+        #region Properties
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<UserType> UserTypes { get; set; }
+
+        public DbSet<Scheduler> Schedulers { get; set; }
+
+        public DbSet<WorkDay> WorkDays { get; set; }
+        #endregion
+
+        #region Constructor
         public DataContext() : base("DefaultConnection")
         {
-
         }
-
-        public System.Data.Entity.DbSet<HealthCenter.Domain.User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<HealthCenter.Domain.UserType> UserTypes { get; set; }
+        #endregion
     }
 }

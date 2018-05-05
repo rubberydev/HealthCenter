@@ -1,121 +1,118 @@
-﻿namespace HealthCenter.Backend.Controllers
-{
-    using HealthCenter.Backend.Models;
-    using Microsoft.AspNet.Identity;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Net;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using HealthCenter.Backend.Models;
+using HealthCenter.Domain;
 
-    [Authorize(Roles = "Medic")]
-    public class AgendaController : Controller
+namespace HealthCenter.Backend.Controllers
+{
+    public class WorkDaysController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
 
-        // GET: Agenda
+        // GET: WorkDays
         public async Task<ActionResult> Index()
         {
-            var agenda = db.Agenda.Include(a => a.WorkDay);
-            return View(await agenda.ToListAsync());
+            return View(await db.WorkDays.ToListAsync());
         }
 
-        // GET: Agenda/Details/5
+        // GET: WorkDays/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Agenda agenda = await db.Agenda.FindAsync(id);
-            if (agenda == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            return View(agenda);
+            return View(workDay);
         }
 
-        // GET: Agenda/Create
+        // GET: WorkDays/Create
         public ActionResult Create()
         {
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
             return View();
         }
 
-        // POST: Agenda/Create
+        // POST: WorkDays/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AgendaId,Medics,startHour,endHour,idWorkDay")] Agenda agenda)
+        public async Task<ActionResult> Create([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
         {
             if (ModelState.IsValid)
             {
-                agenda.ApplicationUser_Id = User.Identity.GetUserId();
-                db.Agenda.Add(agenda);
+                db.WorkDays.Add(workDay);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", agenda.idWorkDay);
-            return View(agenda);
+            return View(workDay);
         }
 
-        // GET: Agenda/Edit/5
+        // GET: WorkDays/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Agenda agenda = await db.Agenda.FindAsync(id);
-            if (agenda == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
-            return View(agenda);
+            return View(workDay);
         }
 
-        // POST: Agenda/Edit/5
+        // POST: WorkDays/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "AgendaId,Medics,startHour,endHour,idWorkDay")] Agenda agenda)
+        public async Task<ActionResult> Edit([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(agenda).State = EntityState.Modified;
+                db.Entry(workDay).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", agenda.idWorkDay);
-            return View(agenda);
+            return View(workDay);
         }
 
-        // GET: Agenda/Delete/5
+        // GET: WorkDays/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Agenda agenda = await db.Agenda.FindAsync(id);
-            if (agenda == null)
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            if (workDay == null)
             {
                 return HttpNotFound();
             }
-            return View(agenda);
+            return View(workDay);
         }
 
-        // POST: Agenda/Delete/5
+        // POST: WorkDays/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Agenda agenda = await db.Agenda.FindAsync(id);
-            db.Agenda.Remove(agenda);
+            WorkDay workDay = await db.WorkDays.FindAsync(id);
+            db.WorkDays.Remove(workDay);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

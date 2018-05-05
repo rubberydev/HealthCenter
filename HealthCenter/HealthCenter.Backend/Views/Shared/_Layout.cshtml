@@ -53,7 +53,7 @@
                         {
                             if (User.IsInRole("Medic"))
                             {
-                            <li>@Html.ActionLink("Schedule Agenda", "Index", "Agenda", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Schedule Agenda", "Index", "Schedulers", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                             }
                         }
 
@@ -61,7 +61,7 @@
                         {
                             if (User.IsInRole("Admin"))
                             {
-                            <li>@Html.ActionLink("Schedule WorkDay", "Index", "WorkDaySchedules", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Schedule WorkDay", "Index", "WorkDays", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                             }
                         }
                     </ul>
