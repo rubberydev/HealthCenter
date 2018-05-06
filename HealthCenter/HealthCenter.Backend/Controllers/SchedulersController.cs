@@ -71,19 +71,17 @@
             {
                 return HttpNotFound();
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
             return View(scheduler);
         }
 
-        // POST: Schedulers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Schedulers/Edit/5        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "AgendaId,startHour,endHour,idWorkDay,ApplicationUser_Id")] Scheduler scheduler)
+        public async Task<ActionResult> Edit(Scheduler scheduler)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.Entry(scheduler).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
