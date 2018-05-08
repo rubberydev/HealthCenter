@@ -7,6 +7,7 @@
     using Models;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -22,11 +23,17 @@
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Users
-        public IQueryable<User> GetUsers()
+        //GET: api/Users
+        public ICollection<ApplicationUser> GetUsers()
         {
-            return db.Users;
+            ApplicationDbContext userContext = new ApplicationDbContext();
+            return userContext.Users.ToList();
         }
+        // GET: api/Users
+        //public IQueryable<User> GetUsers()
+        //{
+        //    return db.Users;
+        //}
 
         // GET: api/Users/5
         //[ResponseType(typeof(User))]
