@@ -25,28 +25,14 @@
 
         //GET: api/Users
         public ICollection<ApplicationUser> GetUsers()
-        {
+        {      
             ApplicationDbContext userContext = new ApplicationDbContext();
-            return userContext.Users.ToList();
-        }
-        // GET: api/Users
-        //public IQueryable<User> GetUsers()
-        //{
-        //    return db.Users;
-        //}
-
-        // GET: api/Users/5
-        //[ResponseType(typeof(User))]
-        //public async Task<IHttpActionResult> GetUser(int id)
-        //{
-        //    User user = await db.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(user);
-        //}
+            var Medics = userContext.Users.Where(t => 
+                                                 t.Roles.Any(r => 
+                                                 r.RoleId == "f1c320d1-8505-4d4b-a9aa-6d6bb10187cb"))
+                                                 .Select(x => x).ToList();
+            return Medics;
+        }        
 
         [HttpPost]
         [Route("ChangePassword")]
