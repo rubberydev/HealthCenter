@@ -7,6 +7,7 @@
     using Models;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -22,24 +23,18 @@
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Users
-        public IQueryable<User> GetUsers()
+        //GET: api/Users
+        public ICollection<ApplicationUser> GetUsers()
         {
-            return db.Users;
-        }
-
-        // GET: api/Users/5
-        //[ResponseType(typeof(User))]
-        //public async Task<IHttpActionResult> GetUser(int id)
-        //{
-        //    User user = await db.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(user);
-        //}
+            //Roleid Julianf1c320d1-8505-4d4b-a9aa-6d6bb10187cb"
+            //RoleId Camilo
+            ApplicationDbContext userContext = new ApplicationDbContext();
+            var Medics = userContext.Users.Where(t => 
+                                                 t.Roles.Any(r => 
+                                                 r.RoleId == "f1c320d1-8505-4d4b-a9aa-6d6bb10187cb"))
+                                                 .Select(x => x).ToList();
+            return Medics;
+        }        
 
         [HttpPost]
         [Route("ChangePassword")]
