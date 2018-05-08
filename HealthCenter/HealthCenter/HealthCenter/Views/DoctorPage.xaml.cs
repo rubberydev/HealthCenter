@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace HealthCenter.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DatesPage : ContentPage
+	public partial class DoctorPage : ContentPage
 	{
-		public DatesPage ()
+		public DoctorPage ()
 		{
 			InitializeComponent ();
 		}

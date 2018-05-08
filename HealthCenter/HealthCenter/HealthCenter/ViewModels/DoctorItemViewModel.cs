@@ -3,8 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using Models;
 
-    public class DatesViewModel
+    public class DoctorItemViewModel : Doctor
     {
     }
 }

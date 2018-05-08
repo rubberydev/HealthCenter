@@ -1,5 +1,4 @@
 ﻿
-
 namespace HealthCenter.Droid
 {
     using System;

@@ -11,6 +11,14 @@ namespace HealthCenter.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private UserLocal user;
+
+        #region Properties
+        public List<Doctor> DoctorList
+        {
+            get;
+            set;
+        }
+        #endregion
         #region ViewModels
         public LoginViewModel Login
         {
@@ -42,7 +50,7 @@ namespace HealthCenter.ViewModels
             set;
         }
 
-        public DatesViewModel Dates
+        public DoctorViewModel Doctor
         {
             get;
             set;

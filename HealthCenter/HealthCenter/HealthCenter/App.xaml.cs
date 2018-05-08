@@ -42,7 +42,7 @@
                 {
                     mainViewModel.Token = token;
                     mainViewModel.User = user;
-                    mainViewModel.Dates = new DatesViewModel();
+                    mainViewModel.Doctor = new DoctorViewModel();
                     mainViewModel.Menu = new MenuItemViewModel();
                     MainPage = new MasterPage();
                 }
@@ -184,7 +184,7 @@
             mainViewModel.Token = tokenResponse;
             mainViewModel.User = userLocal;
             Settings.IsRememberme = "true";
-            mainViewModel.Dates = new DatesViewModel();
+            mainViewModel.Doctor = new DoctorViewModel();
             Application.Current.MainPage = new MasterPage();
         }
 

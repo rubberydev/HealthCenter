@@ -11,8 +11,8 @@
         <NavigationPage 
             x:Name="Navigator">
             <x:Arguments>
-                <pages:DatesPage>
-                </pages:DatesPage>
+                <pages:DoctorPage>
+                </pages:DoctorPage>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

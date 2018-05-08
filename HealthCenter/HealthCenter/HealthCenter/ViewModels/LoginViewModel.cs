@@ -65,8 +65,8 @@
             this.dataService = new DataService();
             this.IsRememberme = true;
             this.IsEnabled = true;
-            this.Email = "andres@g.com";
-            this.Password = "andres123*";
+            this.Email = "casq90@g.com";
+            this.Password = "123456";
         }
         #endregion
 
@@ -236,7 +236,7 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            mainViewModel.Dates = new DatesViewModel();
+            mainViewModel.Doctor = new DoctorViewModel();
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
 
