@@ -268,6 +268,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request Medical Appointment.
+        /// </summary>
+        public static string DateTitle {
+            get {
+                return ResourceManager.GetString("DateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Digit Chapter:.
         /// </summary>
         public static string DigitChapter {
@@ -282,6 +291,15 @@ namespace HealthCenter.Resources {
         public static string DigitVerses {
             get {
                 return ResourceManager.GetString("DigitVerses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctors.
+        /// </summary>
+        public static string DoctorsTitle {
+            get {
+                return ResourceManager.GetString("DoctorsTitle", resourceCulture);
             }
         }
         
@@ -480,6 +498,15 @@ namespace HealthCenter.Resources {
         public static string Menu {
             get {
                 return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Dates.
+        /// </summary>
+        public static string MyDates {
+            get {
+                return ResourceManager.GetString("MyDates", resourceCulture);
             }
         }
         

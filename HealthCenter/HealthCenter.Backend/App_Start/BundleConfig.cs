@@ -28,7 +28,8 @@ namespace HealthCenter.Backend
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/sweetalert.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/OurStyles.css"));
         }
     }
 }

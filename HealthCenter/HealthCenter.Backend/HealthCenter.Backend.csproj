@@ -217,6 +217,7 @@
     <Content Include="Content\healthCenterBackground.jpg" />
     <Content Include="Content\healthCenterFooter.jpg" />
     <Content Include="Content\healthCenterLogo.jpg" />
+    <Content Include="Content\OurStyles.css" />
     <Content Include="Content\sweetalert.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

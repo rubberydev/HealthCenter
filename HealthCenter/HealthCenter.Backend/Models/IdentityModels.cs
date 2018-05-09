@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-
+﻿
 namespace HealthCenter.Backend.Models
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.ComponentModel.DataAnnotations;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -25,9 +23,13 @@ namespace HealthCenter.Backend.Models
         [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         public string LastName { get; set; }
 
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         [Display(Name = "Speciality")]
         public string Speciality { get; set; }
+
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
+        [Display(Name = "Surgery")]
+        public string Surgery { get; set; }
 
         [MaxLength(20, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         [DataType(DataType.PhoneNumber)]

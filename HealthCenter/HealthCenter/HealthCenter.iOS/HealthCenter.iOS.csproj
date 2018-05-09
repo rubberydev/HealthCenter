@@ -205,4 +205,13 @@
       <Name>HealthCenter</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_healthcenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_MyDates.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\date.png" />
+  </ItemGroup>
 </Project>

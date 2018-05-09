@@ -490,6 +490,28 @@ namespace HealthCenter.Helpers
             get { return Resource.VerseValidator; }
         }
 
+        public static string DoctorsTitle
+        {
+
+            get { return Resource.DoctorsTitle; }
+        }
+
+        public static string DateTitle
+        {
+
+            get { return Resource.DateTitle; }
+        }
+
+        public static string MyDates
+        {
+
+            get { return Resource.MyDates; }
+        }
+
+        
+
+
+
     }
 
 }

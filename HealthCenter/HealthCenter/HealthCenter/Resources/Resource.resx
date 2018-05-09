@@ -360,4 +360,13 @@
   <data name="AccessInvalid" xml:space="preserve">
     <value>you don't have access...</value>
   </data>
+  <data name="DateTitle" xml:space="preserve">
+    <value>Request Medical Appointment</value>
+  </data>
+  <data name="DoctorsTitle" xml:space="preserve">
+    <value>Doctors</value>
+  </data>
+  <data name="MyDates" xml:space="preserve">
+    <value>My Dates</value>
+  </data>
 </root>

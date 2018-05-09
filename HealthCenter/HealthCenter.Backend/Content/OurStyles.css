@@ -1,0 +1,18 @@
+﻿body {
+
+    
+}
+
+.centro
+{
+    margin-left:25% !important;
+}
+
+.head {
+    color: white;
+    text-align: center;
+    background: #73A3DF;
+    margin-top:1.1% !important;
+    width:100%;
+    border-radius:0 0 10px 10px;
+}

@@ -56,6 +56,12 @@ namespace HealthCenter.ViewModels
             set;
         }
 
+        public DatesViewModel Dates
+        {
+            get;
+            set;
+        }
+
         public TokenResponse Token
         {
             get;
@@ -109,6 +115,13 @@ namespace HealthCenter.ViewModels
         private void LoadMenu()
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>();
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_MyDates",
+                PageName = "MyDatesPage",
+                Title = Languages.MyDates,
+            });
+
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "ic_settings",

@@ -1,14 +1,14 @@
 ﻿namespace HealthCenter.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using Models;
+    using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Models;
     using Services;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Xamarin.Forms;
     using System.Linq;
+    using System.Windows.Input;
+    using Xamarin.Forms;
 
     public class DoctorViewModel : BaseViewModel
     {
@@ -17,15 +17,13 @@
         #endregion
 
         #region atributtes
-        private ObservableCollection<Doctor> doctor;
+        private ObservableCollection<DoctorItemViewModel> doctor;
         private bool isRefreshing;
         private string filter;
-        private string nombre;
         #endregion
         #region Properties
 
-
-        public ObservableCollection<Doctor> Doctors
+        public ObservableCollection<DoctorItemViewModel> Doctors
         {
             get { return this.doctor; }
             set { SetValue(ref this.doctor, value); }
@@ -43,26 +41,16 @@
             set
             {
                 SetValue(ref this.filter, value);
-                //this.Search();
+                this.Search();
             }
         }
 
-        public string Nombre
-        {
-            get { return this.nombre; }
-            set
-            {
-                SetValue(ref this.nombre, value);
-                //this.Search();
-            }
-        }
         #endregion
 
         #region Constructors
         public DoctorViewModel()
         {
             this.apiService = new ApiService();
-            this.Nombre = "Doctor Ejemplo";
             this.LoadDoctors();
         }
         #endregion
@@ -97,29 +85,77 @@
                     Languages.Error,
                     response.Message,
                     Languages.Accept);
-                //await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
 
             MainViewModel.GetInstance().DoctorList = (List<Doctor>)response.Result;
-            var list = (List<Doctor>)response.Result;
-            this.Doctors = new ObservableCollection<Doctor>(list);
-            //this.Doctor = new ObservableCollection<DoctorItemViewModel>(
-                //this.ToDoctorItemViewModel());
+            this.Doctors = new ObservableCollection<DoctorItemViewModel>(
+            this.ToDoctorItemViewModel());
             this.IsRefreshing = false;
         }
         #endregion
 
         #region Methods
-        //private IEnumerable<DoctorItemViewModel> ToDoctorItemViewModel()
-        //{
-        //    return MainViewModel.GetInstance().DoctorList.Select(l => new DoctorItemViewModel
-        //    {
-        //        DocumentNumber = "";
-                
-        //    });
-        //}
+        private IEnumerable<DoctorItemViewModel> ToDoctorItemViewModel()
+        {
+            return MainViewModel.GetInstance().DoctorList.Select(l => new DoctorItemViewModel
+            {
+                Id = l.Id,
+                DocumentNumber = l.DocumentNumber,
+                Claims = l.Claims,
+                Email = l.Email,
+                EmailConfirmed = l.EmailConfirmed,
+                FirstName = l.FirstName,
+                LastName = l.LastName,
+                AccessFailedCount = l.AccessFailedCount,
+                LockoutEnabled = l.LockoutEnabled,
+                LockoutEndDateUtc = l.LockoutEndDateUtc,
+                Logins = l.Logins,
+                PasswordHash = l.PasswordHash,
+                PhoneNumber = l.PhoneNumber,
+                PhoneNumberConfirmed = l.PhoneNumberConfirmed,
+                Roles = l.Roles,
+                SecurityStamp = l.SecurityStamp,
+                Speciality = l.Speciality,
+                Telephone = l.Telephone,
+                TwoFactorEnabled = l.TwoFactorEnabled,
+                UserName = l.UserName,
+        });
+        }
 
+        #endregion
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadDoctors);
+            }
+        }
+
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
+        }
+
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(this.Filter))
+            {
+                this.Doctors = new ObservableCollection<DoctorItemViewModel>(
+                    this.ToDoctorItemViewModel());
+            }
+            else
+            {
+                this.Doctors = new ObservableCollection<DoctorItemViewModel>(
+                    this.ToDoctorItemViewModel().Where(
+                        l => l.FirstName.ToLower().Contains(this.Filter.ToLower()) ||
+                             l.Speciality.ToLower().Contains(this.Filter.ToLower())));
+            }
+        }
         #endregion
     }
 }
