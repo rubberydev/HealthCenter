@@ -6,6 +6,8 @@
     var y = document.getElementById("Password").value;
     var z = document.getElementById("ConfirmPassword").value;  
 
+    var consultancy = document.getElementById("Surgery").value;
+    var expregConsultancy = /^[0-9]/gi; 
 
     if ($("#Password").val() === "" ||
         $("#ConfirmPassword").val() === "" ||
@@ -14,6 +16,7 @@
         $("#LastName").val() === "" ||
         $("#Email").val() === "" ||
         $("#Telephone").val() === "" ||
+        $("#Surgery").val() === "" ||
         $("#Speciality").val() === "") {
         swal("ERROR", "you must fill all fields...", "error");
         return false;
@@ -21,6 +24,16 @@
     } else if (!expregEmail.test(x)) {
 
         swal("ERROR", "it isn't an email invalid, try again.", "error");
+        return false;
+
+    } else if (!expregConsultancy.test(consultancy)) {
+
+        swal("ERROR", "this field must be numeric without . and ,", "error");
+        return false;
+
+    } else if (consultancy.length > 3) {
+
+        swal("ERROR", "this field surgery only can contains a maximum of 3 characters lenght", "error");
         return false;
 
     } else if (y.length < 6) {

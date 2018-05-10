@@ -65,31 +65,45 @@ namespace HealthCenter.Backend.Models
 
     public class RegisterViewModel
     {
-        [NotMapped]        
+        [NotMapped]
+        [Display(Name = "Document number")]
+        [MaxLength(12, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         public string DocumentNumber { get; set; }
 
-        [NotMapped]        
+        [NotMapped]
+        [Display(Name = "First Name")]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         public string FirstName { get; set; }
 
-        [NotMapped]        
+        [NotMapped]
+        [Display(Name = "Last Name")]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
         public string LastName { get; set; }
 
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [NotMapped]        
+        [NotMapped]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
+        [Display(Name = "Speciality")]
         public string Speciality { get; set; }
 
-        [NotMapped]        
+        [NotMapped]
+        [MaxLength(20, ErrorMessage = "The field {0} only can contains a maximum of {1} characters lenght.")]
+        [DataType(DataType.PhoneNumber)]
         public string Telephone { get; set; }
 
         [NotMapped]        
         public string Password { get; set; }
 
         [NotMapped]        
-        public string ConfirmPassword { get; set; }   
-        
+        public string ConfirmPassword { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Doctor office")]
+        public int Surgery { get; set; }
+
     }
 
     public class ResetPasswordViewModel

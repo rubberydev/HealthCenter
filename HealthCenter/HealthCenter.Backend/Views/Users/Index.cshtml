@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<HealthCenter.Domain.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Patients";
 }
 
-<h2>Users</h2>
+<h2>Patients</h2>
 
 <table class="table">
     <tr>       
@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.ImagePath)
         </th>
         <th>
-            User type
+            Patient type
         </th>
         <th></th>
     </tr>
@@ -52,8 +52,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.UserType.Name)
         </td>
-        <td>            
-            @Html.ActionLink("Details", "Details", new { id = item.UserId })            
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
         </td>
     </tr>
 }

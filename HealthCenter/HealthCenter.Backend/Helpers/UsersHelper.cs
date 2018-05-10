@@ -111,7 +111,8 @@
                 Telephone = model.Telephone,
                 Email = model.Email,
                 UserName = model.Email,
-                Speciality = model.Speciality
+                Speciality = model.Speciality,
+                Surgery = model.Surgery
             };
 
             var result = userManager.Create(userASP, model.Password);
