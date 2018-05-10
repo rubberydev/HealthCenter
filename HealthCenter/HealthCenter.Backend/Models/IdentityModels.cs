@@ -19,7 +19,7 @@ namespace HealthCenter.Backend.Models
         
         public string Speciality { get; set; }        
                 
-        public int Surgery { get; set; }
+        public int? Surgery { get; set; }
         
         public string Telephone { get; set; }        
 
