@@ -219,6 +219,7 @@
     <Content Include="Content\healthCenterLogo.jpg" />
     <Content Include="Content\OurStyles.css" />
     <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\sweetalert2.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icon.png" />
@@ -243,6 +244,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\sweetalert2.min.js" />
     <Content Include="Scripts\ValidatePassword.js" />
     <Content Include="Scripts\ValidatePassword.min.js" />
     <Content Include="Web.config">

@@ -1,19 +1,15 @@
 ﻿
 namespace HealthCenter.Backend.Controllers
 {
-    using System;
-    using System.Globalization;
-    using System.Linq;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
-    using System.Web;
-    using System.Web.Mvc;
+    using HealthCenter.Backend.Helpers;
+    using HealthCenter.Backend.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using HealthCenter.Backend.Models;
-    using HealthCenter.Backend.Helpers;
-    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
 
     [Authorize]
     public class AccountController : Controller
@@ -155,12 +151,12 @@ namespace HealthCenter.Backend.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationDbContext userContext = new ApplicationDbContext();
-                var validateConsultancy = userContext.Users
-                                                     .Select(x => x
-                                                     .Surgery == model.Surgery)
-                                                     .FirstOrDefault();
+                
+                var validateConsultancy = userContext.Users.Where(x => x
+                                                           .Surgery == model.Surgery)
+                                                           .FirstOrDefault();
 
-                if (validateConsultancy)
+                if (validateConsultancy != null)
                 {                    
                     var hh = "/Content/sweetalert2.min.css";
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
