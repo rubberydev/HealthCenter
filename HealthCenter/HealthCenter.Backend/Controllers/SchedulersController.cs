@@ -38,7 +38,7 @@
         // GET: Schedulers/Create
         public ActionResult Create()
         {
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "startDayHour");
             return View();
         }
 
@@ -55,7 +55,7 @@
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
+            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "startDayHour", scheduler.idWorkDay);
             return View(scheduler);
         }
 
@@ -71,7 +71,7 @@
             {
                 return HttpNotFound();
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "startDayHour");
             return View(scheduler);
         }
 
@@ -86,7 +86,7 @@
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
+            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "startDayHour", scheduler.idWorkDay);
             return View(scheduler);
         }
 

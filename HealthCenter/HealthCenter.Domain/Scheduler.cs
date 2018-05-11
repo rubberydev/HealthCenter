@@ -34,6 +34,7 @@
         [JsonIgnore]
         public virtual WorkDay WorkDay { set; get; }
 
+        [JsonIgnore]
         [Display(Name = "Doctor")]
         public string ApplicationUser_Id { get; set; }       
 
