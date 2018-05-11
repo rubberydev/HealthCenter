@@ -3,6 +3,7 @@
     using HealthCenter.Backend.Models;
     using HealthCenter.Domain;
     using Microsoft.AspNet.Identity;
+    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
@@ -49,9 +50,32 @@
         {
             if (ModelState.IsValid)
             {
-                scheduler.ApplicationUser_Id = User.Identity.GetUserId();
-                db.Schedulers.Add(scheduler);
-                await db.SaveChangesAsync();
+                scheduler.DateToday = DateTime.Today.Date;
+
+                var validate = await db.WorkDays.Select(x => x).Where(z => z.idWorkDay == scheduler.idWorkDay).FirstOrDefaultAsync();     
+               
+                if (validate.DateToday == scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
+                    validate.startDayHour.Hour <= validate.endDayHour.Hour)
+                {
+
+                    var endDate = await db.Schedulers.Where(x => x
+                                                     .idWorkDay == scheduler.idWorkDay)
+                                                     .OrderByDescending(x => x.endHour).FirstOrDefaultAsync();
+
+
+                    scheduler.endHour = scheduler.startHour.AddMinutes(validate.durationCite);
+                    scheduler.ApplicationUser_Id = User.Identity.GetUserId();
+                    db.Schedulers.Add(scheduler);
+                    await db.SaveChangesAsync();
+                }
+                else
+                {
+
+                }                
+            
+                //scheduler.ApplicationUser_Id = User.Identity.GetUserId();
+                //db.Schedulers.Add(scheduler);
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

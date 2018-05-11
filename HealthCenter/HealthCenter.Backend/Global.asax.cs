@@ -10,9 +10,9 @@
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer(
-            //   new MigrateDatabaseToLatestVersion<Models.LocalDataContext,
-            //   Migrations.Configuration>());
+            Database.SetInitializer(
+               new MigrateDatabaseToLatestVersion<Models.LocalDataContext,
+               Migrations.Configuration>());
 
             this.CheckRolesAndSuperUser();
             AreaRegistration.RegisterAllAreas();

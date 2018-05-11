@@ -22,11 +22,11 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime endHour { get; set; }
 
-        //[Display(Name = "Date")]
-        //[DataType(DataType.Date)]
-        //[Required(ErrorMessage = "The field {0} is required")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
-        //public DateTime DateToday { get; set; }
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "The field {0} is required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
+        public DateTime DateToday { get; set; }
 
         [Display(Name = "Date")]
         public int idWorkDay { set; get; }
