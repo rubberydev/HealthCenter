@@ -329,8 +329,6 @@
             db.Users.Add(user);
             await db.SaveChangesAsync();
             UsersHelper.CreateUserASP(user.Email, "User", user.Password);
-
-
             return CreatedAtRoute("DefaultApi", new { id = user.UserId }, user);
         }
 

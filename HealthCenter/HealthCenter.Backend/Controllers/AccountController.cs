@@ -78,6 +78,7 @@ namespace HealthCenter.Backend.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -459,6 +460,10 @@ namespace HealthCenter.Backend.Controllers
             {
                 return Redirect(returnUrl);
             }
+            //if (User.IsInRole("Medic"))
+            //{
+            //    return RedirectToAction("Index", "Schedulers");
+            //}
             return RedirectToAction("Index", "Home");
         }
 
