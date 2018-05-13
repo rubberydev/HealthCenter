@@ -20,7 +20,7 @@
             var userAuthenticated = User.Identity.GetUserId();
             var schedulers = db.Schedulers.Where(x => x
                                           .ApplicationUser_Id == userAuthenticated && x
-                                          .startHour.Date >= DateTime.Today.Date)
+                                          .startHour >= DateTime.Today)
                                           .Include(s => s.WorkDay);
            
             return View(await schedulers.ToListAsync());
@@ -68,7 +68,8 @@
                     var validateEndHour = scheduler.startHour.Hour;
 
                     while (validateEndHour < validate.endDayHour.Hour)
-                    {                        
+                    {
+                        scheduler.StateId = 1;
                         scheduler.endHour = scheduler.startHour.AddMinutes(validate.durationCite);
                         scheduler.ApplicationUser_Id = User.Identity.GetUserId();
                         db.Schedulers.Add(scheduler);

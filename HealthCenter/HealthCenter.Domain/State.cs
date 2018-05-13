@@ -7,7 +7,8 @@
     {
         [Key]
         public int StateId { get; set; }
-        
+
+        [Display(Name = "State shedule")]
         [Required(ErrorMessage = "The field {0} is required")]
         public string stateName { get; set; }
 
