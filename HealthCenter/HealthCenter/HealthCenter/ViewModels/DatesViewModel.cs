@@ -84,11 +84,13 @@ namespace HealthCenter.ViewModels
         public async void LoadSchedulers()
         {
             this.IsRefreshing = true;
+            this.IsEnabled = false;
 
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
@@ -111,6 +113,7 @@ namespace HealthCenter.ViewModels
             if (!response.IsSuccess || !responseWorkDays.IsSuccess)
             {
                 this.IsRefreshing = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     response.Message,
@@ -121,9 +124,10 @@ namespace HealthCenter.ViewModels
             MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
             MainViewModel.GetInstance().WorkDayList = (List<WorkDayList>)responseWorkDays.Result;
             this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
-           // this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList.Where(l => l.ApplicationUser_Id.Contains(this.DocumentNumber)));
+            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList.Where(l => l.ApplicationUser_Id = DocumentNumber));
             this.WorkDay = new ObservableCollection<WorkDayList>(MainViewModel.GetInstance().WorkDayList);
             this.IsRefreshing = false;
+            this.IsEnabled = true;
 
         }
 

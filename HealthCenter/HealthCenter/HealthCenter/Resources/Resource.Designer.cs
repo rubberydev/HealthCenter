@@ -790,7 +790,7 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appointments Available.
+        ///   Looks up a localized string similar to Hours Availables.
         /// </summary>
         public static string ShedulersAvailable {
             get {
@@ -840,6 +840,15 @@ namespace HealthCenter.Resources {
         public static string VerseValidatorNumber {
             get {
                 return ResourceManager.GetString("VerseValidatorNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Days Availables.
+        /// </summary>
+        public static string WorkDaysAvailable {
+            get {
+                return ResourceManager.GetString("WorkDaysAvailable", resourceCulture);
             }
         }
     }

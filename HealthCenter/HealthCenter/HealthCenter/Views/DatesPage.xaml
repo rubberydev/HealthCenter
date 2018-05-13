@@ -33,8 +33,8 @@
                 TextColor="#73A3DF"
                 ItemsSource="{Binding WorkDay, Mode=TwoWay}"
                 ItemDisplayBinding="{Binding DateToday}"
-                SelectedItem="{i18n:Translate ShedulersAvailable}"
-                Title="Days Availables"
+                SelectedItem="{Binding idWorkDay}"
+                Title="{i18n:Translate WorkDaysAvailable}"
                 HorizontalOptions="Center"
                 WidthRequest="300">
             </Picker>
@@ -47,8 +47,8 @@
                 TextColor="#73A3DF"
                 ItemsSource="{Binding Schedulers, Mode=TwoWay}"
                 ItemDisplayBinding="{Binding startHour}"
-                SelectedItem="{i18n:Translate ShedulersAvailable}"
-                Title="Hours Availables"
+                SelectedItem="{Binding AgendaId}"
+                Title="{i18n:Translate ShedulersAvailable}"
                 HorizontalOptions="Center"
                 WidthRequest="300">
             </Picker>
@@ -56,15 +56,15 @@
                     IsRunning="{Binding IsRefreshing, Mode=TwoWay}"
                     VerticalOptions="CenterAndExpand">
             </ActivityIndicator>
-            <Button
-                    BorderRadius="23"
-                    BackgroundColor="#73A3DF"
-                    Command="{Binding DateCommand}"
-                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                    HorizontalOptions="FillAndExpand"
-                    TextColor="White"
-                    Text="{i18n:Translate DateButton}">
-            </Button>
+            <Image
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                WidthRequest="130"                                
+                Source="ic_request">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DateCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

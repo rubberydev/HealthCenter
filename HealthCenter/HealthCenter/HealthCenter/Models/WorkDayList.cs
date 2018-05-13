@@ -16,7 +16,8 @@ namespace HealthCenter.Models
         public int durationCite { get; set; }
 
         public WorkDayList()
-        { 
+        {
+
         }
     }
 }

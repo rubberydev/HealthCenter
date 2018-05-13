@@ -217,4 +217,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\doctor2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_request.png" />
+  </ItemGroup>
 </Project>

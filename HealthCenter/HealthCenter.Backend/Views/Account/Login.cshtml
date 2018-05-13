@@ -6,25 +6,25 @@
 
     <h2 style="color:white">@ViewBag.Title.</h2>
     <div class="row">
-        <div class="col-md-4 col-md-offset-4" style="background-color:lightsteelblue; border-radius:12px">
+        <div class="col-md-4 col-md-offset-4" style="background-color:#73A3DF; border-radius:12px">
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div style="background-color:lightsteelblue; text-align:center; border-radius:12px; height:50px; text-shadow:4px 2px 1px #ffffff">
-                        <h2>Health Center Log in.</h2>
+                    <div style="background-color:#73A3DF; text-align:center; border-radius:12px; height:50px;">
+                        <h2><font color="White">Health Center Log in.</font></h2>
                     </div>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="control-label col-md-2"><font color="#ffffff"><b>Email:</b></font></div>
                         <div class="col-md-10">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="control-label col-md-2"><font color="#ffffff"><b>Password:</b></font></div>
                         <div class="col-md-10">
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
+                            <div class="checkbox text-white">
                                 @Html.CheckBoxFor(m => m.RememberMe)
                                 @Html.LabelFor(m => m.RememberMe)
                             </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-info btn-group-justified" />
+                            <input type="submit" value="Login" class="btn btn-danger btn-group-justified" />
                         </div>
                     </div>
                     @* Enable this once you have account confirmation enabled for password reset functionality

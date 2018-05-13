@@ -121,10 +121,10 @@
                             HorizontalOptions="FillAndExpand"
                             WidthRequest="70"                                
                             Source="linkedin_logo">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LoginLinkedInComand}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginLinkedInComand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                 </StackLayout>
                 </StackLayout>
             </ScrollView>

@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Work Days</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { }, new {@class="btn btn-success"})
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.durationCite)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idWorkDay }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idWorkDay }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idWorkDay })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idWorkDay }, new {@class="btn btn-warning"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.idWorkDay }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idWorkDay }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

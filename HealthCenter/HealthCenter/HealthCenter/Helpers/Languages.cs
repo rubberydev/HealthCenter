@@ -526,6 +526,14 @@ namespace HealthCenter.Helpers
             get { return Resource.DateButton; }
         }
 
+        public static string WorkDaysAvailable
+        {
+
+            get { return Resource.WorkDaysAvailable; }
+        }
+
+        
+
 
 
 

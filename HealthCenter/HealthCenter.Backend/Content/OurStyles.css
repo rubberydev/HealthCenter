@@ -1,6 +1,12 @@
-﻿body {
+﻿body 
+{
 
-    
+   
+}
+
+.body {
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .centro
@@ -8,11 +14,179 @@
     margin-left:25% !important;
 }
 
-.head {
+.head 
+{
     color: white;
     text-align: center;
     background: #73A3DF;
     margin-top:1.1% !important;
     width:100%;
     border-radius:0 0 10px 10px;
+}
+
+.navigator 
+{
+    background: #73A3DF !important;
+    color:white !important;
+}
+
+ a:hover
+{
+    background: #226289 !important;
+}
+
+.body article 
+{
+    float: left;
+    text-align: justify;
+    font-size: 12pt;
+    width: 40%;
+    margin: 3%;
+    height: auto;
+    color: #79B8DF;
+    padding: 1%;
+    border-radius: 20px;
+    border: solid 1px #B2D7ED;
+}
+
+
+
+text-white
+{
+    color: white !important;
+}
+
+#slider 
+{
+    width: 100%;
+    height: 450px;
+    background: rgba(0,0,0,0);
+}
+
+#slider-container 
+{
+    height: 450px;
+    overflow: hidden;
+    width: 100%;
+}
+
+/*Esta es la caja de todo el slider*/
+#slider-box 
+{
+    -moz-animation: autoSlider 15s infinite linear;
+    -o-animation: autoSlider 15s infinite linear;
+    -webkit-animation: autoSlider 15s infinite linear;
+    animation: autoSlider 15s infinite linear;
+    -webkit-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    -ms-transition: all 0.75s ease;
+    -o-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+    height: 100%;
+    width: 300%;
+}
+
+.slider-element 
+{
+    float: left;
+    width: 33.333%;
+}
+
+.element-blue,
+.element-green,
+.element-red 
+{
+    min-height: 400px;
+    max-height: 100%;
+    width: 100%;
+}
+
+@-moz-keyframes autoSlider {
+    0% {
+        margin-left: 0;
+    }
+
+    30% {
+        margin-left: 0;
+    }
+
+    35% {
+        margin-left: -100%;
+    }
+
+    65% {
+        margin-left: -100%;
+    }
+
+    70% {
+        margin-left: -200%;
+    }
+
+    95% {
+        margin-left: -200%;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes autoSlider {
+    0% {
+        margin-left: 0;
+    }
+
+    30% {
+        margin-left: 0;
+    }
+
+    35% {
+        margin-left: -100%;
+    }
+
+    65% {
+        margin-left: -100%;
+    }
+
+    70% {
+        margin-left: -200%;
+    }
+
+    95% {
+        margin-left: -200%;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes autoSlider {
+    0% {
+        margin-left: 0;
+    }
+
+    30% {
+        margin-left: 0;
+    }
+
+    35% {
+        margin-left: -100%;
+    }
+
+    65% {
+        margin-left: -100%;
+    }
+
+    70% {
+        margin-left: -200%;
+    }
+
+    95% {
+        margin-left: -200%;
+    }
+
+    100% {
+        margin-left: 0;
+    }
 }

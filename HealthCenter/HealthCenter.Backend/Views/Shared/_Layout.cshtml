@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navigator navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <span style="float:left; margin-right:20px; margin-top:5px; margin-bottom:5px;"><img src="~/fonts/icon.png" /></span>
@@ -72,9 +72,8 @@
     <div class="container-fluid body-content">
         @RenderBody()
         <hr />
-        <footer style="text-align:center;background-image:url(../../Content/healthCenterFooter.jpg);background-size:cover; background-repeat:no-repeat; height:350px">
-            <p><strong> @DateTime.Now.Year - Health Center Application</strong></p>
-        </footer>
+        <center><p><strong><font color="#79B8DF">@DateTime.Now.Year - Health Center Application</font> </strong></p></center>
+        <footer style="text-align:center;background-image:url(../../Content/footer.jpg);background-size:cover; background-repeat:no-repeat; height:100px"></footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
