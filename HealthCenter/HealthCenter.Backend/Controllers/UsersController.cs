@@ -1,8 +1,7 @@
 ﻿namespace HealthCenter.Backend.Controllers
 {
-    using Helpers;
-    using Models;
     using Domain;
+    using Models;
     using System.Data.Entity;
     using System.Net;
     using System.Threading.Tasks;

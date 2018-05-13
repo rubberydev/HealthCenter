@@ -23,7 +23,7 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime endDayHour { set; get; }
 
-        [Display(Name = "Date Agenda")]
+        [Display(Name = "Date Agenda start")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "The field {0} is required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
@@ -31,6 +31,10 @@
 
         [Display(Name = "Duration Cite")]
         public int durationCite { set; get; }
+
+        [NotMapped]
+        [Display(Name = "Schedule work days for")]
+        public string parameterWorkDays { get; set; }
 
         public virtual ICollection<Scheduler> Scheduler { set; get; }
     }

@@ -18,9 +18,11 @@
         public async Task<ActionResult> Index()
         {
             var userAuthenticated = User.Identity.GetUserId();
-            var schedulers = db.Schedulers.Where(x => x.ApplicationUser_Id == userAuthenticated)
-                                                       .Include(s => s.WorkDay);
-            //var schedulers = db.Schedulers.Include(s => s.WorkDay);
+            var schedulers = db.Schedulers.Where(x => x
+                                          .ApplicationUser_Id == userAuthenticated && x
+                                          .startHour.Date >= DateTime.Today.Date)
+                                          .Include(s => s.WorkDay);
+           
             return View(await schedulers.ToListAsync());
         }
 
@@ -42,7 +44,8 @@
         // GET: Schedulers/Create
         public ActionResult Create()
         {
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.Where(x => x
+                                                 .DateToday >= DateTime.Today), "idWorkDay", "DateToday");
             return View();
         }
 
@@ -59,7 +62,7 @@
                                        .Where(z => z.idWorkDay == scheduler.idWorkDay)
                                        .FirstOrDefaultAsync();     
                
-                if (validate.DateToday == scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
+                if (validate.DateToday >= scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
                     validate.startDayHour.Hour <= validate.endDayHour.Hour)
                 {
                     var validateEndHour = scheduler.startHour.Hour;
@@ -86,7 +89,7 @@
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
                                    "<script src='/Scripts/sweetalert2.min.js'></script>." +
                                    "<script>swal({title: 'ERROR..'," +
-                                   "text: 'you cannot scheduler an agenda in hour different a workday, " +
+                                   "text: 'you cannot scheduler an agenda in hour different a workday or previous days, " +
                                    "you should consider to validate with your boss the work days shedule...'," +
                                    "type: 'error'," +
                                    "showCancelButton: false," +
@@ -95,7 +98,7 @@
                                    "confirmButtonText: 'Acceptt'}).then(function() " +
                                    "{swal(''," +
                                     "''," +
-                                    "'success', window.location.href='/index')});</script>");
+                                    "'success', window.location.href='/Schedulers/index')});</script>");
                 }            
                 return RedirectToAction("Index");
             }

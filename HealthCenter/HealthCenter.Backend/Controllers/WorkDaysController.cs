@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using HealthCenter.Backend.Models;
-using HealthCenter.Domain;
-
-namespace HealthCenter.Backend.Controllers
+﻿namespace HealthCenter.Backend.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using HealthCenter.Backend.Models;
+    using HealthCenter.Domain;
+
+    [Authorize(Roles = "Admin")]
     public class WorkDaysController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
@@ -40,23 +41,70 @@ namespace HealthCenter.Backend.Controllers
         // GET: WorkDays/Create
         public ActionResult Create()
         {
+            List<string> ListItems = new List<string>();
+            ListItems.Add("Select an item...");
+            ListItems.Add("15 Days");            
+            ListItems.Add("1 Month");
+
+            SelectList parameter = new SelectList(ListItems);
+
+            ViewBag.parameterWorkDays = parameter;
+            
             return View();
         }
 
-        // POST: WorkDays/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: WorkDays/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
+        public async Task<ActionResult> Create(WorkDay workDay)
         {
+            
             if (ModelState.IsValid)
             {
-                db.WorkDays.Add(workDay);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                var ctrl = 0;
 
+                if (workDay.parameterWorkDays == "15 Days")
+                {
+                    ctrl = 15;
+                    for (int i = 0; i < ctrl; i++)
+                    {
+                        db.WorkDays.Add(workDay);
+                        await db.SaveChangesAsync();
+
+                        workDay.DateToday = workDay.DateToday.AddDays(1);
+                    }
+                    
+                }
+                else if(workDay.parameterWorkDays == "1 Month")
+                {
+                    ctrl = 30;
+                    for (int i = 0; i < ctrl; i++)
+                    {
+                        db.WorkDays.Add(workDay);
+                        await db.SaveChangesAsync();
+
+                        workDay.DateToday = workDay.DateToday.AddDays(1);
+                    }
+                }
+                else
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'you must choose an item to schedule workdadys, " +
+                                   "please try again'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/Workdays/Create')});</script>");
+                }
+                return RedirectToAction("Index");
+            }       
             return View(workDay);
         }
 
@@ -75,12 +123,10 @@ namespace HealthCenter.Backend.Controllers
             return View(workDay);
         }
 
-        // POST: WorkDays/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: WorkDays/Edit/5        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idWorkDay,startDayHour,endDayHour,DateToday,durationCite")] WorkDay workDay)
+        public async Task<ActionResult> Edit(WorkDay workDay)
         {
             if (ModelState.IsValid)
             {
