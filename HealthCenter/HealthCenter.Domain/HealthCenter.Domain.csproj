@@ -56,6 +56,7 @@
     <Compile Include="LinkedInResponse.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Scheduler.cs" />
+    <Compile Include="State.cs" />
     <Compile Include="TwitterResponse.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

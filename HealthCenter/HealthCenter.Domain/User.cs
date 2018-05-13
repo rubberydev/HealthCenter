@@ -33,6 +33,7 @@
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
+        [Display(Name = "Type of user")]
         public int UserTypeId { get; set; }
 
         [JsonIgnore]
