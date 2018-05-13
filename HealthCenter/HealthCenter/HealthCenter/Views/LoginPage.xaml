@@ -8,84 +8,84 @@
     Title="Health Center">
     <ContentPage.Content>
             <ScrollView
-            BindingContext="{Binding Login}">
+                BindingContext="{Binding Login}">
                 <StackLayout
-                Padding="5">
+                    Padding="5">
                     <Image
-                    HeightRequest="100"
-                    Source="logo">
+                        HeightRequest="100"
+                        Source="logo">
                     </Image>
                     <Label 
-                    Text="{i18n:Translate Email}"
-                    TextColor="#4D8DDD"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand">
+                        Text="{i18n:Translate Email}"
+                        TextColor="#4D8DDD"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
                     </Label>
                     <Entry
-                    Text="{Binding Email, Mode=TwoWay}"
-                    HorizontalTextAlignment="Center"
-                    TextColor="#73A3DF"
-                    PlaceholderColor="#73A3DF"
-                    Placeholder="{i18n:Translate EmailPlaceHolder}">
+                        Text="{Binding Email, Mode=TwoWay}"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#73A3DF"
+                        PlaceholderColor="#73A3DF"
+                        Placeholder="{i18n:Translate EmailPlaceHolder}">
                     </Entry>
                     <Label 
-                    Text="{i18n:Translate Password}"
-                    TextColor="#4D8DDD"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand">
+                        Text="{i18n:Translate Password}"
+                        TextColor="#4D8DDD"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand">
                     </Label>
                     <Entry
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding Password, Mode=TwoWay}"
-                    IsPassword="True"
-                    TextColor="#73A3DF"
-                    PlaceholderColor="#73A3DF"
-                    Placeholder="{i18n:Translate PasswordPlaceHolder}">
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Password, Mode=TwoWay}"
+                        IsPassword="True"
+                        TextColor="#73A3DF"
+                        PlaceholderColor="#73A3DF"
+                        Placeholder="{i18n:Translate PasswordPlaceHolder}">
                     </Entry>
                     <ActivityIndicator
-                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
+                        IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions="CenterAndExpand">
                     </ActivityIndicator>
                     <StackLayout
-                    Margin="10, 0"
-                    Orientation="Horizontal"
-                    VerticalOptions="CenterAndExpand">
+                        Margin="10, 0"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
                         <Label
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="Center"
-                        Text="{i18n:Translate Rememberme}"
-                        TextColor="#4D8DDD">
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            Text="{i18n:Translate Rememberme}"
+                            TextColor="#4D8DDD">
                         </Label>
                         <Switch
-                        IsToggled="{Binding IsRememberme, Mode=TwoWay}"
-                        HorizontalOptions="CenterAndExpand">
+                            IsToggled="{Binding IsRememberme, Mode=TwoWay}"
+                            HorizontalOptions="CenterAndExpand">
                         </Switch>
                     </StackLayout>
                     <StackLayout
-                    Orientation="Horizontal"
-                    Margin="40, 0"
-                    VerticalOptions="CenterAndExpand">
+                        Orientation="Horizontal"
+                        Margin="40, 0"
+                        VerticalOptions="CenterAndExpand">
                         <Button
-                    BorderRadius="23"
-                    BackgroundColor="#73A3DF"
-                    Command="{Binding LoginCommand}"
-                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                    HorizontalOptions="FillAndExpand"
-                    TextColor="White"
-                    Text="{i18n:Translate Login}">
+                            BorderRadius="23"
+                            BackgroundColor="#73A3DF"
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="White"
+                            Text="{i18n:Translate Login}">
                         </Button>
                         <Button
-                    BorderRadius="23"
-                    BackgroundColor="#73A3DF  "
-                    Command="{Binding RegisterCommand}"
-                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                    HorizontalOptions="FillAndExpand"
-                    TextColor="White"
-                    Text="{i18n:Translate Register}">
+                            BorderRadius="23"
+                            BackgroundColor="#73A3DF  "
+                            Command="{Binding RegisterCommand}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="White"
+                            Text="{i18n:Translate Register}">
                         </Button>
                     </StackLayout>
                     <StackLayout

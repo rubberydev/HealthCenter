@@ -4,18 +4,67 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthCenter.Views.DatesPage"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
+    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     Title="{i18n:Translate DateTitle}">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Dates}"
             Padding="5">
-            <Label Text="{Binding NamePatient, Mode=TwoWay}"
+            <Image
+                Source="doctor2"
+                WidthRequest="100"
+                HorizontalOptions="Center"
+                VerticalOptions="Start">
+            </Image>
+            <Label 
+                Text="{Binding NamePatient, StringFormat='{0:F0} Welcome to Dating center of Health Center'}"
+                HorizontalTextAlignment="Center"
+                TextColor="#73A3DF"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding NameDoctor, Mode=TwoWay}"
+                HorizontalOptions="CenterAndExpand"/>
+            <Label 
+                Text="{Binding NameDoctor, StringFormat='Appintments Availables With Dr. {0:F0}'}"
+                HorizontalTextAlignment="Center"
+                TextColor="#73A3DF"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"/>
+            <Picker
+                TextColor="#73A3DF"
+                ItemsSource="{Binding WorkDay, Mode=TwoWay}"
+                ItemDisplayBinding="{Binding DateToday}"
+                SelectedItem="{i18n:Translate ShedulersAvailable}"
+                Title="Days Availables"
+                HorizontalOptions="Center"
+                WidthRequest="300">
+            </Picker>
+            <Label 
+                Text="{i18n:Translate ChooseTime}"
+                TextColor="#73A3DF"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Picker
+                TextColor="#73A3DF"
+                ItemsSource="{Binding Schedulers, Mode=TwoWay}"
+                ItemDisplayBinding="{Binding startHour}"
+                SelectedItem="{i18n:Translate ShedulersAvailable}"
+                Title="Hours Availables"
+                HorizontalOptions="Center"
+                WidthRequest="300">
+            </Picker>
+            <ActivityIndicator
+                    IsRunning="{Binding IsRefreshing, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+            </ActivityIndicator>
+            <Button
+                    BorderRadius="23"
+                    BackgroundColor="#73A3DF"
+                    Command="{Binding DateCommand}"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="White"
+                    Text="{i18n:Translate DateButton}">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -34,7 +34,7 @@ namespace HealthCenter.Models
                 if (this.UserTypeId == 1)
                 {
                     return string.Format(
-                        "http://healthcenterapitest.azurewebsites.net/{0}",
+                        "http://apihealthcenterv2.azurewebsites.net/{0}",
                         ImagePath.Substring(1));
                 }
 

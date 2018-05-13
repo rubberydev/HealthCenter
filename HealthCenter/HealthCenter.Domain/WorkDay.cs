@@ -32,6 +32,7 @@
         [Display(Name = "Duration Cite")]
         public int durationCite { set; get; }
 
+        [JsonIgnore]
         public virtual ICollection<Scheduler> Scheduler { set; get; }
     }
 }

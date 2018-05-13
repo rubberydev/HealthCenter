@@ -508,7 +508,24 @@ namespace HealthCenter.Helpers
             get { return Resource.MyDates; }
         }
 
-        
+        public static string ShedulersAvailable
+        {
+
+            get { return Resource.ShedulersAvailable; }
+        }
+
+        public static string ChooseTime
+        {
+
+            get { return Resource.ChooseTime; }
+        }
+
+        public static string DateButton
+        {
+
+            get { return Resource.DateButton; }
+        }
+
 
 
 

@@ -3,6 +3,7 @@
     using HealthCenter.Backend.Models;
     using HealthCenter.Domain;
     using Microsoft.AspNet.Identity;
+    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
@@ -12,11 +13,14 @@
     public class SchedulersController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
-
+        
         // GET: Schedulers
         public async Task<ActionResult> Index()
         {
-            var schedulers = db.Schedulers.Include(s => s.WorkDay);
+            var userAuthenticated = User.Identity.GetUserId();
+            var schedulers = db.Schedulers.Where(x => x.ApplicationUser_Id == userAuthenticated)
+                                                       .Include(s => s.WorkDay);
+            //var schedulers = db.Schedulers.Include(s => s.WorkDay);
             return View(await schedulers.ToListAsync());
         }
 
@@ -49,9 +53,50 @@
         {
             if (ModelState.IsValid)
             {
-                scheduler.ApplicationUser_Id = User.Identity.GetUserId();
-                db.Schedulers.Add(scheduler);
-                await db.SaveChangesAsync();
+                scheduler.DateToday = DateTime.Today.Date;
+
+                var validate = await db.WorkDays.Select(x => x)
+                                       .Where(z => z.idWorkDay == scheduler.idWorkDay)
+                                       .FirstOrDefaultAsync();     
+               
+                if (validate.DateToday == scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
+                    validate.startDayHour.Hour <= validate.endDayHour.Hour)
+                {
+                    var validateEndHour = scheduler.startHour.Hour;
+
+                    while (validateEndHour < validate.endDayHour.Hour)
+                    {                        
+                        scheduler.endHour = scheduler.startHour.AddMinutes(validate.durationCite);
+                        scheduler.ApplicationUser_Id = User.Identity.GetUserId();
+                        db.Schedulers.Add(scheduler);
+                        await db.SaveChangesAsync();
+                       
+                       var endDate = await db.Schedulers.Where(x => x
+                                                        .idWorkDay == scheduler.idWorkDay && x
+                                                        .ApplicationUser_Id == scheduler.ApplicationUser_Id)
+                                                        .OrderByDescending(x => x.endHour).FirstOrDefaultAsync();
+
+                        validateEndHour = endDate.endHour.Hour;
+                        scheduler.startHour = endDate.endHour;
+                    }                    
+                }
+                else
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'you cannot scheduler an agenda in hour different a workday, " +
+                                   "you should consider to validate with your boss the work days shedule...'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/index')});</script>");
+                }            
                 return RedirectToAction("Index");
             }
 

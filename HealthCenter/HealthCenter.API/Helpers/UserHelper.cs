@@ -114,7 +114,7 @@
             var response = await userManager.AddPasswordAsync(userASP.Id, newPassword);
             if (response.Succeeded)
             {
-                var subject = "Lands App - Recuperación de contraseña";
+                var subject = "Health center App - Recuperación de contraseña";
                 var body = string.Format(@"
                     <h1>Health center App - Recuperación de contraseña</h1>
                     <p>Su nueva contraseña es: <strong>{0}</strong></p>

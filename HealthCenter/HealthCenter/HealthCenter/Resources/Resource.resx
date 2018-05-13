@@ -369,4 +369,13 @@
   <data name="MyDates" xml:space="preserve">
     <value>My Dates</value>
   </data>
+  <data name="ShedulersAvailable" xml:space="preserve">
+    <value>Appointments Available</value>
+  </data>
+  <data name="ChooseTime" xml:space="preserve">
+    <value>Choose Time</value>
+  </data>
+  <data name="DateButton" xml:space="preserve">
+    <value>Request Date</value>
+  </data>
 </root>

@@ -55,7 +55,7 @@
                 }
 
                 return string.Format(
-                    "http://healthcenterapitest.azurewebsites.net/{0}",
+                    "http://apihealthcenterv2.azurewebsites.net/{0}",
                     ImagePath.Substring(1));
             }
         }

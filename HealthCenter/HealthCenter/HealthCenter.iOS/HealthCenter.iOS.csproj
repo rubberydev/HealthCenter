@@ -214,4 +214,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\date.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\doctor2.png" />
+  </ItemGroup>
 </Project>

@@ -169,6 +169,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Time.
+        /// </summary>
+        public static string ChooseTime {
+            get {
+                return ResourceManager.GetString("ChooseTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm!!.
         /// </summary>
         public static string ConfirmLabel {
@@ -264,6 +273,15 @@ namespace HealthCenter.Resources {
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Date.
+        /// </summary>
+        public static string DateButton {
+            get {
+                return ResourceManager.GetString("DateButton", resourceCulture);
             }
         }
         
@@ -768,6 +786,15 @@ namespace HealthCenter.Resources {
         public static string SelectBook {
             get {
                 return ResourceManager.GetString("SelectBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appointments Available.
+        /// </summary>
+        public static string ShedulersAvailable {
+            get {
+                return ResourceManager.GetString("ShedulersAvailable", resourceCulture);
             }
         }
         

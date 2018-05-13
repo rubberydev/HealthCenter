@@ -93,9 +93,7 @@
             this.ToDoctorItemViewModel());
             this.IsRefreshing = false;
         }
-        #endregion
-
-        #region Methods
+        
         private IEnumerable<DoctorItemViewModel> ToDoctorItemViewModel()
         {
             return MainViewModel.GetInstance().DoctorList.Select(l => new DoctorItemViewModel

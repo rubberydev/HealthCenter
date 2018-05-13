@@ -18,6 +18,18 @@ namespace HealthCenter.ViewModels
             get;
             set;
         }
+
+        public List<Scheduler> SchedulerList
+        {
+            get;
+            set;
+        }
+
+        public List<WorkDayList> WorkDayList
+        {
+            get;
+            set;
+        }
         #endregion
         #region ViewModels
         public LoginViewModel Login
