@@ -36,6 +36,7 @@
         [Display(Name = "Schedule work days for")]
         public string parameterWorkDays { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Scheduler> Scheduler { set; get; }
     }
 }

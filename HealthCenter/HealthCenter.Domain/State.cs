@@ -1,5 +1,6 @@
 ﻿namespace HealthCenter.Domain
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -12,6 +13,7 @@
         [Required(ErrorMessage = "The field {0} is required")]
         public string stateName { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Scheduler> Schedulers { get; set; }
     }
 }
