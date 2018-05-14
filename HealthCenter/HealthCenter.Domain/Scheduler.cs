@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,17 +29,20 @@
         [Display(Name = "Date")]
         public int idWorkDay { set; get; }
         
-        public int StateId { get; set; }
-
-        [JsonIgnore]
-        public virtual WorkDay WorkDay { set; get; }
+        public int StateId { get; set; }        
 
         [JsonIgnore]
         public virtual State State { set; get; }        
 
         [Display(Name = "Doctor")]
-        public string ApplicationUser_Id { get; set; }       
+        public string ApplicationUser_Id { get; set; }
 
-        
+        [JsonIgnore]
+        public virtual WorkDay WorkDay { set; get; }
+
+        [JsonIgnore]
+        public virtual ICollection<UserSchedule> UserSchedules { get; set; }
+
+
     }
 }

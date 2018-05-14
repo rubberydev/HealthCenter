@@ -39,6 +39,9 @@
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<UserSchedule> UserSchedules { get; set; }
+
         [NotMapped]
         public byte[] ImageArray { get; set; }
 
