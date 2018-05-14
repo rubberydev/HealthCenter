@@ -18,9 +18,11 @@
         public async Task<ActionResult> Index()
         {
             var userAuthenticated = User.Identity.GetUserId();
-            var schedulers = db.Schedulers.Where(x => x.ApplicationUser_Id == userAuthenticated)
-                                                       .Include(s => s.WorkDay);
-            //var schedulers = db.Schedulers.Include(s => s.WorkDay);
+            var schedulers = db.Schedulers.Where(x => x
+                                          .ApplicationUser_Id == userAuthenticated && x
+                                          .startHour >= DateTime.Today)
+                                          .Include(s => s.WorkDay);
+           
             return View(await schedulers.ToListAsync());
         }
 
@@ -42,7 +44,8 @@
         // GET: Schedulers/Create
         public ActionResult Create()
         {
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "startDayHour");
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.Where(x => x
+                                                 .DateToday >= DateTime.Today), "idWorkDay", "DateToday");
             return View();
         }
 
@@ -53,19 +56,42 @@
         {
             if (ModelState.IsValid)
             {
+                var querySchedule = await db.Schedulers.Where(x => x
+                                                       .idWorkDay == scheduler.idWorkDay)
+                                                       .FirstOrDefaultAsync();
+                
+                if(querySchedule != null)
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'This workday already has been programmed, " +
+                                   "try again with another date...'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/Schedulers/index')});</script>");
+                }
+
                 scheduler.DateToday = DateTime.Today.Date;
 
                 var validate = await db.WorkDays.Select(x => x)
                                        .Where(z => z.idWorkDay == scheduler.idWorkDay)
                                        .FirstOrDefaultAsync();     
                
-                if (validate.DateToday == scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
+                if (validate.DateToday >= scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
                     validate.startDayHour.Hour <= validate.endDayHour.Hour)
                 {
                     var validateEndHour = scheduler.startHour.Hour;
 
                     while (validateEndHour < validate.endDayHour.Hour)
-                    {                        
+                    {
+                        scheduler.StateId = 1;
                         scheduler.endHour = scheduler.startHour.AddMinutes(validate.durationCite);
                         scheduler.ApplicationUser_Id = User.Identity.GetUserId();
                         db.Schedulers.Add(scheduler);
@@ -86,7 +112,7 @@
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
                                    "<script src='/Scripts/sweetalert2.min.js'></script>." +
                                    "<script>swal({title: 'ERROR..'," +
-                                   "text: 'you cannot scheduler an agenda in hour different a workday, " +
+                                   "text: 'you cannot scheduler an agenda in hour different a workday or previous days, " +
                                    "you should consider to validate with your boss the work days shedule...'," +
                                    "type: 'error'," +
                                    "showCancelButton: false," +
@@ -95,45 +121,45 @@
                                    "confirmButtonText: 'Acceptt'}).then(function() " +
                                    "{swal(''," +
                                     "''," +
-                                    "'success', window.location.href='/index')});</script>");
+                                    "'success', window.location.href='/Schedulers/index')});</script>");
                 }            
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "startDayHour", scheduler.idWorkDay);
+            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
             return View(scheduler);
         }
 
         // GET: Schedulers/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Scheduler scheduler = await db.Schedulers.FindAsync(id);
-            if (scheduler == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "startDayHour");
-            return View(scheduler);
-        }
+        //public async Task<ActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Scheduler scheduler = await db.Schedulers.FindAsync(id);
+        //    if (scheduler == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
+        //    return View(scheduler);
+        //}
 
         // POST: Schedulers/Edit/5        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Scheduler scheduler)
-        {
-            if (ModelState.IsValid)
-            {                
-                db.Entry(scheduler).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "startDayHour", scheduler.idWorkDay);
-            return View(scheduler);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Edit(Scheduler scheduler)
+        //{
+        //    if (ModelState.IsValid)
+        //    {                
+        //        db.Entry(scheduler).State = EntityState.Modified;
+        //        await db.SaveChangesAsync();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
+        //    return View(scheduler);
+        //}
 
         // GET: Schedulers/Delete/5
         public async Task<ActionResult> Delete(int? id)

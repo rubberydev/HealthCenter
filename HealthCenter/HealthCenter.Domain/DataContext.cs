@@ -13,6 +13,10 @@
         public DbSet<Scheduler> Schedulers { get; set; }
 
         public DbSet<WorkDay> WorkDays { get; set; }
+
+        public DbSet<State> States { get; set; }
+
+        public DbSet<UserSchedule> UserSchedules { get; set; }
         #endregion
 
         #region Constructor

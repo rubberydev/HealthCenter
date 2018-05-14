@@ -33,10 +33,14 @@
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
+        [Display(Name = "Type of user")]
         public int UserTypeId { get; set; }
 
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<UserSchedule> UserSchedules { get; set; }
 
         [NotMapped]
         public byte[] ImageArray { get; set; }
