@@ -64,6 +64,22 @@
                             <li>@Html.ActionLink("Schedule WorkDay", "Index", "WorkDays", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                             }
                         }
+
+                    @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                            <li>@Html.ActionLink("State", "Index", "States", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            }
+                        }
+
+                    @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                            <li>@Html.ActionLink("UserSchedules", "Index", "UserSchedules", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            }
+                        }
                     </ul>
                 @Html.Partial("_LoginPartial")
             </div>
