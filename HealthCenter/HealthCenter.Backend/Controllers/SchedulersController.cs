@@ -20,9 +20,9 @@
             var userAuthenticated = User.Identity.GetUserId();
             var schedulers = db.Schedulers.Where(x => x
                                           .ApplicationUser_Id == userAuthenticated && x
-                                          .startHour >= DateTime.Today)
+                                          .DateSchedule >= DateTime.Today)
                                           .Include(s => s.WorkDay);
-           
+
             return View(await schedulers.ToListAsync());
         }
 
@@ -59,14 +59,14 @@
                 var querySchedule = await db.Schedulers.Where(x => x
                                                        .idWorkDay == scheduler.idWorkDay)
                                                        .FirstOrDefaultAsync();
-                
-                if(querySchedule != null)
+
+                if (querySchedule != null)
                 {
                     var hh = "/Content/sweetalert2.min.css";
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
                                    "<script src='/Scripts/sweetalert2.min.js'></script>." +
                                    "<script>swal({title: 'ERROR..'," +
-                                   "text: 'This workday already has been programmed, " +
+                                   "text: 'This workday already has been to programmed, " +
                                    "try again with another date...'," +
                                    "type: 'error'," +
                                    "showCancelButton: false," +
@@ -76,15 +76,15 @@
                                    "{swal(''," +
                                     "''," +
                                     "'success', window.location.href='/Schedulers/index')});</script>");
-                }
-
-                scheduler.DateToday = DateTime.Today.Date;
+                }                
 
                 var validate = await db.WorkDays.Select(x => x)
                                        .Where(z => z.idWorkDay == scheduler.idWorkDay)
-                                       .FirstOrDefaultAsync();     
-               
-                if (validate.DateToday >= scheduler.DateToday && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
+                                       .FirstOrDefaultAsync();
+
+                scheduler.DateSchedule = validate.DateToday;
+
+                if (validate.DateToday >= scheduler.DateSchedule && validate.startDayHour.Hour <= scheduler.startHour.Hour &&
                     validate.startDayHour.Hour <= validate.endDayHour.Hour)
                 {
                     var validateEndHour = scheduler.startHour.Hour;
@@ -92,6 +92,8 @@
                     while (validateEndHour < validate.endDayHour.Hour)
                     {
                         scheduler.StateId = 1;
+
+                        
                         scheduler.endHour = scheduler.startHour.AddMinutes(validate.durationCite);
                         scheduler.ApplicationUser_Id = User.Identity.GetUserId();
                         db.Schedulers.Add(scheduler);

@@ -23,8 +23,7 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime endDayHour { set; get; }
 
-        [Display(Name = "Date Agenda start")]
-        [DataType(DataType.Date)]
+        [Display(Name = "Date Agenda start")]        
         [Required(ErrorMessage = "The field {0} is required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
         public DateTime DateToday { get; set; }

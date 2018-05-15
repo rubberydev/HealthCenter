@@ -21,15 +21,19 @@ namespace HealthCenter.Backend
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/moment.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/sweetalert.min.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-datetimepicker.min.js",
+                      "~/Scripts/ValidateDates.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/sweetalert.css",
                       "~/Content/site.css",
-                      "~/Content/OurStyles.css"));
+                      "~/Content/OurStyles.css",
+                      "~/Content/bootstrap-datetimepicker.css"));           
         }
     }
 }
