@@ -23,8 +23,11 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime endHour { get; set; }
 
-        [NotMapped]       
-        public DateTime DateToday { get; set; }
+        [Display(Name = "Date schedule")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "The field {0} is required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
+        public DateTime DateSchedule { get; set; }
 
         [Display(Name = "Date")]
         public int idWorkDay { set; get; }

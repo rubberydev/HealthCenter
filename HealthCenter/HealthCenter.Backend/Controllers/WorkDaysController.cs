@@ -20,7 +20,11 @@
         // GET: WorkDays
         public async Task<ActionResult> Index()
         {
-            return View(await db.WorkDays.ToListAsync());
+            var workDays = await db.WorkDays.Where(x => x
+                                            .DateToday >= DateTime.Today)
+                                            .ToListAsync();
+
+            return View( workDays);
         }
 
         // GET: WorkDays/Details/5
@@ -61,6 +65,63 @@
             
             if (ModelState.IsValid)
             {
+                if (workDay.parameterWorkDays == "Select an item...")
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'you must choose an item to schedule workdays, " +
+                                   "please try again'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/Workdays/Create')});</script>");
+                }
+
+                if(workDay.startDayHour.Hour >= workDay.endDayHour.Hour || workDay.durationCite > 60 ||
+                    workDay.DateToday <= DateTime.Today.Date)
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'The start hour should be biggest than end hour, or date workday it`s fewer than today " +
+                                   "or duration for appointment it`s too spread out, consider to type less time in minutes, please try again'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/Workdays/Create')});</script>");
+
+                }
+
+                var queryValidator = db.WorkDays.OrderByDescending(x => x.DateToday).FirstOrDefaultAsync();
+
+                if (queryValidator == null || queryValidator.Result.DateToday >= workDay.DateToday)
+                {
+                    var hh = "/Content/sweetalert2.min.css";
+                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
+                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
+                                   "<script>swal({title: 'ERROR..'," +
+                                   "text: 'The workday already has been to programmed, " +
+                                   "please try again'," +
+                                   "type: 'error'," +
+                                   "showCancelButton: false," +
+                                   "confirmButtonColor: '#3085d6'," +
+                                   "cancelButtonColor: '#d33'," +
+                                   "confirmButtonText: 'Acceptt'}).then(function() " +
+                                   "{swal(''," +
+                                    "''," +
+                                    "'success', window.location.href='/Workdays/Create')});</script>");
+                }
                 var ctrl = 0;
 
                 if (workDay.parameterWorkDays == "15 Days")
@@ -75,7 +136,9 @@
                     }
                     
                 }
-                else if(workDay.parameterWorkDays == "1 Month")
+
+
+                if (workDay.parameterWorkDays == "1 Month")
                 {
                     ctrl = 30;
                     for (int i = 0; i < ctrl; i++)
@@ -85,24 +148,7 @@
 
                         workDay.DateToday = workDay.DateToday.AddDays(1);
                     }
-                }
-                else
-                {
-                    var hh = "/Content/sweetalert2.min.css";
-                    return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +
-                                   "<script src='/Scripts/sweetalert2.min.js'></script>." +
-                                   "<script>swal({title: 'ERROR..'," +
-                                   "text: 'you must choose an item to schedule workdadys, " +
-                                   "please try again'," +
-                                   "type: 'error'," +
-                                   "showCancelButton: false," +
-                                   "confirmButtonColor: '#3085d6'," +
-                                   "cancelButtonColor: '#d33'," +
-                                   "confirmButtonText: 'Acceptt'}).then(function() " +
-                                   "{swal(''," +
-                                    "''," +
-                                    "'success', window.location.href='/Workdays/Create')});</script>");
-                }
+                }       
                 return RedirectToAction("Index");
             }       
             return View(workDay);
