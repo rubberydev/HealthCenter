@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,23 +23,27 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime endHour { get; set; }
 
-        [NotMapped]
-        //[Display(Name = "Date")]
-        //[DataType(DataType.Date)]
-        //[Required(ErrorMessage = "The field {0} is required")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{00:yyyy/MM/dd}")]
+        [NotMapped]       
         public DateTime DateToday { get; set; }
 
         [Display(Name = "Date")]
         public int idWorkDay { set; get; }
+        
+        public int StateId { get; set; }        
+
+        [JsonIgnore]
+        public virtual State State { set; get; }        
+
+        [JsonIgnore]
+        [Display(Name = "Doctor")]
+        public string ApplicationUser_Id { get; set; }
 
         [JsonIgnore]
         public virtual WorkDay WorkDay { set; get; }
 
         [JsonIgnore]
-        [Display(Name = "Doctor")]
-        public string ApplicationUser_Id { get; set; }       
+        public virtual ICollection<UserSchedule> UserSchedules { get; set; }
 
-        
+
     }
 }
