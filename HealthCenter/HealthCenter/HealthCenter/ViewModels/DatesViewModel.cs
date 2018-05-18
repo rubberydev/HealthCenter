@@ -19,7 +19,7 @@ namespace HealthCenter.ViewModels
         #region Attributes
         private string namePatient;
         private string nameDoctor;
-        private string documentNumber;
+        private string idDoctor;
         private bool isRefreshing;
         private bool isEnabled;
         private ObservableCollection<Scheduler> scheduler;
@@ -44,10 +44,10 @@ namespace HealthCenter.ViewModels
             set { SetValue(ref this.isEnabled, value); }
         }
 
-        public string DocumentNumber
+        public string IdDoctor
         {
-            get { return this.documentNumber; }
-            set { SetValue(ref this.documentNumber, value); }
+            get { return this.idDoctor; }
+            set { SetValue(ref this.idDoctor, value); }
         }
         public bool IsRefreshing
         {
@@ -73,7 +73,7 @@ namespace HealthCenter.ViewModels
             this.apiService = new ApiService();
             this.LoadSchedulers();
             this.NameDoctor = doctor.FullName;
-            this.DocumentNumber = doctor.DocumentNumber;
+            this.IdDoctor = doctor.Id;
             this.NamePatient = MainViewModel.GetInstance().User.FullName;
             
         }
@@ -104,28 +104,28 @@ namespace HealthCenter.ViewModels
                 "/api",
                 "/Schedulers");
 
-            var apiHealthWorkDays = Application.Current.Resources["APISecurity"].ToString();
-            var responseWorkDays = await this.apiService.GetList<WorkDayList>(
-                apiHealthWorkDays,
-                "/api",
-                "/WorkDays");
+            //var apiHealthWorkDays = Application.Current.Resources["APISecurity"].ToString();
+            //var responseWorkDays = await this.apiService.GetList<WorkDayList>(
+            //    apiHealthWorkDays,
+            //    "/api",
+            //    "/WorkDays");
 
-            if (!response.IsSuccess || !responseWorkDays.IsSuccess)
-            {
-                this.IsRefreshing = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    response.Message,
-                    Languages.Accept);
-                return;
-            }
+            //if (!response.IsSuccess || !responseWorkDays.IsSuccess)
+            //{
+            //    this.IsRefreshing = false;
+            //    this.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        response.Message,
+            //        Languages.Accept);
+            //    return;
+            //}
 
             MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
-            MainViewModel.GetInstance().WorkDayList = (List<WorkDayList>)responseWorkDays.Result;
-            this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
-            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList.Where(l => l.ApplicationUser_Id = DocumentNumber));
-            this.WorkDay = new ObservableCollection<WorkDayList>(MainViewModel.GetInstance().WorkDayList);
+            //MainViewModel.GetInstance().WorkDayList = (List<WorkDayList>)responseWorkDays.Result;
+            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
+            this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList.Where(l => l.ApplicationUser_Id == this.IdDoctor && l.StateId == 1));
+            //this.WorkDay = new ObservableCollection<WorkDayList>(MainViewModel.GetInstance().WorkDayList);
             this.IsRefreshing = false;
             this.IsEnabled = true;
 

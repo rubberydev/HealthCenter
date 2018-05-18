@@ -26,12 +26,11 @@
         //GET: api/Users
         public ICollection<ApplicationUser> GetUsers()
         {
-            //Roleid Julian f1c320d1-8505-4d4b-a9aa-6d6bb10187cb"
-            //RoleId Camilo ccc09d1b-bf81-4786-abe4-e5589ad29db6
+
             ApplicationDbContext userContext = new ApplicationDbContext();
             var Medics = userContext.Users.Where(t => 
                                                  t.Roles.Any(r => 
-                                                 r.RoleId == "ccc09d1b-bf81-4786-abe4-e5589ad29db6"))
+                                                 r.RoleId == "21f2daca-e743-40ca-9bca-b91f745a39dd"))
                                                  .Select(x => x).ToList();
             return Medics;
         }        

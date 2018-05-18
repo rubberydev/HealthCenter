@@ -84,7 +84,7 @@
                 }
 
                 if(workDay.startDayHour.Hour >= workDay.endDayHour.Hour || workDay.durationCite > 60 ||
-                    workDay.DateToday <= DateTime.Today.Date)
+                    workDay.DateToday < DateTime.Today.Date)
                 {
                     var hh = "/Content/sweetalert2.min.css";
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +

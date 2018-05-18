@@ -12,9 +12,15 @@ namespace HealthCenter.Models
 
         public DateTime endHour { get; set; }
 
+        public DateTime DateSchedule { get; set; }
+
         public int idWorkDay { get; set; }
 
+        public int StateId { get; set; }
+
         public WorkDay WorkDay { get; set; }
+
+        public State State { get; set; }
 
         public string ApplicationUser_Id { get; set; }
 
