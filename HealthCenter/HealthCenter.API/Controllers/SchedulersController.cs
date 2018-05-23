@@ -1,17 +1,18 @@
-﻿
-
-namespace HealthCenter.API.Controllers
+﻿namespace HealthCenter.API.Controllers
 {
-    using HealthCenter.Domain;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
+    using HealthCenter.Domain;
     using Models;
-    using System.Collections.Generic;
 
     public class SchedulersController : ApiController
     {
@@ -32,11 +33,13 @@ namespace HealthCenter.API.Controllers
                     idWorkDay = s.idWorkDay,
                     ApplicationUser_Id = s.ApplicationUser_Id,
                     WorkDay = s.WorkDay,
+                    DateSchedule = s.DateSchedule,
+                    State = s.State,
+                    StateId = s.StateId,
                 });
             }
             return Ok(response);
         }
-
 
         // GET: api/Schedulers/5
         [ResponseType(typeof(Scheduler))]

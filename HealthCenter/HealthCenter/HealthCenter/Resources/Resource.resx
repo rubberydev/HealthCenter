@@ -381,4 +381,16 @@
   <data name="WorkDaysAvailable" xml:space="preserve">
     <value>Days Availables</value>
   </data>
+  <data name="AppointmentSuccefully" xml:space="preserve">
+    <value>Successful appointment</value>
+  </data>
+  <data name="DateValidator" xml:space="preserve">
+    <value>Please choose a time for your appointment</value>
+  </data>
+  <data name="ErrorAppointment" xml:space="preserve">
+    <value>The appointment could not be scheduled</value>
+  </data>
+  <data name="MyDatesTitle" xml:space="preserve">
+    <value>My Current Dates</value>
+  </data>
 </root>

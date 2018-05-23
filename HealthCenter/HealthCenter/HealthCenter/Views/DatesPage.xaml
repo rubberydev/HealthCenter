@@ -47,7 +47,7 @@
                 TextColor="#73A3DF"
                 ItemsSource="{Binding Schedulers, Mode=TwoWay}"
                 ItemDisplayBinding="{Binding startHour}"
-                SelectedItem="{Binding AgendaId}"
+                SelectedItem="{Binding SchedulerId, Mode=TwoWay}"
                 Title="{i18n:Translate ShedulersAvailable}"
                 HorizontalOptions="Center"
                 WidthRequest="300">

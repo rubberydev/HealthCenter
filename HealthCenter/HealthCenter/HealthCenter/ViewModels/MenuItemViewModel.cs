@@ -68,10 +68,10 @@ namespace HealthCenter.ViewModels
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
 
-            if (this.PageName == "SearchPage")
+            if (this.PageName == "MyDatesPage")
             {
-                mainViewModel.Search = new SearchViewModel();
-                App.Navigator.PushAsync(new SearchPage());
+                mainViewModel.MyDates = new MyDatesViewModel();
+                App.Navigator.PushAsync(new MyDatesPage());
             }
 
             if (this.PageName == "MyProfilePage")

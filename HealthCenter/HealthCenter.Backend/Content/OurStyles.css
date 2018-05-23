@@ -24,15 +24,13 @@
     border-radius:0 0 10px 10px;
 }
 
-.navigator 
-{
-    background: #73A3DF !important;
-    color:white !important;
+.navigator {
+    background: #AAE3FF !important;
+    color: white !important;
 }
 
- a:hover
-{
-    background: #226289 !important;
+a:hover {
+    background: #82CDF3 !important;
 }
 
 .body article 

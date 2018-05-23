@@ -79,6 +79,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successful appointment.
+        /// </summary>
+        public static string AppointmentSuccefully {
+            get {
+                return ResourceManager.GetString("AppointmentSuccefully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bible.
         /// </summary>
         public static string BibleTitle {
@@ -295,6 +304,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please choose a time for your appointment.
+        /// </summary>
+        public static string DateValidator {
+            get {
+                return ResourceManager.GetString("DateValidator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Digit Chapter:.
         /// </summary>
         public static string DigitChapter {
@@ -363,6 +381,15 @@ namespace HealthCenter.Resources {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The appointment could not be scheduled.
+        /// </summary>
+        public static string ErrorAppointment {
+            get {
+                return ResourceManager.GetString("ErrorAppointment", resourceCulture);
             }
         }
         
@@ -525,6 +552,15 @@ namespace HealthCenter.Resources {
         public static string MyDates {
             get {
                 return ResourceManager.GetString("MyDates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Current Dates.
+        /// </summary>
+        public static string MyDatesTitle {
+            get {
+                return ResourceManager.GetString("MyDatesTitle", resourceCulture);
             }
         }
         
