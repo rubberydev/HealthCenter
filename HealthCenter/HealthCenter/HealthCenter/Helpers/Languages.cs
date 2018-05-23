@@ -532,7 +532,35 @@ namespace HealthCenter.Helpers
             get { return Resource.WorkDaysAvailable; }
         }
 
+        public static string DateValidator
+        {
+
+            get { return Resource.DateValidator; }
+        }
+
+        public static string ErrorAppointment
+        {
+
+            get { return Resource.ErrorAppointment; }
+        }
+
+        public static string AppointmentSuccefully
+        {
+
+            get { return Resource.AppointmentSuccefully; }
+        }
+
+        public static string MyDatesTitle
+        {
+
+            get { return Resource.MyDatesTitle; }
+        }
+
         
+
+
+
+
 
 
 

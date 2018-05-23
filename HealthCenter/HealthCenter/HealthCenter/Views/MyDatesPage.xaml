@@ -2,28 +2,20 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="HealthCenter.Views.DoctorPage"
+    x:Class="HealthCenter.Views.MyDatesPage"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
-    Title="{i18n:Translate DoctorsTitle}">
+    Title="{i18n:Translate MyDatesTitle}">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Doctor}">
-            <SearchBar
-                BackgroundColor="White"
-                HeightRequest="46"
-                Text="{Binding Filter, Mode=TwoWay}"
-                TextColor="#73A3DF"
-                PlaceholderColor="#73A3DF"
-                Placeholder="{i18n:Translate Search}"
-                SearchCommand="{Binding SearchCommand}">
-            </SearchBar>
+            BindingContext="{Binding MyDates}"
+            Padding="5">
             <ListView 
                 BackgroundColor="White"
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Doctors}"
+                ItemsSource="{Binding MyDatesL}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -48,25 +40,12 @@
                                         VerticalOptions="Center">
                                         <Label
                                             FontSize="Medium" 
-                                            Text="{Binding FirstName}"
+                                            Text="{Binding startHour}"
                                             TextColor="White">
                                         </Label>
                                         <Label 
-                                            FontAttributes="Bold"
-                                            Text="{Binding Speciality}"
-                                            TextColor="White">
-                                        </Label>
-                                    </StackLayout>
-                                    <StackLayout 
-                                        Grid.Column="1"
-                                        VerticalOptions="Center">
-                                        <Label 
-                                            FontSize="Medium" 
-                                            Text="{Binding LastName}"
-                                            TextColor="White">
-                                        </Label>
-                                        <Label 
-                                            Text="{Binding Email}"
+                                            FontSize="Medium"
+                                            Text="{Binding endHour}"
                                             TextColor="White">
                                         </Label>
                                     </StackLayout>
@@ -74,7 +53,7 @@
                                         Grid.Column="2"
                                         VerticalOptions="Center">
                                         <Image
-                                            Source="date"
+                                            Source="ic_cancel_date"
                                             HeightRequest="50">
                                         </Image>
                                     </StackLayout>

@@ -56,7 +56,7 @@ namespace HealthCenter.ViewModels
             set;
         }
 
-        public SearchViewModel Search
+        public MyDatesViewModel MyDates
         {
             get;
             set;
@@ -139,13 +139,6 @@ namespace HealthCenter.ViewModels
                 Icon = "ic_settings",
                 PageName = "MyProfilePage",
                 Title = Languages.MyProfile,
-            });
-
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "ic_search",
-                PageName = "SearchPage",
-                Title = Languages.SearchPage,
             });
 
             this.Menus.Add(new MenuItemViewModel
