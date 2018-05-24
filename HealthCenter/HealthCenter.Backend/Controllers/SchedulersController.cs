@@ -4,12 +4,14 @@
     using HealthCenter.Domain;
     using Microsoft.AspNet.Identity;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
+    [Authorize(Roles = "Medic")]
     public class SchedulersController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
@@ -24,6 +26,24 @@
                                           .Include(s => s.WorkDay);
 
             return View(await schedulers.ToListAsync());
+        }
+
+
+        // GET: Schedulers/SearchDetail/5
+        public async Task<ActionResult> SearchDetail()
+        {
+            var userAuthenticated = User.Identity.GetUserId();
+
+            
+            var scheduler = await db.Schedulers.Where(s => s
+                                               .ApplicationUser_Id == userAuthenticated && s
+                                               .StateId == 2).ToListAsync();
+            
+            if (scheduler == null)
+            {
+                return HttpNotFound();
+            }
+            return View(scheduler);
         }
 
         // GET: Schedulers/Details/5
@@ -56,8 +76,10 @@
         {
             if (ModelState.IsValid)
             {
+                var userSesion = User.Identity.GetUserId();
                 var querySchedule = await db.Schedulers.Where(x => x
-                                                       .idWorkDay == scheduler.idWorkDay)
+                                                       .idWorkDay == scheduler.idWorkDay && x
+                                                       .ApplicationUser_Id == userSesion)
                                                        .FirstOrDefaultAsync();
 
                 if (querySchedule != null)
@@ -132,36 +154,38 @@
             return View(scheduler);
         }
 
-        // GET: Schedulers/Edit/5
-        //public async Task<ActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Scheduler scheduler = await db.Schedulers.FindAsync(id);
-        //    if (scheduler == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
-        //    return View(scheduler);
-        //}
+        //GET: Schedulers/Edit/5
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Scheduler scheduler = await db.Schedulers.FindAsync(id);
+            if (scheduler == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.idWorkDay = new SelectList(db.WorkDays.OrderBy(x => x.DateToday), "idWorkDay", "DateToday");
+            ViewBag.StateId = new SelectList(db.States , "StateId", "stateName");
+            return View(scheduler);
+        }
 
-        // POST: Schedulers/Edit/5        
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Edit(Scheduler scheduler)
-        //{
-        //    if (ModelState.IsValid)
-        //    {                
-        //        db.Entry(scheduler).State = EntityState.Modified;
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
-        //    return View(scheduler);
-        //}
+        //POST: Schedulers/Edit/5        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(Scheduler scheduler)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(scheduler).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
+            ViewBag.StateId = new SelectList(db.States, "StateId", "StateId", scheduler.StateId);
+            return View(scheduler);
+        }
 
         // GET: Schedulers/Delete/5
         public async Task<ActionResult> Delete(int? id)

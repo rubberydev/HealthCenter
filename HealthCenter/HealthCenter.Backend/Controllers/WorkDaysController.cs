@@ -105,7 +105,7 @@
 
                 var queryValidator = db.WorkDays.OrderByDescending(x => x.DateToday).FirstOrDefaultAsync();
 
-                if (queryValidator == null || queryValidator.Result.DateToday >= workDay.DateToday)
+                if (queryValidator.Result.DateToday >= workDay.DateToday)
                 {
                     var hh = "/Content/sweetalert2.min.css";
                     return Content("<link href='" + hh + "' rel='stylesheet' type='text/css'/>" +

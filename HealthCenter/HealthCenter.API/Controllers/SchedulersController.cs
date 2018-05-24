@@ -39,19 +39,35 @@
                 });
             }
             return Ok(response);
-        }
+        }      
 
+        //This a method to get Scheduler by each doctor
         // GET: api/Schedulers/5
         [ResponseType(typeof(Scheduler))]
-        public async Task<IHttpActionResult> GetScheduler(int id)
+        public async Task<IHttpActionResult> GetScheduler(string id)
         {
-            Scheduler scheduler = await db.Schedulers.FindAsync(id);
-            if (scheduler == null)
-            {
-                return NotFound();
-            }
+            var response = new List<SchedulerResponse>();
+            var Schedulers = await db.Schedulers.Where(s => s
+                                                .ApplicationUser_Id == id && s
+                                                .StateId == 1 || s.StateId == 3 && s
+                                                .DateSchedule >= DateTime.Now).ToListAsync();
 
-            return Ok(scheduler);
+            foreach (var s in Schedulers)
+            {
+                response.Add(new SchedulerResponse
+                {
+                    AgendaId = s.AgendaId,
+                    startHour = s.startHour,
+                    endHour = s.endHour,
+                    idWorkDay = s.idWorkDay,
+                    ApplicationUser_Id = s.ApplicationUser_Id,
+                    WorkDay = s.WorkDay,
+                    DateSchedule = s.DateSchedule,
+                    State = s.State,
+                    StateId = s.StateId,
+                });
+            }
+            return Ok(response);
         }
 
         // PUT: api/Schedulers/5

@@ -41,7 +41,7 @@ namespace HealthCenter.Backend.Controllers
         // GET: UserSchedules/Create
         public ActionResult Create()
         {
-            ViewBag.AgendaId = new SelectList(db.Schedulers, "AgendaId", "ApplicationUser_Id");
+            ViewBag.AgendaId = new SelectList(db.Schedulers, "AgendaId", "DateSchedule");
             ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
             return View();
         }
@@ -51,10 +51,14 @@ namespace HealthCenter.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserScheduleId,AgendaId,UserId")] UserSchedule userSchedule)
+        public async Task<ActionResult> Create(UserSchedule userSchedule)
         {
             if (ModelState.IsValid)
             {
+                Scheduler scheduler = await db.Schedulers.FindAsync(userSchedule.AgendaId);
+                scheduler.StateId = 2;
+                db.Entry(scheduler).State = EntityState.Modified;
+
                 db.UserSchedules.Add(userSchedule);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

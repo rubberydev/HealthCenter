@@ -1,50 +1,78 @@
 ﻿@model HealthCenter.Domain.Scheduler
-
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+<hr />
+<h1>Details Appointment</h1>
+<br />
+<a class="btn btn-primary" href="/Schedulers/SearchDetail"><span class="glyphicon glyphicon-arrow-left"></span> Back to List</a>
+<hr />
 <div>
-    <h4>Scheduler</h4>
+    <h4></h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkDay.idWorkDay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkDay.idWorkDay)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.startHour)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.startHour)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.endHour)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.endHour)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser_Id)
-        </dd>
-
-    </dl>
+    <table class="table table-striped table-hover table-responsive table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSchedule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endHour)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.DateSchedule)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.startHour)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.endHour)
+            </td>
+        </tr>
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AgendaId}, new { @class = "btn btn-info" }) |
-    @Html.ActionLink("Back to List", "Index", new { }, new {@class="btn btn-info" })
+    @*@Html.ActionLink("Back to List", "SearchDetail", new { }, new { @class = "btn btn-primary" })*@
 </p>
+<hr />
+<h2>Data of pacient</h2>
+<table class="table table-striped table-hover table-responsive table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSchedules.FirstOrDefault().User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSchedules.FirstOrDefault().User.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSchedules.FirstOrDefault().User.Email)
+        </th>
+        <th>
+            Picture
+        </th>
+    </tr>
+    @foreach (var item in Model.UserSchedules)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.User.ImagePath))
+                {
+                    <img src="@Url.Content(item.User.ImageFullPath)" alt="Image" style="width:150px;height:150px;max-width: 100%; height: auto;" />
+                }
+            </td>
+        </tr>
+    }
+</table>

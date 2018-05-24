@@ -7,9 +7,9 @@
 <h2>Patient type</h2>
 
 <p>
-    @Html.ActionLink("Create New patient type", "Create")
+    @Html.ActionLink("Create New patient type", "Create" , new { }, new { @class = "btn btn-primary"})
 </p>
-<table class="table">
+<table class="table table-striped table-hover table-responsive table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserTypeId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserTypeId }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Details", "Details", new { id=item.UserTypeId }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserTypeId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

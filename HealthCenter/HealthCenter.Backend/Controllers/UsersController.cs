@@ -12,6 +12,31 @@
     {
         private LocalDataContext db = new LocalDataContext();
 
+        // GET: Users1/Create
+        public ActionResult Create()
+        {
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name");
+            return View();
+        }
+
+        // POST: Users1/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,Email,Telephone,ImagePath,UserTypeId")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
+            return View(user);
+        }
+
         // GET: Users
         public async Task<ActionResult> Index()
         {

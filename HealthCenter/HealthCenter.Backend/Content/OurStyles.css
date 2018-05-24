@@ -25,12 +25,12 @@
 }
 
 .navigator {
-    background: #AAE3FF !important;
-    color: white !important;
+    background: #73A3DF !important;
+    color: white !important;    
 }
 
 a:hover {
-    background: #82CDF3 !important;
+    background: #79B8DF !important;
 }
 
 .body article 
@@ -47,7 +47,24 @@ a:hover {
     border: solid 1px #B2D7ED;
 }
 
+th 
+{
+    background-color: #73A3DF;
+    color: whitesmoke;
+}
 
+li > a {
+    color: whitesmoke;
+}
+
+footer 
+{    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    color: white;
+}
 
 text-white
 {

@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create", new { }, new {@class="btn btn-success"})
 </p>
-<table class="table">
+<table class="table table-striped table-hover table-responsive table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.startDayHour)
@@ -41,8 +41,8 @@
             @Html.DisplayFor(modelItem => item.durationCite)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idWorkDay }, new {@class="btn btn-warning"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.idWorkDay }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.idWorkDay }, new {@class="btn btn-warning"}) 
+            @Html.ActionLink("Details", "Details", new { id=item.idWorkDay }, new { @class = "btn btn-info" }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.idWorkDay }, new { @class = "btn btn-danger" })
         </td>
     </tr>
