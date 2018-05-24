@@ -73,7 +73,7 @@
                             }
                         }
 
-                    @if (User.Identity.IsAuthenticated)
+                    @*@if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("Admin"))
                             {
@@ -87,7 +87,7 @@
                             {
                             <li>@Html.ActionLink("UserSchedules", "Index", "UserSchedules", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                             }
-                        }
+                        }*@
                     </ul>
                 @Html.Partial("_LoginPartial")
             </div>

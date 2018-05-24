@@ -22,7 +22,7 @@
             var userAuthenticated = User.Identity.GetUserId();
             var schedulers = db.Schedulers.Where(x => x
                                           .ApplicationUser_Id == userAuthenticated && x
-                                          .DateSchedule >= DateTime.Today)
+                                          .DateSchedule >= DateTime.Today && x.StateId == 1 || x.StateId == 3)
                                           .Include(s => s.WorkDay);
 
             return View(await schedulers.ToListAsync());
