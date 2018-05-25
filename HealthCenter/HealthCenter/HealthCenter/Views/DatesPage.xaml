@@ -23,7 +23,7 @@
                 TextColor="#73A3DF"
                 HorizontalOptions="CenterAndExpand"/>
             <Label 
-                Text="{Binding NameDoctor, StringFormat='Appintments Availables With Dr. {0:F0}'}"
+                Text="{Binding NameDoctor, StringFormat='Appointments Availables With Dr. {0:F0}'}"
                 HorizontalTextAlignment="Center"
                 TextColor="#73A3DF"
                 HorizontalOptions="CenterAndExpand"/>
@@ -33,7 +33,7 @@
                 SeparatorColor="#73A3DF"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Schedulers}"
+                ItemsSource="{Binding Days}"
                 SeparatorVisibility="Default"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -63,6 +63,11 @@
                                         <Label 
                                             FontAttributes="Bold"
                                             Text="{Binding startHour}"
+                                            TextColor="#73A3DF">
+                                        </Label>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            Text="{Binding NameDay}"
                                             TextColor="#73A3DF">
                                         </Label>
                                     </StackLayout>

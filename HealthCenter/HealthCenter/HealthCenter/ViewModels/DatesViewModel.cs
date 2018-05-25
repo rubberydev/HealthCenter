@@ -1,16 +1,15 @@
-﻿
-
-namespace HealthCenter.ViewModels
+﻿namespace HealthCenter.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Models;
     using Services;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Input;
+    using Views;
     using Xamarin.Forms;
 
     public class DatesViewModel : BaseViewModel
@@ -120,7 +119,7 @@ namespace HealthCenter.ViewModels
                 string.Format("/" + this.IdDoctor));
 
             MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
-            this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
+            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
             this.Days = new ObservableCollection<Days>(this.ToDayItem());
             this.IsRefreshing = false;
             this.IsEnabled = true;
@@ -132,7 +131,10 @@ namespace HealthCenter.ViewModels
             return MainViewModel.GetInstance().SchedulerList.Select(a => new Days
             {
                 id = a.idWorkDay,
-                DateSchedule = a.DateSchedule.ToString("dd/M/yyyy")
+                DateSchedule = a.DateSchedule.ToShortDateString(),
+                startHour = a.startHour.ToShortTimeString(),
+                NameDay = a.DateSchedule.ToString("dddd",
+                        new CultureInfo("en-US"))
             });
         }
         #endregion
@@ -192,6 +194,9 @@ namespace HealthCenter.ViewModels
                     Languages.ConfirmLabel,
                     Languages.AppointmentSuccefully,
                     Languages.Accept);
+
+                //it should redirect to MainPage after user take an appointment
+                //Application.Current.MainPage = new MasterPage();
                 this.LoadSchedulers();
             }
         }

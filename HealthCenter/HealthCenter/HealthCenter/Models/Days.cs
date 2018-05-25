@@ -18,5 +18,17 @@ namespace HealthCenter.Models
             get;
             set;
         }
+
+        public string NameDay
+        {
+            get;
+            set;
+        }
+
+        public string startHour
+        {
+            get;
+            set;
+        }
     }
 }
