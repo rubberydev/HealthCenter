@@ -46,10 +46,10 @@
         [ResponseType(typeof(Scheduler))]
         public async Task<IHttpActionResult> GetScheduler(string id)
         {
+            var ListStateId = new List<int>() { 1, 2 };
             var response = new List<SchedulerResponse>();
             var Schedulers = await db.Schedulers.Where(s => s
-                                                .ApplicationUser_Id == id && s
-                                                .StateId == 1 || s.StateId == 3 && s
+                                                .ApplicationUser_Id == id && ListStateId.Contains(s.StateId) && s
                                                 .DateSchedule >= DateTime.Now).ToListAsync();
 
             foreach (var s in Schedulers)
