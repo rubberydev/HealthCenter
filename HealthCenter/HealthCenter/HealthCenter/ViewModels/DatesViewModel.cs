@@ -13,7 +13,7 @@ namespace HealthCenter.ViewModels
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class DatesViewModel: BaseViewModel
+    public class DatesViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -26,12 +26,11 @@ namespace HealthCenter.ViewModels
         private bool isRefreshing;
         private bool isEnabled;
         private Scheduler schedulerId;
-        
         private ObservableCollection<Scheduler> scheduler;
-        private ObservableCollection<WorkDayList> workday;
+        private ObservableCollection<Days> days;
         public int userId;
-
         #endregion
+
         #region Properties
         public string NamePatient
         {
@@ -74,11 +73,13 @@ namespace HealthCenter.ViewModels
             set { SetValue(ref this.scheduler, value); }
         }
 
-        public ObservableCollection<WorkDayList> WorkDay
+        public ObservableCollection<Days> Days
         {
-            get { return this.workday; }
-            set { SetValue(ref this.workday, value); }
+            get { return this.days; }
+            set { SetValue(ref this.days, value); }
         }
+
+
         #endregion
         #region Constructors
         public DatesViewModel(Doctor doctor)
@@ -89,8 +90,6 @@ namespace HealthCenter.ViewModels
             this.IdDoctor = doctor.Id;
             this.NamePatient = MainViewModel.GetInstance().User.FullName;
             this.userId = MainViewModel.GetInstance().User.UserId;
-
-
         }
 
         #endregion
@@ -117,16 +116,24 @@ namespace HealthCenter.ViewModels
             var response = await this.apiService.GetList<Scheduler>(
                 apiHealth,
                 "/api",
-                "/Schedulers");
+                "/Schedulers",
+                string.Format("/" + this.IdDoctor));
 
             MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
-            //MainViewModel.GetInstance().WorkDayList = (List<WorkDayList>)responseWorkDays.Result;
-            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
-            this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList.Where(l => l.ApplicationUser_Id == this.IdDoctor && l.StateId == 1 && l.DateSchedule > DateTime.Today));
-            //this.WorkDay = new ObservableCollection<WorkDayList>(MainViewModel.GetInstance().WorkDayList);
+            this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
+            this.Days = new ObservableCollection<Days>(this.ToDayItem());
             this.IsRefreshing = false;
             this.IsEnabled = true;
 
+        }
+
+        private IEnumerable<Days> ToDayItem()
+        {
+            return MainViewModel.GetInstance().SchedulerList.Select(a => new Days
+            {
+                id = a.idWorkDay,
+                DateSchedule = a.DateSchedule.ToString("dd/M/yyyy")
+            });
         }
         #endregion
 
@@ -146,7 +153,7 @@ namespace HealthCenter.ViewModels
             this.IsRefreshing = true;
             this.IsEnabled = false;
 
-            if (SchedulerId.AgendaId == 0)
+            if (SchedulerId == null || SchedulerId.AgendaId == 0)
             {
                 this.IsRefreshing = false;
                 this.IsEnabled = true;
@@ -156,6 +163,7 @@ namespace HealthCenter.ViewModels
                     Languages.Accept);
                 return;
             }
+
             var userScheduler = new UserSchedule();
             userScheduler.UserId = userId;
             userScheduler.AgendaId = SchedulerId.AgendaId;
@@ -181,7 +189,7 @@ namespace HealthCenter.ViewModels
             else
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.ConfirmLabel,
                     Languages.AppointmentSuccefully,
                     Languages.Accept);
                 this.LoadSchedulers();

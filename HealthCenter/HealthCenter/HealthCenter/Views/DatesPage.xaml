@@ -21,19 +21,70 @@
                 Text="{Binding NamePatient, StringFormat='{0:F0} Welcome to Dating center of Health Center'}"
                 HorizontalTextAlignment="Center"
                 TextColor="#73A3DF"
-                VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
             <Label 
                 Text="{Binding NameDoctor, StringFormat='Appintments Availables With Dr. {0:F0}'}"
                 HorizontalTextAlignment="Center"
                 TextColor="#73A3DF"
-                VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
-            <Picker
+            <ListView 
+                BackgroundColor="White"
+                HasUnevenRows="true" 
+                SeparatorColor="#73A3DF"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Schedulers}"
+                SeparatorVisibility="Default"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                BackgroundColor="White"
+                                HasShadow="true"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectDoctorCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout 
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontSize="Medium" 
+                                            Text="{Binding DateSchedule}"
+                                            TextColor="#73A3DF">
+                                        </Label>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            Text="{Binding startHour}"
+                                            TextColor="#73A3DF">
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout 
+                                        Grid.Column="2"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Source="ic_request"
+                                            HeightRequest="50">
+                                        </Image>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Picker
                 TextColor="#73A3DF"
-                ItemsSource="{Binding WorkDay, Mode=TwoWay}"
-                ItemDisplayBinding="{Binding DateToday}"
-                SelectedItem="{Binding idWorkDay}"
+                ItemsSource="{Binding Days, Mode=TwoWay}"
+                ItemDisplayBinding="{Binding DateSchedule}"
+                SelectedItem="{Binding DateSchedule}"
                 Title="{i18n:Translate WorkDaysAvailable}"
                 HorizontalOptions="Center"
                 WidthRequest="300">
@@ -51,12 +102,12 @@
                 Title="{i18n:Translate ShedulersAvailable}"
                 HorizontalOptions="Center"
                 WidthRequest="300">
-            </Picker>
-            <ActivityIndicator
+            </Picker>-->
+            <!--<ActivityIndicator
                     IsRunning="{Binding IsRefreshing, Mode=TwoWay}"
                     VerticalOptions="CenterAndExpand">
-            </ActivityIndicator>
-            <Image
+            </ActivityIndicator>-->
+            <!--<Image
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"
                 WidthRequest="130"                                
@@ -64,7 +115,7 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding DateCommand}"/>
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

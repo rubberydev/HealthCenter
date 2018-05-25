@@ -18,3 +18,4 @@
         public object parameterWorkDays { get; set; }
     }
 }
+

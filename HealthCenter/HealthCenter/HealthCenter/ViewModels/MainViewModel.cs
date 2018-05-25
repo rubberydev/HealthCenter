@@ -2,12 +2,10 @@
 
 namespace HealthCenter.ViewModels
 {
-    using System;
+    using Helpers;
+    using Models;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Text;
-    using Models;
-    using Helpers;
     public class MainViewModel : BaseViewModel
     {
         private UserLocal user;
@@ -25,11 +23,7 @@ namespace HealthCenter.ViewModels
             set;
         }
 
-        public List<WorkDayList> WorkDayList
-        {
-            get;
-            set;
-        }
+
         #endregion
         #region ViewModels
         public LoginViewModel Login
