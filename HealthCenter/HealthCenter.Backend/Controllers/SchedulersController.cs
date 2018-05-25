@@ -37,7 +37,7 @@
             
             var scheduler = await db.Schedulers.Where(s => s
                                                .ApplicationUser_Id == userAuthenticated && s
-                                               .StateId == 2).ToListAsync();
+                                               .StateId == 2 && s.DateSchedule >= DateTime.Today).ToListAsync();
             
             if (scheduler == null)
             {
