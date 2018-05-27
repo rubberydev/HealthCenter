@@ -88,33 +88,6 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bible.
-        /// </summary>
-        public static string BibleTitle {
-            get {
-                return ResourceManager.GetString("BibleTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bibles.
-        /// </summary>
-        public static string BibliesTitle {
-            get {
-                return ResourceManager.GetString("BibliesTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Book.
-        /// </summary>
-        public static string BookTitle {
-            get {
-                return ResourceManager.GetString("BookTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -322,24 +295,6 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Digit Chapter:.
-        /// </summary>
-        public static string DigitChapter {
-            get {
-                return ResourceManager.GetString("DigitChapter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digit Verses:.
-        /// </summary>
-        public static string DigitVerses {
-            get {
-                return ResourceManager.GetString("DigitVerses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Doctors.
         /// </summary>
         public static string DoctorsTitle {
@@ -529,15 +484,6 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login Bibles.
-        /// </summary>
-        public static string LoginTitle {
-            get {
-                return ResourceManager.GetString("LoginTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string LogOut {
@@ -691,24 +637,6 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter number chapter...
-        /// </summary>
-        public static string PlaceHolderChapter {
-            get {
-                return ResourceManager.GetString("PlaceHolderChapter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter numbers Verses...
-        /// </summary>
-        public static string PlaceHolderVerses {
-            get {
-                return ResourceManager.GetString("PlaceHolderVerses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -736,15 +664,6 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Result Book to Chapter-Verse.
-        /// </summary>
-        public static string ResultSearch {
-            get {
-                return ResourceManager.GetString("ResultSearch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
@@ -754,83 +673,11 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search Bible.
-        /// </summary>
-        public static string SearchBible {
-            get {
-                return ResourceManager.GetString("SearchBible", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First you must consult a bible.
-        /// </summary>
-        public static string SearchBibleValidator {
-            get {
-                return ResourceManager.GetString("SearchBibleValidator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First Yout must consult a bible and a book.
-        /// </summary>
-        public static string SearchBibleValidator2 {
-            get {
-                return ResourceManager.GetString("SearchBibleValidator2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First Yout must consult  a book.
-        /// </summary>
-        public static string SearchBookValidator {
-            get {
-                return ResourceManager.GetString("SearchBookValidator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Search Dates.
         /// </summary>
         public static string SearchPage {
             get {
                 return ResourceManager.GetString("SearchPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Verses.
-        /// </summary>
-        public static string SearchVerses {
-            get {
-                return ResourceManager.GetString("SearchVerses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select Bible.
-        /// </summary>
-        public static string SelectBible {
-            get {
-                return ResourceManager.GetString("SelectBible", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You must select a bible.
-        /// </summary>
-        public static string SelectBibleValidator {
-            get {
-                return ResourceManager.GetString("SelectBibleValidator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select Book.
-        /// </summary>
-        public static string SelectBook {
-            get {
-                return ResourceManager.GetString("SelectBook", resourceCulture);
             }
         }
         
@@ -867,24 +714,6 @@ namespace HealthCenter.Resources {
         public static string UserRegisteredMessage {
             get {
                 return ResourceManager.GetString("UserRegisteredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You must Enter a Range of Verses.
-        /// </summary>
-        public static string VerseValidator {
-            get {
-                return ResourceManager.GetString("VerseValidator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Verses must be a integer number.
-        /// </summary>
-        public static string VerseValidatorNumber {
-            get {
-                return ResourceManager.GetString("VerseValidatorNumber", resourceCulture);
             }
         }
         

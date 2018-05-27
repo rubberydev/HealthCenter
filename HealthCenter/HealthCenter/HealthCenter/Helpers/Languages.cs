@@ -62,34 +62,10 @@ namespace HealthCenter.Helpers
             get { return Resource.Register; }
         }
 
-        public static string BibleTitle
-        {
-
-            get { return Resource.BibleTitle; }
-        }
-
-        public static string BibliesTitle
-        {
-
-            get { return Resource.BibliesTitle; }
-        }
-
-        public static string BookTitle
-        {
-
-            get { return Resource.BookTitle; }
-        }
-
         public static string EmailPlaceHolder
         {
 
             get { return Resource.EmailPlaceHolder; }
-        }
-
-        public static string LoginTitle
-        {
-
-            get { return Resource.LoginTitle; }
         }
 
         public static string PasswordPlaceHolder
@@ -382,78 +358,6 @@ namespace HealthCenter.Helpers
             get { return Resource.Update; }
         }
 
-        public static string SearchBible
-        {
-
-            get { return Resource.SearchBible; }
-        }
-
-        public static string SelectBible
-        {
-
-            get { return Resource.SelectBible; }
-        }
-
-        public static string SelectBook
-        {
-
-            get { return Resource.SelectBook; }
-        }
-
-        public static string DigitChapter
-        {
-
-            get { return Resource.DigitChapter; }
-        }
-
-        public static string PlaceHolderChapter
-        {
-
-            get { return Resource.PlaceHolderChapter; }
-        }
-
-        public static string DigitVerses
-        {
-
-            get { return Resource.DigitVerses; }
-        }
-
-        public static string PlaceHolderVerses
-        {
-
-            get { return Resource.PlaceHolderVerses; }
-        }
-
-        public static string SearchVerses
-        {
-
-            get { return Resource.SearchVerses; }
-        }
-
-        public static string SelectBibleValidator
-        {
-
-            get { return Resource.SelectBibleValidator; }
-        }
-
-        public static string SearchBibleValidator
-        {
-
-            get { return Resource.SearchBibleValidator; }
-        }
-
-        public static string ChapterValidator
-        {
-
-            get { return Resource.ChapterValidator; }
-        }
-
-        public static string ResultSearch
-        {
-
-            get { return Resource.ResultSearch; }
-        }
-
         public static string ChapterValidator2
         {
 
@@ -465,30 +369,7 @@ namespace HealthCenter.Helpers
 
             get { return Resource.ChapterValidatorNumber; }
         }
-
-        public static string VerseValidatorNumber
-        {
-
-            get { return Resource.VerseValidatorNumber; }
-        }
-
-        public static string SearchBibleValidator2
-        {
-
-            get { return Resource.SearchBibleValidator2; }
-        }
-
-        public static string SearchBookValidator
-        {
-
-            get { return Resource.SearchBookValidator; }
-        }
-
-        public static string VerseValidator
-        {
-
-            get { return Resource.VerseValidator; }
-        }
+     
 
         public static string DoctorsTitle
         {

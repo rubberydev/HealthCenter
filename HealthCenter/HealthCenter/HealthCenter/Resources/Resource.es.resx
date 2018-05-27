@@ -118,225 +118,225 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Enter your Email...</value>
+    <value>Introduzca su Email</value>
   </data>
   <data name="EmailValidator" xml:space="preserve">
-    <value>You must enter an email.</value>
+    <value>Debes ingresar un correo electrónico.</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>¡Error!</value>
   </data>
   <data name="ErrorConnection" xml:space="preserve">
-    <value>There is an error in the connection</value>
+    <value>¡Hay un error en la conexión!</value>
   </data>
   <data name="ErrorPassword" xml:space="preserve">
-    <value>Password Incorrect</value>
+    <value>Contraseña incorrecta</value>
   </data>
   <data name="ErrorToken" xml:space="preserve">
-    <value>something was wrong, please try later</value>
+    <value>Algo salió mal, por favor intenta más tarde.</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="LogOut" xml:space="preserve">
-    <value>Logout</value>
+    <value>Cerrar Sesión</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
-    <value>My Profile</value>
+    <value>Mi perfil</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Contraseña</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your Password...</value>
+    <value>Introduce tu Contraseña</value>
   </data>
   <data name="PasswordValidator" xml:space="preserve">
-    <value>You must Enter an Password</value>
+    <value>Debes introducir tu contraseña.</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>¡Regístrese!</value>
   </data>
   <data name="Rememberme" xml:space="preserve">
-    <value>Rememberme</value>
+    <value>Recuérdeme</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>¡Cancelar!</value>
   </data>
   <data name="ChangeImage" xml:space="preserve">
-    <value>Change Image</value>
+    <value>Cambiar imagen</value>
   </data>
   <data name="ConfirmLabel" xml:space="preserve">
-    <value>Confirm!!</value>
+    <value>Confirmar</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>Confirmar Contraseña</value>
   </data>
   <data name="ConfirmPlaceHolder" xml:space="preserve">
-    <value>your last confirm of password</value>
+    <value>Cambio de Password</value>
   </data>
   <data name="ConfirmValidation" xml:space="preserve">
-    <value>The password confirm  is required*</value>
+    <value>La contraseña es requerida</value>
   </data>
   <data name="ConfirmValidation2" xml:space="preserve">
-    <value>The password and his confirm must be equals</value>
+    <value>Contraseña y confirmación de contraseña tienen que ser iguales.</value>
   </data>
   <data name="EmailValidation2" xml:space="preserve">
-    <value>The format of this email no is valid..</value>
+    <value>El formato de tu email no es válido</value>
   </data>
   <data name="FirstNameLabel" xml:space="preserve">
-    <value>First Name</value>
+    <value>Nombre</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Enter your first name...</value>
+    <value>Introduce tu nombre</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
-    <value>The first name is required*</value>
+    <value>El nombre es requerido</value>
   </data>
   <data name="FromCamera" xml:space="preserve">
-    <value>FromCamera</value>
+    <value>¡Desde Cámara!</value>
   </data>
   <data name="FromGallery" xml:space="preserve">
-    <value>From gallery</value>
+    <value>Elije de la galería</value>
   </data>
   <data name="LastNameLabel" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Apellidos</value>
   </data>
   <data name="LastNamePlaceHolder" xml:space="preserve">
-    <value>Enter your last name...</value>
+    <value>Introduce tus apellido</value>
   </data>
   <data name="LastNameValidation" xml:space="preserve">
-    <value>The last name is required*</value>
+    <value>El apellido es requerido</value>
   </data>
   <data name="lastValidation" xml:space="preserve">
-    <value>You are on the first Chapter..</value>
+    <value>En la primera página</value>
   </data>
   <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
+    <value>Menú</value>
   </data>
   <data name="PasswordValidation" xml:space="preserve">
-    <value>The password  is required*</value>
+    <value>La contraseña es requerida</value>
   </data>
   <data name="PasswordValidation2" xml:space="preserve">
-    <value>The password most have minimum 6  characters..</value>
+    <value>La contraseña debe tener un mínimo de 6 caracteres.</value>
   </data>
   <data name="PhoneLabel" xml:space="preserve">
-    <value>Phone</value>
+    <value>Teléfono</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
-    <value>Enter your last phone</value>
+    <value>ingresee su teléfono!</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
-    <value>The phone number is required*</value>
+    <value>El  número de teléfono es obligatorio</value>
   </data>
   <data name="Registration" xml:space="preserve">
-    <value>Registration New User</value>
+    <value>Nuevo usuario</value>
   </data>
   <data name="SourceImageQuestion" xml:space="preserve">
-    <value>Where do you want to take the image?</value>
+    <value>¿Dónde quieres tomar la imagen?</value>
   </data>
   <data name="UserRegisteredMessage" xml:space="preserve">
-    <value>Registered user successfully</value>
+    <value>Usuario registrado</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>¡Buscar!</value>
   </data>
   <data name="nextValidation" xml:space="preserve">
-    <value>Your are in the last Chapter</value>
+    <value>En los últimos días</value>
   </data>
   <data name="SearchPage" xml:space="preserve">
-    <value>Search Dates</value>
+    <value>¡Fechas de búsqueda!</value>
   </data>
   <data name="ChagePasswordConfirm" xml:space="preserve">
-    <value>password successfully changed</value>
+    <value>¡Contraseña cambiada correctamente!</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Cambiar contraseña</value>
   </data>
   <data name="ConfirmPassPlaceHolder" xml:space="preserve">
-    <value>Enter yout confirm..</value>
+    <value>Introduzca su titulo.</value>
   </data>
   <data name="ConnectionError1" xml:space="preserve">
-    <value>Please turn on your internet settings.</value>
+    <value>¡Enciende tu configuración de internet!</value>
   </data>
   <data name="ConnectionError2" xml:space="preserve">
-    <value>Check you internet connection.</value>
+    <value>Por favor, compruebe su conexión a Internet</value>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
-    <value>Current Password</value>
+    <value>Contraseña actual</value>
   </data>
   <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your password..</value>
+    <value>Introduzca su contraseña</value>
   </data>
   <data name="ErrorChangingPassword" xml:space="preserve">
-    <value>Error password no chaged</value>
+    <value>¡Error de contraseña no marcado!</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>Nueva contraseña</value>
   </data>
   <data name="NewPasswordPlaceHolder" xml:space="preserve">
-    <value>Enter you new password..</value>
+    <value>Por favor, introduce tu nueva contraseña.</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
-    <value>Password Incorrect</value>
+    <value>Contraseña incorrecta</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Update</value>
+    <value>Actualizar</value>
   </data>
   <data name="ChapterValidator" xml:space="preserve">
-    <value>You most digit a Chapter</value>
+    <value>Selecciona un capítulo</value>
   </data>
   <data name="ChapterValidator2" xml:space="preserve">
-    <value>too long character</value>
+    <value>demasiado largo</value>
   </data>
   <data name="ChapterValidatorNumber" xml:space="preserve">
-    <value>The Chapter must be a integer number </value>
+    <value>Debe ser un número</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Cita</value>
   </data>
   <data name="AccessInvalid" xml:space="preserve">
-    <value>you don't have access...</value>
+    <value>¡No tiene acceso a este menú!</value>
   </data>
   <data name="DateTitle" xml:space="preserve">
-    <value>Request Medical Appointment</value>
+    <value>Cita medica</value>
   </data>
   <data name="DoctorsTitle" xml:space="preserve">
-    <value>Doctors</value>
+    <value>Médicos</value>
   </data>
   <data name="MyDates" xml:space="preserve">
-    <value>My Dates</value>
+    <value>Mis citas</value>
   </data>
   <data name="ShedulersAvailable" xml:space="preserve">
-    <value>Hours Availables</value>
+    <value>Horas</value>
   </data>
   <data name="ChooseTime" xml:space="preserve">
-    <value>Choose Time</value>
+    <value>Elegir tiempo</value>
   </data>
   <data name="DateButton" xml:space="preserve">
-    <value>Request Date</value>
+    <value>Fecha de solicitud</value>
   </data>
   <data name="WorkDaysAvailable" xml:space="preserve">
-    <value>Days Availables</value>
+    <value>Días disponibles!</value>
   </data>
   <data name="AppointmentSuccefully" xml:space="preserve">
-    <value>Successful appointment</value>
+    <value>Reservación</value>
   </data>
   <data name="DateValidator" xml:space="preserve">
-    <value>Please choose a time for your appointment</value>
+    <value>Por favor elige una fecha para la cita</value>
   </data>
   <data name="ErrorAppointment" xml:space="preserve">
-    <value>The appointment could not be scheduled</value>
+    <value>¡No puede programarse la cita!</value>
   </data>
   <data name="MyDatesTitle" xml:space="preserve">
-    <value>My Current Dates</value>
+    <value>Mis citas</value>
   </data>
   <data name="ConfirmDate" xml:space="preserve">
-    <value>Are you sure you want to schedule this appointment?</value>
+    <value>¿Está seguro que desea programar esta cita?</value>
   </data>
 </root>
