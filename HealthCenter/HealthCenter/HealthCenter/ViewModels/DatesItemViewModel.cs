@@ -38,7 +38,8 @@ namespace HealthCenter.ViewModels
 
             var resc = await Application.Current.MainPage.DisplayAlert(
                    Languages.ConfirmLabel,
-                   Languages.ConfirmDate,
+                   //Languages.ConfirmDate,
+                   "Are you sure you want to schedule the appointment "+ this.DateScheduleS + " to "+ startHourS+"?",
                    Languages.Accept,
                    Languages.Cancel);
 
