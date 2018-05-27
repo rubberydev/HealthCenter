@@ -108,9 +108,8 @@ namespace HealthCenter.API.Controllers
                 return NotFound();
             }
             Scheduler scheduler = await db.Schedulers.FindAsync(userSchedule.AgendaId);
-            scheduler.StateId = 2;
-            db.Entry(scheduler).State = EntityState.Modified;
-            userSchedule.Scheduler.StateId = 2;
+            scheduler.StateId = 3;
+            db.Entry(scheduler).State = EntityState.Modified;            
 
             db.UserSchedules.Remove(userSchedule);
             await db.SaveChangesAsync();
