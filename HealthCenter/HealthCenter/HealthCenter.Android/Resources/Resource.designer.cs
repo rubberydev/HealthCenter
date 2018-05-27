@@ -28,6 +28,7 @@ namespace HealthCenter.Droid
 		{
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::HealthCenter.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::HealthCenter.Droid.Resource.String.Hello;
+			global::Com.Syncfusion.Sfbusyindicator.Resource.String.library_name = global::HealthCenter.Droid.Resource.String.library_name;
 			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::HealthCenter.Droid.Resource.Animation.slide_in_right;
 			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::HealthCenter.Droid.Resource.Animation.slide_out_left;
 			global::Xamarin.Auth.Resource.Boolean.abc_action_bar_embed_tabs = global::HealthCenter.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
@@ -111,6 +112,7 @@ namespace HealthCenter.Droid
 			global::Xamarin.Auth.Resource.Layout.notification_template_media_custom = global::HealthCenter.Droid.Resource.Layout.notification_template_media_custom;
 			global::Xamarin.Auth.Resource.Layout.notification_template_part_chronometer = global::HealthCenter.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Xamarin.Auth.Resource.Layout.notification_template_part_time = global::HealthCenter.Droid.Resource.Layout.notification_template_part_time;
+			global::Xamarin.Auth.Resource.String.library_name = global::HealthCenter.Droid.Resource.String.library_name;
 			global::Xamarin.Auth.Resource.String.status_bar_notification_info_overflow = global::HealthCenter.Droid.Resource.String.status_bar_notification_info_overflow;
 			global::Xamarin.Auth.Resource.String.title_activity_webview = global::HealthCenter.Droid.Resource.String.title_activity_webview;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::HealthCenter.Droid.Resource.Attribute.actionBarSize;
@@ -3787,11 +3789,11 @@ namespace HealthCenter.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080040
-			public const int ApplicationName = 2131230784;
+			// aapt resource value: 0x7f080041
+			public const int ApplicationName = 2131230785;
 			
-			// aapt resource value: 0x7f08003f
-			public const int Hello = 2131230783;
+			// aapt resource value: 0x7f080040
+			public const int Hello = 2131230784;
 			
 			// aapt resource value: 0x7f080016
 			public const int abc_action_bar_home_description = 2131230742;
@@ -3894,6 +3896,9 @@ namespace HealthCenter.Droid
 			
 			// aapt resource value: 0x7f080039
 			public const int character_counter_pattern = 2131230777;
+			
+			// aapt resource value: 0x7f08003f
+			public const int library_name = 2131230783;
 			
 			// aapt resource value: 0x7f080001
 			public const int mr_button_content_description = 2131230721;

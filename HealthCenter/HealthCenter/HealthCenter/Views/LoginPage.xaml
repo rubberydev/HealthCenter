@@ -9,11 +9,13 @@
     Title="Health Center">
     <ContentPage.Content>
             <ScrollView
-                BindingContext="{Binding Login}">
+                BindingContext="{Binding Login}"
+                Padding="10">
+               <AbsoluteLayout>
                 <StackLayout
                     Padding="5">
                     <Image
-                        HeightRequest="100"
+                        HeightRequest="120"
                         Source="logo">
                     </Image>
                     <Label 
@@ -121,21 +123,23 @@
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoginLinkedInComand}"/>
                             </Image.GestureRecognizers>
-                        </Image>
-                        <busyindicator:SfBusyIndicator
-                            AnimationType="ECG"
-                            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
-                            AbsoluteLayout.LayoutFlags="All"
-                            BackgroundColor="white"
-                            HorizontalOptions="Center"
-                            TextColor="White"
-                            IsVisible="{Binding IsRunning, Mode=TwoWay}"                        
-                            VerticalOptions="Center"
-                            ViewBoxWidth="90"
-                            ViewBoxHeight="90">
-                        </busyindicator:SfBusyIndicator>
+                        </Image>      
+                    </StackLayout>
                 </StackLayout>
-                </StackLayout>
-            </ScrollView>
-        </ContentPage.Content>
+                <busyindicator:SfBusyIndicator
+                    AnimationType="ECG"
+                    AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="#2494F6"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    IsVisible="{Binding IsRunning, Mode=TwoWay}"
+                    Title="Please wait..."
+                    VerticalOptions="Center"
+                    ViewBoxWidth="90"
+                    ViewBoxHeight="90">
+                </busyindicator:SfBusyIndicator>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
