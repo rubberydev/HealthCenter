@@ -57,6 +57,7 @@
         #region Methods
         public async void LoadMyDates()
         {
+            
             this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
@@ -71,11 +72,17 @@
                 return;
             }
 
+            var mainviewModel = MainViewModel.GetInstance();
+            var userScheduler = new UserSchedule();
+            userScheduler.UserId = mainviewModel.User.UserId;
+            
+
             var apiHealth = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.GetList<Scheduler>(
+            var response = await this.apiService.GetList<UserSchedule>(
                 apiHealth,
                 "/api",
-                "/Schedulers");
+                "/UserSchedules",
+                string.Format("/" + userScheduler.UserId));
 
             if (!response.IsSuccess)
             {
