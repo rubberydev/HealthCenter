@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthCenter.Views.LoginPage"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     Title="Health Center">
@@ -45,11 +46,7 @@
                         TextColor="#73A3DF"
                         PlaceholderColor="#73A3DF"
                         Placeholder="{i18n:Translate PasswordPlaceHolder}">
-                    </Entry>
-                    <ActivityIndicator
-                        IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                        VerticalOptions="CenterAndExpand">
-                    </ActivityIndicator>
+                    </Entry>                    
                     <StackLayout
                         Margin="10, 0"
                         Orientation="Horizontal"
@@ -125,6 +122,18 @@
                                 <TapGestureRecognizer Command="{Binding LoginLinkedInComand}"/>
                             </Image.GestureRecognizers>
                         </Image>
+                        <busyindicator:SfBusyIndicator
+                            AnimationType="ECG"
+                            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                            AbsoluteLayout.LayoutFlags="All"
+                            BackgroundColor="white"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            IsVisible="{Binding IsRunning, Mode=TwoWay}"                        
+                            VerticalOptions="Center"
+                            ViewBoxWidth="90"
+                            ViewBoxHeight="90">
+                        </busyindicator:SfBusyIndicator>
                 </StackLayout>
                 </StackLayout>
             </ScrollView>

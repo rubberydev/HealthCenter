@@ -4,6 +4,7 @@ namespace HealthCenter.API.Controllers
 {
     using HealthCenter.Domain;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -28,7 +29,13 @@ namespace HealthCenter.API.Controllers
         [ResponseType(typeof(UserSchedule))]
         public async Task<IHttpActionResult> GetUserSchedule(int id)
         {
-            UserSchedule userSchedule = await db.UserSchedules.FindAsync(id);
+            var statesAppointments = new List<int>() { 1,2 };
+            var userSchedule = await db.UserSchedules.Where(z => z.UserId == id)
+                                                     .Select(x => x.Scheduler)
+                                                     .Where(x => x.DateSchedule >= DateTime.Today && 
+                                                     statesAppointments.Contains(x.StateId))
+                                                     .ToListAsync();           
+
             if (userSchedule == null)
             {
                 return NotFound();
@@ -100,6 +107,11 @@ namespace HealthCenter.API.Controllers
             {
                 return NotFound();
             }
+            Scheduler scheduler = await db.Schedulers.FindAsync(userSchedule.AgendaId);
+            scheduler.StateId = 2;
+            db.Entry(scheduler).State = EntityState.Modified;
+            userSchedule.Scheduler.StateId = 2;
+
             db.UserSchedules.Remove(userSchedule);
             await db.SaveChangesAsync();
 
