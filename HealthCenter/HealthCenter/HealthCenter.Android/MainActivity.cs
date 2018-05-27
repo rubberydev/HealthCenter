@@ -1,20 +1,17 @@
 ﻿
 namespace HealthCenter.Droid
 {
-    using System;
     using Android.App;
     using Android.Content.PM;
-    using Android.Runtime;
-    using Android.Views;
-    using Android.Widget;
     using Android.OS;
+    using Android.Runtime;
     using Plugin.Permissions;
 
     [Activity(
         Label = "HealthCenter", 
         Icon = "@drawable/ic_healthcenter",
         Theme = "@style/MainTheme", 
-        MainLauncher = true,
+        MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
