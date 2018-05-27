@@ -393,4 +393,7 @@
   <data name="MyDatesTitle" xml:space="preserve">
     <value>My Current Dates</value>
   </data>
+  <data name="ConfirmDate" xml:space="preserve">
+    <value>Are you sure you want to schedule this appointment?</value>
+  </data>
 </root>

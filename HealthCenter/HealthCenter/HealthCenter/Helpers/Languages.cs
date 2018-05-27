@@ -556,14 +556,11 @@ namespace HealthCenter.Helpers
             get { return Resource.MyDatesTitle; }
         }
 
-        
+        public static string ConfirmDate
+        {
 
-
-
-
-
-
-
+            get { return Resource.ConfirmDate; }
+        }
 
     }
 

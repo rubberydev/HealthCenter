@@ -1,6 +1,4 @@
-﻿
-
-namespace HealthCenter.ViewModels
+﻿namespace HealthCenter.ViewModels
 {
     using Helpers;
     using Models;

@@ -33,7 +33,7 @@
                 SeparatorColor="#73A3DF"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Days}"
+                ItemsSource="{Binding Schedulers}"
                 SeparatorVisibility="Default"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -44,7 +44,7 @@
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectDoctorCommand}" />
+                                    <TapGestureRecognizer Command="{Binding DateCommand}" />
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -57,12 +57,12 @@
                                         VerticalOptions="Center">
                                         <Label
                                             FontSize="Medium" 
-                                            Text="{Binding DateSchedule}"
+                                            Text="{Binding DateScheduleS}"
                                             TextColor="#73A3DF">
                                         </Label>
                                         <Label 
                                             FontAttributes="Bold"
-                                            Text="{Binding startHour}"
+                                            Text="{Binding startHourS}"
                                             TextColor="#73A3DF">
                                         </Label>
                                         <Label 
@@ -85,42 +85,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <!--<Picker
-                TextColor="#73A3DF"
-                ItemsSource="{Binding Days, Mode=TwoWay}"
-                ItemDisplayBinding="{Binding DateSchedule}"
-                SelectedItem="{Binding DateSchedule}"
-                Title="{i18n:Translate WorkDaysAvailable}"
-                HorizontalOptions="Center"
-                WidthRequest="300">
-            </Picker>
-            <Label 
-                Text="{i18n:Translate ChooseTime}"
-                TextColor="#73A3DF"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
-            <Picker
-                TextColor="#73A3DF"
-                ItemsSource="{Binding Schedulers, Mode=TwoWay}"
-                ItemDisplayBinding="{Binding startHour}"
-                SelectedItem="{Binding SchedulerId, Mode=TwoWay}"
-                Title="{i18n:Translate ShedulersAvailable}"
-                HorizontalOptions="Center"
-                WidthRequest="300">
-            </Picker>-->
-            <!--<ActivityIndicator
-                    IsRunning="{Binding IsRefreshing, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
-            </ActivityIndicator>-->
-            <!--<Image
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="End"
-                WidthRequest="130"                                
-                Source="ic_request">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DateCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,5 @@
 ﻿namespace HealthCenter.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Models;
     using Services;
@@ -8,8 +7,6 @@
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Linq;
-    using System.Windows.Input;
-    using Views;
     using Xamarin.Forms;
 
     public class DatesViewModel : BaseViewModel
@@ -24,9 +21,7 @@
         private string idDoctor;
         private bool isRefreshing;
         private bool isEnabled;
-        private Scheduler schedulerId;
-        private ObservableCollection<Scheduler> scheduler;
-        private ObservableCollection<Days> days;
+        private ObservableCollection<DatesItemViewModel> scheduler;
         public int userId;
         #endregion
 
@@ -35,12 +30,6 @@
         {
             get { return this.namePatient; }
             set { SetValue(ref this.namePatient, value); }
-        }
-
-        public Scheduler SchedulerId
-        {
-            get { return this.schedulerId; }
-            set { SetValue(ref this.schedulerId, value); }
         }
 
         public string NameDoctor
@@ -66,18 +55,11 @@
             set { SetValue(ref this.isRefreshing, value); }
         }
 
-        public ObservableCollection<Scheduler> Schedulers
+        public ObservableCollection<DatesItemViewModel> Schedulers
         {
             get { return this.scheduler; }
             set { SetValue(ref this.scheduler, value); }
         }
-
-        public ObservableCollection<Days> Days
-        {
-            get { return this.days; }
-            set { SetValue(ref this.days, value); }
-        }
-
 
         #endregion
         #region Constructors
@@ -119,89 +101,23 @@
                 string.Format("/" + this.IdDoctor));
 
             MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
-            //this.Schedulers = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
-            this.Days = new ObservableCollection<Days>(this.ToDayItem());
+            this.Schedulers = new ObservableCollection<DatesItemViewModel>(this.ToScheduleItemViewModel());
             this.IsRefreshing = false;
             this.IsEnabled = true;
 
         }
 
-        private IEnumerable<Days> ToDayItem()
+        private IEnumerable<DatesItemViewModel> ToScheduleItemViewModel()
         {
-            return MainViewModel.GetInstance().SchedulerList.Select(a => new Days
+            return MainViewModel.GetInstance().SchedulerList.Select(a => new DatesItemViewModel
             {
-                id = a.idWorkDay,
-                DateSchedule = a.DateSchedule.ToShortDateString(),
-                startHour = a.startHour.ToShortTimeString(),
+                AgendaId = a.AgendaId,
+                DateScheduleS = a.DateSchedule.ToShortDateString(),
+                startHourS = a.startHour.ToShortTimeString(),
                 NameDay = a.DateSchedule.ToString("dddd",
                         new CultureInfo("en-US"))
             });
         }
-        #endregion
-
-        #region Commands
-
-        public ICommand DateCommand
-        {
-
-            get
-            {
-                return new RelayCommand(ScheduleAppointment);
-            }
-        }
-
-        private async void ScheduleAppointment()
-        {
-            this.IsRefreshing = true;
-            this.IsEnabled = false;
-
-            if (SchedulerId == null || SchedulerId.AgendaId == 0)
-            {
-                this.IsRefreshing = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.DateValidator,
-                    Languages.Accept);
-                return;
-            }
-
-            var userScheduler = new UserSchedule();
-            userScheduler.UserId = userId;
-            userScheduler.AgendaId = SchedulerId.AgendaId;
-
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Post(
-                apiSecurity,
-                "/api",
-                "/UserSchedules",
-                userScheduler);
-
-            if (!response.IsSuccess)
-            {
-                this.IsRefreshing = false;
-                this.IsEnabled = true;
-
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.ErrorAppointment,
-                    Languages.Accept);
-                return;
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.ConfirmLabel,
-                    Languages.AppointmentSuccefully,
-                    Languages.Accept);
-
-                //it should redirect to MainPage after user take an appointment
-                //Application.Current.MainPage = new MasterPage();
-                this.LoadSchedulers();
-            }
-        }
-
-
         #endregion
     }
 }

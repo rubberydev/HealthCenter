@@ -187,6 +187,15 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to schedule this appointment?.
+        /// </summary>
+        public static string ConfirmDate {
+            get {
+                return ResourceManager.GetString("ConfirmDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm!!.
         /// </summary>
         public static string ConfirmLabel {
