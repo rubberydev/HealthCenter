@@ -1,5 +1,6 @@
 ﻿namespace HealthCenter.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Models;
     using Services;
@@ -7,6 +8,7 @@
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Linq;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
     public class DatesViewModel : BaseViewModel
@@ -74,6 +76,15 @@
         }
 
         #endregion
+
+        public ICommand RefreshCommand
+        {
+
+            get
+            {
+                return new RelayCommand(LoadSchedulers);
+            }
+        }
 
         #region Methods
         public async void LoadSchedulers()
