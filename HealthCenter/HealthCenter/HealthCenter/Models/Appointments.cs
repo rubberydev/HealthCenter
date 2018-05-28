@@ -1,66 +1,47 @@
-﻿
-namespace HealthCenter.Models
+﻿namespace HealthCenter.Models
 {
+    using Newtonsoft.Json;
     using System;
 
-    public class Scheduler
-    {
-
+    public class Appointments
+    {        
+        
         public int AgendaId
         {
             get;
             set;
         }
 
-        public DateTime startHour
+        
+        public DateTime StartHour
         {
             get;
             set;
         }
 
-        public DateTime endHour
+        
+        public DateTime EndHour
         {
             get;
             set;
         }
 
+        
         public DateTime DateSchedule
         {
             get;
             set;
         }
 
-        public int idWorkDay
+        
+        public long IdWorkDay
         {
             get;
             set;
         }
 
-        public int StateId
-        {
-            get;
-            set;
-        }
-
-        public WorkDay WorkDay
-
-        { get;
-            set;
-        }
-
-        public State State
-        {
-            get;
-            set;
-        }
-
-        public string ApplicationUser_Id
-        {
-            get;
-            set;
-        }
-
-        public string NameDay
+        
+        public long StateId
         {
             get;
             set;
@@ -72,11 +53,16 @@ namespace HealthCenter.Models
             set;
         }
 
-        public string startHour_
+        public string StartHour_
         {
             get;
             set;
         }
 
+        public string NameDay
+        {
+            get;
+            set;
+        }
     }
 }

@@ -57,12 +57,12 @@
                                         VerticalOptions="Center">
                                         <Label
                                             FontSize="Medium" 
-                                            Text="{Binding DateScheduleS}"
+                                            Text="{Binding DateSchedule_}"
                                             TextColor="#73A3DF">
                                         </Label>
                                         <Label 
                                             FontAttributes="Bold"
-                                            Text="{Binding startHourS}"
+                                            Text="{Binding startHour_}"
                                             TextColor="#73A3DF">
                                         </Label>
                                         <Label 

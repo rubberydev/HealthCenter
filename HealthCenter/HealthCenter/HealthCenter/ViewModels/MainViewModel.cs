@@ -21,6 +21,12 @@
             set;
         }
 
+        public List<Appointments> AppointmentList
+        {
+            get;
+            set;
+        }
+
 
         #endregion
         #region ViewModels

@@ -37,9 +37,8 @@ namespace HealthCenter.ViewModels
             var mainviewModel = MainViewModel.GetInstance();
 
             var resc = await Application.Current.MainPage.DisplayAlert(
-                   Languages.ConfirmLabel,
-                   //Languages.ConfirmDate,
-                   "Are you sure you want to schedule the appointment "+ this.DateScheduleS + " to "+ startHourS+"?",
+                   Languages.ConfirmLabel,                   
+                   "Are you sure you want to schedule the appointment "+ this.DateSchedule_ + " at "+ startHour_+"?",
                    Languages.Accept,
                    Languages.Cancel);
 
@@ -70,7 +69,6 @@ namespace HealthCenter.ViewModels
 
             if (!response.IsSuccess)
             {
-
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     Languages.ErrorAppointment,

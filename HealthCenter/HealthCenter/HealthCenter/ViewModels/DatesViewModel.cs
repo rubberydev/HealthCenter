@@ -123,8 +123,8 @@
             return MainViewModel.GetInstance().SchedulerList.Select(a => new DatesItemViewModel
             {
                 AgendaId = a.AgendaId,
-                DateScheduleS = a.DateSchedule.ToShortDateString(),
-                startHourS = a.startHour.ToShortTimeString(),
+                DateSchedule_ = a.DateSchedule.ToShortDateString(),
+                startHour_ = a.startHour.ToShortTimeString(),
                 NameDay = a.DateSchedule.ToString("dddd",
                         new CultureInfo("en-US"))
             });

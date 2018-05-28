@@ -15,7 +15,7 @@
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding MyDatesL}"
+                ItemsSource="{Binding MyDates_}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -27,7 +27,7 @@
                                 HasShadow="true"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectDoctorCommand}" />
+                                    <TapGestureRecognizer Command="{Binding CancelAppointmentCommand}" />
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -39,19 +39,24 @@
                                         Grid.Column="0"
                                         VerticalOptions="Center">
                                         <Label
-                                            FontSize="Medium" 
-                                            Text="{Binding startHour}"
+                                            FontSize="Small" 
+                                            Text="{Binding DateSchedule_}"
                                             TextColor="White">
                                         </Label>
                                         <Label 
-                                            FontSize="Medium"
-                                            Text="{Binding endHour}"
+                                            FontSize="Small"
+                                            Text="{Binding StartHour_}"
                                             TextColor="White">
-                                        </Label>
+                                        </Label>                                        
                                     </StackLayout>
                                     <StackLayout 
                                         Grid.Column="2"
                                         VerticalOptions="Center">
+                                        <Label 
+                                            FontSize="Small"
+                                            Text="{Binding NameDay}"
+                                            TextColor="White">
+                                        </Label>
                                         <Image
                                             Source="ic_cancel_date"
                                             HeightRequest="50">

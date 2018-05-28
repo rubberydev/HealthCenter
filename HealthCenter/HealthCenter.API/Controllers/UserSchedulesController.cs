@@ -99,10 +99,12 @@ namespace HealthCenter.API.Controllers
         }
 
         // DELETE: api/UserSchedules/5
+        //[Authorize]
         [ResponseType(typeof(UserSchedule))]
         public async Task<IHttpActionResult> DeleteUserSchedule(int id)
         {
-            UserSchedule userSchedule = await db.UserSchedules.FindAsync(id);
+            UserSchedule userSchedule = await db.UserSchedules.Where(us => us.AgendaId == id)
+                                                              .FirstOrDefaultAsync();
             if (userSchedule == null)
             {
                 return NotFound();

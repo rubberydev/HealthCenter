@@ -6,6 +6,7 @@
     using Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -17,17 +18,17 @@
         #endregion
 
         #region atributtes
-        private ObservableCollection<Scheduler> myDatesL;
+        private ObservableCollection<MyDatesItemViewModel> myDates;
         private bool isRefreshing;
         private string filter;
         #endregion
 
         #region Properties
 
-        public ObservableCollection<Scheduler> MyDatesL
+        public ObservableCollection<MyDatesItemViewModel> MyDates_
         {
-            get { return this.myDatesL; }
-            set { SetValue(ref this.myDatesL, value); }
+            get { return this.myDates; }
+            set { SetValue(ref this.myDates, value); }
         }
 
         public bool IsRefreshing
@@ -54,6 +55,17 @@
             this.LoadMyDates();
         }
         #endregion
+
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadMyDates);
+            }
+        } 
+        #endregion
+
         #region Methods
         public async void LoadMyDates()
         {
@@ -78,7 +90,7 @@
             
 
             var apiHealth = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.GetList<UserSchedule>(
+            var response = await this.apiService.GetList<Appointments>(
                 apiHealth,
                 "/api",
                 "/UserSchedules",
@@ -94,9 +106,21 @@
                 return;
             }
 
-            MainViewModel.GetInstance().SchedulerList = (List<Scheduler>)response.Result;
-            this.MyDatesL = new ObservableCollection<Scheduler>(MainViewModel.GetInstance().SchedulerList);
+            MainViewModel.GetInstance().AppointmentList = (List<Appointments>)response.Result;
+            this.MyDates_ = new ObservableCollection<MyDatesItemViewModel>(this.ToAppointmentItemViewModel());
             this.IsRefreshing = false;
+        }
+
+        private IEnumerable<MyDatesItemViewModel> ToAppointmentItemViewModel()
+        {
+            return MainViewModel.GetInstance().AppointmentList.Select(a => new MyDatesItemViewModel
+            {
+                AgendaId = a.AgendaId,
+                DateSchedule_ = a.DateSchedule.ToShortDateString(),
+                StartHour_ = a.StartHour.ToShortTimeString(),
+                NameDay = a.DateSchedule.ToString("dddd",
+                        new CultureInfo("en-US"))
+            });
         }
         #endregion
     }
