@@ -286,6 +286,7 @@
     <None Include="Properties\PublishProfiles\ApiHealthCenterV2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HealthCenterAPI - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HealthCenterAPItest - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\HealthCenterBackendtest - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

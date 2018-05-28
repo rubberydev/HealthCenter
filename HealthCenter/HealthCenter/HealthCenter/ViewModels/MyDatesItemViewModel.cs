@@ -30,12 +30,11 @@
         }
 
         private async void CancelAppointment()
-        {
-            var mainviewModel = MainViewModel.GetInstance();
-
-            var resc = await Application.Current.MainPage.DisplayAlert(
+        {   
+             var resc = await Application.Current.MainPage.DisplayAlert(
                    Languages.ConfirmLabel,
-                   "Are you sure you want to cancel this appointment scheduled for day " + this.DateSchedule_ + " at " + StartHour_ + "?",
+                   "Are you sure you want to cancel this appointment scheduled for day " + 
+                   this.DateSchedule_ + " at " + StartHour_ + "?",
                    Languages.Accept,
                    Languages.Cancel);
 
@@ -44,15 +43,7 @@
                 return;
             }
 
-            if (AgendaId == 0)
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.DateValidator,
-                    Languages.Accept);
-                return;
-            }
-
+            var mainviewModel = MainViewModel.GetInstance();
             UserLocal _user = new UserLocal();
             _user.Email = mainviewModel.User.Email;
             _user.Password = mainviewModel.User.Password;
@@ -87,7 +78,9 @@
             var response = await this.apiService.Delete(
                 apiSecurity,
                 "/api",
-                "/UserSchedules",                
+                "/UserSchedules", 
+                token.TokenType,
+                token.AccessToken,
                 this.AgendaId);
 
             if (!response.IsSuccess)
@@ -100,7 +93,14 @@
             }
             else
             {
-                return;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Dear user!!!",
+                    "Your appointment has been to canceled successfully",
+                    Languages.Accept);
+
+                mainviewModel.Doctor = new DoctorViewModel();
+                mainviewModel.Menu = new MenuItemViewModel();
+                await App.Navigator.PopAsync();
             }
         }
     }

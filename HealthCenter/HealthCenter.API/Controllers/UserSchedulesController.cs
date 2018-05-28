@@ -99,7 +99,7 @@ namespace HealthCenter.API.Controllers
         }
 
         // DELETE: api/UserSchedules/5
-        //[Authorize]
+        [Authorize]
         [ResponseType(typeof(UserSchedule))]
         public async Task<IHttpActionResult> DeleteUserSchedule(int id)
         {
