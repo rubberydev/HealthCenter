@@ -185,33 +185,7 @@
             ViewBag.idWorkDay = new SelectList(db.WorkDays, "idWorkDay", "idWorkDay", scheduler.idWorkDay);
             ViewBag.StateId = new SelectList(db.States, "StateId", "StateId", scheduler.StateId);
             return View(scheduler);
-        }
-
-        // GET: Schedulers/Delete/5
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Scheduler scheduler = await db.Schedulers.FindAsync(id);
-        //    if (scheduler == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(scheduler);
-        //}
-
-        //// POST: Schedulers/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Scheduler scheduler = await db.Schedulers.FindAsync(id);
-        //    db.Schedulers.Remove(scheduler);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
+        }       
 
         protected override void Dispose(bool disposing)
         {
