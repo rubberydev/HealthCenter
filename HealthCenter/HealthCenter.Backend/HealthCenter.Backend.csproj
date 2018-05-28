@@ -313,7 +313,6 @@
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
     <Content Include="Views\Schedulers\Create.cshtml" />
-    <Content Include="Views\Schedulers\Delete.cshtml" />
     <Content Include="Views\Schedulers\Details.cshtml" />
     <Content Include="Views\Schedulers\Edit.cshtml" />
     <Content Include="Views\Schedulers\Index.cshtml" />

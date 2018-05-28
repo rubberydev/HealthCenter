@@ -20,9 +20,10 @@
         public async Task<ActionResult> Index()
         {
             var userAuthenticated = User.Identity.GetUserId();
+            var statesList = new List<int>() { 1,3 };
             var schedulers = db.Schedulers.Where(x => x
                                           .ApplicationUser_Id == userAuthenticated && x
-                                          .DateSchedule >= DateTime.Today && x.StateId == 1 || x.StateId == 3)
+                                          .DateSchedule >= DateTime.Today && statesList.Contains(x.StateId))
                                           .Include(s => s.WorkDay);
 
             return View(await schedulers.ToListAsync());
