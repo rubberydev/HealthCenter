@@ -39,11 +39,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.State.stateName)
         </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.AgendaId }) |*@
-            <a class="btn btn-info" data-toggle="tooltip" title="Appointment Detail" href="/Schedulers/Details/@item.AgendaId"><span class="glyphicon glyphicon-search"></span></a>
-            @*@Html.ActionLink("Details", "Details", new { id = item.AgendaId }) |*@
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.AgendaId })*@
+        <td>           
+            <a class="btn btn-info" data-toggle="tooltip" title="Appointment Detail" href="/Schedulers/Details/@item.AgendaId"><span class="glyphicon glyphicon-search"></span></a>            
         </td>
     </tr>
 }
