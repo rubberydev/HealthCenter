@@ -64,6 +64,11 @@
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
+                if(Application.Current.MainPage == null)
+                {
+                    return;
+                }
+
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
