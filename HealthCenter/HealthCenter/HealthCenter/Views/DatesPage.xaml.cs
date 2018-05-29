@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthCenter.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,14 @@ namespace HealthCenter.Views
 	{
 		public DatesPage ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
-	}
+
+        void getDate_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+        {
+            var date = e.NewDate;
+            var mainViewModel =  MainViewModel.GetInstance().Dates;
+            mainViewModel.Filter = date.ToShortDateString();
+        }
+    }
 }

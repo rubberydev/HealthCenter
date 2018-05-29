@@ -4,6 +4,7 @@
     using Helpers;
     using Models;
     using Services;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -25,9 +26,21 @@
         private bool isEnabled;
         private ObservableCollection<DatesItemViewModel> scheduler;
         public int userId;
+        private string filter;        
         #endregion
 
-        #region Properties
+        #region Properties 
+        public string Filter
+        {
+            get { return this.filter; }
+
+            set
+            {
+                SetValue(ref this.filter, value);
+                this.SearchAvailablesAppointments();
+            }
+        }
+
         public string NamePatient
         {
             get { return this.namePatient; }
@@ -68,7 +81,8 @@
         public DatesViewModel(Doctor doctor)
         {
             this.apiService = new ApiService();
-            this.LoadSchedulers();
+            this.LoadSchedulers();           
+            //this.Filter = DateTime.Today;
             this.NameDoctor = doctor.FullName;
             this.IdDoctor = doctor.Id;
             this.NamePatient = MainViewModel.GetInstance().User.FullName;
@@ -87,6 +101,21 @@
         }
 
         #region Methods
+        private void SearchAvailablesAppointments()
+        {
+            if (string.IsNullOrEmpty(this.Filter))
+            {
+                this.Schedulers = new ObservableCollection<DatesItemViewModel>(
+                    this.ToScheduleItemViewModel());
+            }
+            else
+            {                
+                this.Schedulers = new ObservableCollection<DatesItemViewModel>(
+                    this.ToScheduleItemViewModel().Where(
+                        l => l.DateSchedule_ == this.Filter));
+            }
+        }
+
         public async void LoadSchedulers()
         {
             this.IsRefreshing = true;

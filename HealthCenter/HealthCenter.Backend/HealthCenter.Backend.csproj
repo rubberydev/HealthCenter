@@ -192,8 +192,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SchedulersController.cs" />
-    <Compile Include="Controllers\StatesController.cs" />
-    <Compile Include="Controllers\UserSchedulesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Controllers\WorkDaysController.cs" />
@@ -322,16 +320,6 @@
     <Content Include="Views\WorkDays\Edit.cshtml" />
     <Content Include="Views\WorkDays\Index.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\UserSchedules\Create.cshtml" />
-    <Content Include="Views\UserSchedules\Delete.cshtml" />
-    <Content Include="Views\UserSchedules\Details.cshtml" />
-    <Content Include="Views\UserSchedules\Edit.cshtml" />
-    <Content Include="Views\UserSchedules\Index.cshtml" />
-    <Content Include="Views\States\Create.cshtml" />
-    <Content Include="Views\States\Delete.cshtml" />
-    <Content Include="Views\States\Details.cshtml" />
-    <Content Include="Views\States\Edit.cshtml" />
-    <Content Include="Views\States\Index.cshtml" />
     <Content Include="Views\Schedulers\SearchDetail.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
   </ItemGroup>

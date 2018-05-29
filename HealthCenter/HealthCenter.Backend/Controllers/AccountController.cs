@@ -1,8 +1,7 @@
-﻿
-namespace HealthCenter.Backend.Controllers
+﻿namespace HealthCenter.Backend.Controllers
 {
-    using HealthCenter.Backend.Helpers;
-    using HealthCenter.Backend.Models;
+    using Backend.Helpers;
+    using Backend.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;

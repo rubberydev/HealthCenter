@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="HealthCenter.Views.DatesPage"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:i18n="clr-namespace:HealthCenter.Helpers"
     xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -13,7 +14,7 @@
             Padding="5">
             <Image
                 Source="doctor2"
-                WidthRequest="100"
+                WidthRequest="50"
                 HorizontalOptions="Center"
                 VerticalOptions="Start">
             </Image>
@@ -27,6 +28,23 @@
                 HorizontalTextAlignment="Center"
                 TextColor="#73A3DF"
                 HorizontalOptions="CenterAndExpand"/>
+            <StackLayout
+                 Margin="48,0"
+                 Orientation="Horizontal"
+                 VerticalOptions="CenterAndExpand">            
+                <DatePicker
+                    x:Name="datepicker"
+                    DateSelected="getDate_DateSelected"                    
+                    Margin="0,0"
+                    HorizontalOptions="FillAndExpand"                                     
+                    MinimumDate="{x:Static sys:DateTime.Now}"
+                    TextColor="#73A3DF"/>
+                    <Image  
+                        HorizontalOptions="FillAndExpand"                        
+                        Source="ic_date_range"
+                        WidthRequest="40">
+                    </Image>
+            </StackLayout>            
             <ListView 
                 BackgroundColor="White"
                 HasUnevenRows="true" 
