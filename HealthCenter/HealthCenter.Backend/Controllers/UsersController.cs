@@ -19,12 +19,10 @@
             return View();
         }
 
-        // POST: Users1/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Users1/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,Email,Telephone,ImagePath,UserTypeId")] User user)
+        public async Task<ActionResult> Create(User user)
         {
             if (ModelState.IsValid)
             {

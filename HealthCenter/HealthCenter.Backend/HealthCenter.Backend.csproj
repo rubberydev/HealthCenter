@@ -317,7 +317,6 @@
     <Content Include="Views\WorkDays\Create.cshtml" />
     <Content Include="Views\WorkDays\Delete.cshtml" />
     <Content Include="Views\WorkDays\Details.cshtml" />
-    <Content Include="Views\WorkDays\Edit.cshtml" />
     <Content Include="Views\WorkDays\Index.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Schedulers\SearchDetail.cshtml" />

@@ -1,16 +1,15 @@
 ﻿namespace HealthCenter.Backend.Controllers
 {
+    using Backend.Models;
+    using Domain;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Linq;
-    using System.Threading.Tasks;
     using System.Net;
-    using System.Web;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
-    using HealthCenter.Backend.Models;
-    using HealthCenter.Domain;
 
     [Authorize(Roles = "Admin")]
     public class WorkDaysController : Controller
@@ -151,35 +150,6 @@
                 }       
                 return RedirectToAction("Index");
             }       
-            return View(workDay);
-        }
-
-        // GET: WorkDays/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            WorkDay workDay = await db.WorkDays.FindAsync(id);
-            if (workDay == null)
-            {
-                return HttpNotFound();
-            }
-            return View(workDay);
-        }
-
-        // POST: WorkDays/Edit/5        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(WorkDay workDay)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(workDay).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
             return View(workDay);
         }
 
