@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfGauge.XForms.iOS;
 using UIKit;
 
 namespace HealthCenter.iOS
@@ -25,6 +26,7 @@ namespace HealthCenter.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
+            new SfDigitalGaugeRenderer();
             new SfBusyIndicatorRenderer();
             LoadApplication(new App());
 

@@ -144,6 +144,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator.IOS">
       <Version>16.1.0.37</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfGauge">
+      <Version>16.1.0.37</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfGauge.IOS">
+      <Version>16.1.0.37</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>3.1.1</Version>
     </PackageReference>
