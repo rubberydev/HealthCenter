@@ -85,6 +85,16 @@ namespace HealthCenter.ViewModels
                 mainViewModel.ChangePassword = new ChangePasswordViewModel();
                 App.Navigator.PushAsync(new ChangePasswordPage());
             }
+
+            if (this.PageName == "Gaugesegment")
+            {
+                App.Navigator.PushAsync(new GaugesegmentPage());
+            }
+
+            if (this.PageName == "GaugeWatch")
+            {
+                App.Navigator.PushAsync(new GaugeWatchPage());
+            }
         }
 
         public ICommand SearchCommand

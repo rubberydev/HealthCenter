@@ -148,6 +148,20 @@
 
             this.Menus.Add(new MenuItemViewModel
             {
+                Icon = "ic_watch_2",
+                PageName = "Gaugesegment",
+                Title = Languages.Gaugesegment,
+            });
+
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "ic_watch",
+                PageName = "GaugeWatch",
+                Title = Languages.GaugeWatch,
+            });
+
+            this.Menus.Add(new MenuItemViewModel
+            {
                 Icon = "ic_lock_open",
                 PageName = "LoginPage",
                 Title = Languages.LogOut,

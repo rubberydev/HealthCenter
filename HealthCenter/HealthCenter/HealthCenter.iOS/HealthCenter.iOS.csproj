@@ -235,4 +235,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_date_range.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_watch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_watch_2.png" />
+  </ItemGroup>
 </Project>

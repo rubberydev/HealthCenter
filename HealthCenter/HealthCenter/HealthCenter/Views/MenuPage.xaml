@@ -56,10 +56,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Image
-                HeightRequest="100"
-                Source="Bible">
-            </Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

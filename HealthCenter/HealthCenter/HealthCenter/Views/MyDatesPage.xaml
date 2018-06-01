@@ -10,7 +10,7 @@
     <ContentPage.Content>        
         <StackLayout
             BindingContext="{Binding MyDates}"
-            Padding="5">           
+            Padding="5">
             <ListView 
                 BackgroundColor="White"
                 HasUnevenRows="true" 
@@ -48,7 +48,7 @@
                                             FontSize="Small"
                                             Text="{Binding StartHour_}"
                                             TextColor="White">
-                                        </Label>                                        
+                                        </Label>
                                     </StackLayout>
                                     <StackLayout 
                                         Grid.Column="2"
@@ -69,18 +69,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackLayout
-            Margin="15,0">
-                <gauge:SfDigitalGauge 
-                x:Name="digital" 
-                SegmentStrokeWidth="3"                
-                CharacterHeight="35" 
-                CharacterWidth="15" 
-                CharacterType="SegmentSeven" 
-                DisabledSegmentAlpha="30" 
-                Margin="0,0"
-                HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

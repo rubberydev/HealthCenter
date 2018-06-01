@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
+    x:Class="HealthCenter.Views.GaugeWatchPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <gauge:SfCircularGauge>
+
+                <gauge:SfCircularGauge.Scales>
+
+                    <gauge:Scale   RimColor="LightGray" RimThickness="30" RadiusFactor="1" ShowTicks="False"
+                               StartValue="0" EndValue="100" Interval="10" LabelOffset="0.75" LabelColor="#424242"
+                              LabelFontSize ="15" >
+
+                        <gauge:Scale.Pointers>
+
+                            <gauge:RangePointer Color="Orange" Thickness="30" Offset="1" EnableAnimation="True"
+                                            AnimationDuration="5" Value="80" />
+
+                            <gauge:NeedlePointer Thickness="7" LengthFactor="0.55" Color="LightGray"
+                                             KnobColor="White" TailColor="LightGray" TailLengthFactor="0.2"
+                                             Type="Triangle"  KnobRadius="12" Value="80"
+                                             AnimationDuration="5" TailStrokeWidth="2" TailStrokeColor="LightGray"
+                                             KnobStrokeColor="LightGray" KnobStrokeWidth="8"/>
+
+                        </gauge:Scale.Pointers>
+
+                    </gauge:Scale>
+
+                </gauge:SfCircularGauge.Scales>
+
+            </gauge:SfCircularGauge>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

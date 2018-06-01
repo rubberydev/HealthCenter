@@ -443,6 +443,23 @@ namespace HealthCenter.Helpers
             get { return Resource.ConfirmDate; }
         }
 
+        public static string Gaugesegment
+        {
+
+            get { return Resource.Gaugesegment; }
+        }
+
+        public static string GaugeWatch
+
+        {
+
+            get
+            {
+                return Resource.GaugeWatch;
+            }
+        }
+
+
     }
 
 }

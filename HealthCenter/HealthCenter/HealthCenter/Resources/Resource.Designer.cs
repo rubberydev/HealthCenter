@@ -439,6 +439,24 @@ namespace HealthCenter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gauge segment.
+        /// </summary>
+        public static string Gaugesegment {
+            get {
+                return ResourceManager.GetString("Gaugesegment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gauge Watch.
+        /// </summary>
+        public static string GaugeWatch {
+            get {
+                return ResourceManager.GetString("GaugeWatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastNameLabel {

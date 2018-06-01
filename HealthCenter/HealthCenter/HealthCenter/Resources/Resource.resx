@@ -339,4 +339,10 @@
   <data name="ConfirmDate" xml:space="preserve">
     <value>Are you sure you want to schedule this appointment?</value>
   </data>
+  <data name="Gaugesegment" xml:space="preserve">
+    <value>Gauge segment</value>
+  </data>
+  <data name="GaugeWatch" xml:space="preserve">
+    <value>Gauge Watch</value>
+  </data>
 </root>
