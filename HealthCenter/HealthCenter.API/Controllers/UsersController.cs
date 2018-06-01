@@ -30,7 +30,7 @@
             ApplicationDbContext userContext = new ApplicationDbContext();
             var Medics = userContext.Users.Where(t => 
                                                  t.Roles.Any(r => 
-                                                 r.RoleId == "21f2daca-e743-40ca-9bca-b91f745a39dd"))
+                                                 r.RoleId == "be345409-4744-4a89-99ae-9b028836095f"))
                                                  .Select(x => x).ToList();
             return Medics;
         }        

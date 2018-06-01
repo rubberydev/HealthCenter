@@ -65,8 +65,6 @@
             this.dataService = new DataService();
             this.IsRememberme = true;
             this.IsEnabled = true;
-            this.Email = "casq90@g.com";
-            this.Password = "123456";
         }
         #endregion
 

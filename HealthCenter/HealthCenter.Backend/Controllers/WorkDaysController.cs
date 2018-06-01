@@ -82,7 +82,7 @@
                                     "'success', window.location.href='/Workdays/Create')});</script>");
                 }
 
-                if(workDay.startDayHour.Hour >= workDay.endDayHour.Hour || workDay.durationCite > 60 ||
+                if (workDay.startDayHour.Hour >= workDay.endDayHour.Hour || workDay.durationCite > 60 ||
                     workDay.DateToday < DateTime.Today.Date)
                 {
                     var hh = "/Content/sweetalert2.min.css";
@@ -133,7 +133,7 @@
 
                         workDay.DateToday = workDay.DateToday.AddDays(1);
                     }
-                    
+
                 }
 
 
@@ -147,7 +147,7 @@
 
                         workDay.DateToday = workDay.DateToday.AddDays(1);
                     }
-                }       
+                }
                 return RedirectToAction("Index");
             }       
             return View(workDay);

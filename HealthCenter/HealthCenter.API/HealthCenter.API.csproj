@@ -283,6 +283,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\apihealth3 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ApiHealthCenterV2 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HealthCenterAPI - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HealthCenterAPItest - Web Deploy.pubxml" />
