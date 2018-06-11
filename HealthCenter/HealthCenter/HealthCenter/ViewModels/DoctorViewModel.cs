@@ -1,6 +1,7 @@
 ﻿namespace HealthCenter.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using Views;
     using Helpers;
     using Models;
     using Services;
@@ -65,15 +66,14 @@
             {
                 this.IsRefreshing = false;
                 if(Application.Current.MainPage == null)
-                {
+                {                    
                     return;
                 }
 
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
-                    Languages.Accept);
-                await Application.Current.MainPage.Navigation.PopAsync();
+                    Languages.Accept);                
                 return;
             }
 
