@@ -59,7 +59,7 @@
                 }
 
                 return string.Format(
-                    "http://apihealth3.azurewebsites.net/{0}",                    
+                    "https://healthcenterapi20190717120440.azurewebsites.net/{0}",                    
                     ImagePath.Substring(1));
             }
         }

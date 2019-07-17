@@ -91,9 +91,6 @@ namespace HealthCenter.ViewModels
         }
         #endregion
 
-        #region Methods
-        #endregion 
-
         #region Commands
         public ICommand RegisterCommand
         {
